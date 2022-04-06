@@ -1,15 +1,15 @@
 import React from "react";
 import SpotifyPlayer from "react-spotify-web-playback"
 
-function MusicPlayer() {
+function MusicPlayer({spotifyUri}) {
   
   const token =
-  "BQBDk5_tsQJsqgq3cJjz5t0mSrX6M-wtHn1lvvg7p_e268Ec3h-LaPIKs1ftkSO7oIyaPBH1stYixNu01KjGPYzylGL7LdU9_i5UKpae94lUexdo5r-wEmCOvAqN0_2nHKhjuCL6YWLk2bi6fFn-01Ki_EYjHXe5ksk0vLtxFZxvtHjxdJ4iKSL0RpWpG4zUzfpvK5LZGZX4xBoUsA"
+    "BQBtURrP1ea-LNOtBvvcoDZTfU4-AFxmqg9EiovKNxEKrsspIsGbbjcZfDuJE7_u691q9dW4XgNDWpNM5gnjJ6ML_dYBYmlrRCuDT4bw05W9c1xscfaIiZFuFmbKfhSI5bVdbP1rxtWQqN90rUcWWgoA_ESPfZfK9JZxpGvXS1wnvOm7R3hLUh3cmA0k-NS1OTj0tJp7k6d7c3uaIQ"
   return (
     <div>
       <SpotifyPlayer
         token={token}
-        uris={["spotify:track:2qHGDQmfxScbqf0BAwakKI"]}
+        uris={[spotifyUri]}
       />
     </div>
   );
