@@ -4,7 +4,7 @@ import SpotifyPlayer from "react-spotify-web-playback"
 function MusicPlayer({spotifyUri}) {
   
   const token =
-    "BQBdAf1sOizYLAhz0jjI5UI4p1PD8OfTkHDv7hgjMVFu7ZINIUJih7ljlP72V-pQuRRfGfRN2B1939P61uwMd3Oea69jDP8aqK1ciRtr7PoWnSMowf16ZmIwPosuL9dBnLZGecSj2E3ww2MfcekSi3hfeLbEvA4vaZ2HRENlUNyIMvqZaIFdkDLiClEbzyAYoH2V07KuMz9qJiIgug"
+    "BQDWY_e3I2sVjJ1ptsJbAmUmxEIORFbsWmOTCPltAK-eh9YvoycfiuIFgpPKttp8CnTAHJA_x2PDv9nlqL28k-ewpuhTGnHaNC8kM5c1ZWkAuIm5e5ZQDMz_7fX6DIfBRMA1jV2Gl9x22xKwYv6ZzI9wBc7VqVlj2PGeWHaPMMukFPCJWCD8d85BoFBTPRkjVbPR_QhqLkeUBFl96Q"
   return (
     <div>
       <SpotifyPlayer

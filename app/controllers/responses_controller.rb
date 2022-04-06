@@ -1,6 +1,6 @@
 class ResponsesController < ApplicationController
     def index
-        render json: Response.all
+        render json: Response.all.order(created_at: :desc)
     end
 
     def show
