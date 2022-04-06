@@ -26,5 +26,5 @@ code {
 .daily-lyric-responses {
   width: 400px;
   padding: 40px;
-  margin-left: 100px !important;
+  margin: 0 100px !important;
 }

@@ -18,10 +18,9 @@ function DailyLyricPage() {
     async function handleFetch() {
       const user = await axios.get("/me")
       setUserID(user.data.id)
-      const lyrics = await axios.get("/lyrics")
- 
-      const dateWithoutYear = String(new Date().getMonth()+1).padStart(2, "0") + String(new Date().getDate()).padStart(2, "0")
 
+      const lyrics = await axios.get("/lyrics")
+      const dateWithoutYear = String(new Date().getMonth()+1).padStart(2, "0") + String(new Date().getDate()).padStart(2, "0")
       const lyric = lyrics.data.find(data => data.date_of_lyric === dateWithoutYear)
       setDailyLyric(lyric)
 
@@ -30,7 +29,6 @@ function DailyLyricPage() {
 
       const responses = await axios.get("/responses")
       setUserResponses(responses.data.filter(response => response.lyric_id === lyric.id))
-
     }
     handleFetch()
   }, [])
@@ -48,7 +46,6 @@ function DailyLyricPage() {
     }
 
     const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
-
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
@@ -72,12 +69,11 @@ function DailyLyricPage() {
                 <button type="submit">Share</button>
               </form>
         : <p>You posted for the day.</p>}
-
       </Col>
         <Col className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response}/>)}
         </Col>
-        </Row>
+      </Row>
     </Container>
   )
 }
