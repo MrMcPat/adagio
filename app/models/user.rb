@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_many :emotions
+    has_many :responses
+    has_many :lyrics, through: :responses
 
     has_secure_password
 

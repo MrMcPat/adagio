@@ -10,13 +10,12 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
     });
-  }, []);
+  }, [])
 
   return (
     <div className="App">
@@ -32,7 +31,7 @@ function App() {
           <Login setUser={setUser}/>
         </Route>
         <Route path="/dailylyric">
-          <DailyLyricPage />
+          <DailyLyricPage user={user}/>
         </Route>
       </Switch>
     </div>

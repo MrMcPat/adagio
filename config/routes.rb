@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :emotions
+  resources :responses
   resources :users
   resources :lyrics, only: [:index, :show, :create]
 

@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_192758) do
+ActiveRecord::Schema.define(version: 2022_04_06_151828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "emotions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "color"
+    t.string "emotion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "lyrics", force: :cascade do |t|
     t.string "lyric"
@@ -21,6 +29,15 @@ ActiveRecord::Schema.define(version: 2022_04_05_192758) do
     t.string "song_name"
     t.string "date_of_lyric"
     t.string "spotify_uri"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "lyric_id"
+    t.string "color"
+    t.string "response"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
