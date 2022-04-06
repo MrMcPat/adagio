@@ -5,9 +5,10 @@ import Homepage from "./Homepage"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import DailyLyricPage from "./DailyLyricPage"
+import UserProfile from "./UserProfile"
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -31,7 +32,10 @@ function App() {
           <Login setUser={setUser}/>
         </Route>
         <Route path="/dailylyric">
-          <DailyLyricPage user={user}/>
+          <DailyLyricPage/>
+        </Route>
+        <Route pat="/userprofile">
+          <UserProfile />
         </Route>
       </Switch>
     </div>

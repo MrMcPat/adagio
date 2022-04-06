@@ -1,6 +1,7 @@
-import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import { NavLink, useHistory } from "react-router-dom";
+import React from "react"
+import Navbar from "react-bootstrap/Navbar"
+import Container from "react-bootstrap/Container"
+import { NavLink, useHistory } from "react-router-dom"
 
 function NavBar({ user, setUser }) {
   let history = useHistory();
@@ -17,14 +18,16 @@ function NavBar({ user, setUser }) {
   return (
     <>
       <Navbar>
+        <Container>
         <NavLink to="/">
           <h1>Adagio</h1>
         </NavLink>
         <div>
           {user ? (
             <>
-              <button onClick={handleLogoutClick}>Logout</button>
               <NavLink to="/dailylyric">Daily Lyric</NavLink>
+              <NavLink to="/userprofile">User Profile</NavLink>
+              <button onClick={handleLogoutClick}>Logout</button>
             </>
           ) : (
             <>
@@ -33,6 +36,7 @@ function NavBar({ user, setUser }) {
             </>
           )}
         </div>
+        </Container>
       </Navbar>
     </>
   );

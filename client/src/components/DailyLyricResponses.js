@@ -1,7 +1,7 @@
 import React from 'react'
 
 function DailyLyricResponses({response}) {
-    // console.log(response)
+
   return (
     <>
     <p>{response.response}</p>

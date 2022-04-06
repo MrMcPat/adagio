@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.daily-lyric-page {
+  display: flex;
+  /* grid-template-columns: auto auto; */
+}
+
+.daily-lyric-container {
+  width: 700px;
+  padding: 40px;
+  margin-left: 100px;
+}
+
+.daily-lyric-responses {
+  width: 400px;
+  padding: 40px;
+  margin-left: 100px !important;
+}

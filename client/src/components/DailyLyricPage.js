@@ -1,43 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import MusicPlayer from "./MusicPlayer"
 import DailyLyricResponses from './DailyLyricResponses'
 
 function DailyLyricPage() {
     const [userID, setUserID] = useState("")
     const [dailyLyric, setDailyLyric] = useState([])
-    const [myEmotions, setMyEmotions] = useState([])
+    const [userEmotions, setUserEmotions] = useState([])
+    const [userResponses, setUserResponses] = useState([])
     const [inputResponse, setInputResponse] = useState("")
     const [inputColor, setInputColor] = useState("")
-    const [userResponses, setUserResponses] = useState([])
 
     useEffect(() => {
     async function handleFetch() {
-
       const user = await axios.get("/me")
       setUserID(user.data.id)
       const lyrics = await axios.get("/lyrics")
-      const currentDate = String(new Date().getMonth()+1).padStart(2, "0") + String(new Date().getDate()).padStart(2, "0")
-      const lyric = lyrics.data.find(data => data.date_of_lyric === currentDate)
+ 
+      const dateWithoutYear = String(new Date().getMonth()+1).padStart(2, "0") + String(new Date().getDate()).padStart(2, "0")
+
+      const lyric = lyrics.data.find(data => data.date_of_lyric === dateWithoutYear)
       setDailyLyric(lyric)
 
       const emotions = await axios.get("/emotions")
-      const userEmotions = emotions.data.filter(emotion => emotion.user_id === user.data.id)
-      setMyEmotions(userEmotions)
+      setUserEmotions(emotions.data.filter(emotion => emotion.user_id === user.data.id))
 
       const responses = await axios.get("/responses")
-      setUserResponses(responses.data)
+      setUserResponses(responses.data.filter(response => response.lyric_id === lyric.id))
 
-      // const axiosInstance = axios.create({
-      //   headers: {
-      //       Accept: "application/json",
-      //       Authorization: "Bearer BQDWY_e3I2sVjJ1ptsJbAmUmxEIORFbsWmOTCPltAK-eh9YvoycfiuIFgpPKttp8CnTAHJA_x2PDv9nlqL28k-ewpuhTGnHaNC8kM5c1ZWkAuIm5e5ZQDMz_7fX6DIfBRMA1jV2Gl9x22xKwYv6ZzI9wBc7VqVlj2PGeWHaPMMukFPCJWCD8d85BoFBTPRkjVbPR_QhqLkeUBFl96Q",
-      //       "Content-Type": "application/json"
-      //   }
-      // })
-
-      // const songURI = await axios.all([axiosInstance.get("https://api.spotify.com/v1/search?q=justin%20bieber&type=track&market=us&limit=5")])
-      // console.log(songURI[0].data.tracks.items)
     }
     handleFetch()
   }, [])
@@ -54,30 +47,38 @@ function DailyLyricPage() {
     setInputResponse("")
     }
 
-    // console.log(new Date())
-    // console.log(userResponses)
+    const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
+
+    const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
-    <div>
-        <h1>{dailyLyric.lyric}</h1>
+    <Container fluid className="daily-lyric-page">
+      <Row>
+      <Col className="daily-lyric-container">
+      <h1>{dailyLyric.lyric}</h1>
         <MusicPlayer spotifyUri={dailyLyric.spotify_uri} />
         <p>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
-        <form onSubmit={handleSubmit}>
-          <input placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
-          {myEmotions.map(emotion => {
-            return (
-              <div key={emotion.id}>
-                <label  htmlFor={emotion.id} style={{background: `${emotion.color}`}}>{emotion.emotion}</label>
-                <input type="radio" id={emotion.id} name="colors" value={emotion.color} onChange={e => setInputColor(e.target.value)}/>
-              </div>
-            )
-          })}
-          <button type="submit">Share</button>
-        </form>
-        <div>
+        {hasUserResponse.length === 0 ? 
+              <form onSubmit={handleSubmit}>
+                <input placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
+                {userEmotions.map(emotion => {
+                  return (
+                    <div key={emotion.id}>
+                      <label  htmlFor={emotion.id} style={{background: `${emotion.color}`}}>{emotion.emotion}</label>
+                      <input type="radio" id={emotion.id} name="colors" value={emotion.color} onChange={e => setInputColor(e.target.value)}/>
+                    </div>
+                  )
+                })}
+                <button type="submit">Share</button>
+              </form>
+        : <p>You posted for the day.</p>}
+
+      </Col>
+        <Col className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response}/>)}
-        </div>
-    </div>
+        </Col>
+        </Row>
+    </Container>
   )
 }
 
