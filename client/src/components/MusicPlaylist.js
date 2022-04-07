@@ -21,7 +21,7 @@ function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong}) {
   return (
     <div>
         <h3>{playlist.color} {playlist.emotion}</h3>
-        {playlist.fav_songs.length === 0 ? <p>Go add some songs!</p>
+        {favSongList.length === 0 ? <p>Go add some songs!</p>
         : favSongList.map(song => <MusicPlaylistSong key={song.id} song={song} setSpotifyUri={setSpotifyUri} setHide={setHide} onDelete={handleDelete}/>)}
     </div>
   )
