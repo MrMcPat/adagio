@@ -1,40 +1,42 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import RecommendedTrack from "./RecommendedTrack"
+import MusicPlayer from "./MusicPlayer"
 
 function UserProfile() {
-  const [userID, setUserID] = useState("")
-  const [userEmotions, setUserEmotions] = useState([])
-  const [userResponses, setUserResponses] = useState([])
+  const [userResponse, setUserResponses] = useState([])
+  const [recTracks, setRecTracks] = useState([])
+  const [spotifyUri, setSpotifyUri] = useState("")
+  const [hide, setHide] = useState(true)
 
   useEffect(() => {
     async function handleFetch() {
       const user = await axios.get("/me")
-      setUserID(user.data.id)
-
-      const emotions = await axios.get("/emotions")
-      setUserEmotions(emotions.data.filter(emotion => emotion.user_id === user.data.id))
 
       const responses = await axios.get("/responses")
       const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
-      setUserResponses(responses.data.find(response => response.user_id === user.data.id && response.created_at.slice(0, 10) ===  currentDate))
-
-      const axiosInstance = axios.create({
-        headers: {
-            Accept: "application/json",
-            Authorization: "Bearer BQCFeHF8L9EvCOj_mUVPkzrDbhMpUIOdN3Tm3grRVU4yuHwC4BknhNaUY-24-6SaoFwbQv0gPhhy3ddYihQFseD8BXlOx70MJivCfiGHqM9MRtSHsgodUfna3xjU2SDZ-VTHJm9RtQqXphklJOlC-UT5QNeFveT6_tBQCP3GeAs1ikUb33_0PYR-p8vqqIN7V7HMNEPv8lNC_3_s2w",
-            "Content-Type": "application/json"
-        }
-      })
-      const songURI = await axios.all([axiosInstance.get("https://api.spotify.com/v1/search?q=justin%20bieber&type=track&market=us&limit=5")])
-      // console.log(songURI[0].data.tracks.items)
+      const filteredResponse = responses.data.find(response => response.user_id === user.data.id && response.created_at.slice(0, 10) ===  currentDate)
+      setUserResponses(filteredResponse)
+      
+      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse.emotion}&page_size=10&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=5bb8bab45c1e697b6ef3000e9c00bc1b`)
+      setRecTracks(musixSongs.data.message.body.track_list)
     }
     handleFetch()
   }, [])
-
-  // console.log(userResponses.color)
-
-  return <div>
-    {userResponses ? <p>{userResponses.color}</p> : <p>You did not chose a color today.</p>}
+    
+  return <div className="music-recommendations-container">
+    {userResponse ? 
+    <>
+        <h1>You are feeling {userResponse.color} {userResponse.emotion}</h1> 
+        <h3>Here are your music recommendations for today.</h3>
+        {recTracks.map(track => <RecommendedTrack key={track.track.track_id} track={track.track} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
+        {hide ? <div style={{display: "none"}}><MusicPlayer spotifyUri={spotifyUri}/></div> : <div><MusicPlayer spotifyUri={spotifyUri}/></div>}
+    </>
+    : <>
+        <h1>You did not choose a color today.</h1>
+        <h3>Tell me how you feel today, I'll fetch some music for you.</h3>
+    </>
+}
   </div>
 }
 

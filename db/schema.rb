@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2022_04_06_201009) do
     t.integer "user_id", null: false
     t.integer "lyric_id"
     t.string "color"
+    t.string "emotion"
     t.string "response"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

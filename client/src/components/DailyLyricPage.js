@@ -13,6 +13,7 @@ function DailyLyricPage() {
     const [userResponses, setUserResponses] = useState([])
     const [inputResponse, setInputResponse] = useState("")
     const [inputColor, setInputColor] = useState("")
+    const [inputEmotion, setInputEmotion] = useState("")
 
     useEffect(() => {
     async function handleFetch() {
@@ -33,12 +34,18 @@ function DailyLyricPage() {
     handleFetch()
   }, [])
 
+    function handleChange (e) {
+      setInputColor(e.target.value)
+      setInputEmotion(e.target.id)
+    }
+
     function handleSubmit (e) {
       e.preventDefault()
       axios.post("/responses", {
         user_id: userID,
         lyric_id: dailyLyric.id,
         color: inputColor,
+        emotion: inputEmotion,
         response: inputResponse
     })
     .then(resp => setUserResponses([...userResponses, resp.data]))
@@ -62,7 +69,7 @@ function DailyLyricPage() {
                   return (
                     <div key={emotion.id}>
                       <label  htmlFor={emotion.id} style={{background: `${emotion.color}`}}>{emotion.emotion}</label>
-                      <input type="radio" id={emotion.id} name="colors" value={emotion.color} onChange={e => setInputColor(e.target.value)}/>
+                      <input type="radio" id={emotion.emotion} name="colors" value={emotion.color} onChange={handleChange}/>
                     </div>
                   )
                 })}

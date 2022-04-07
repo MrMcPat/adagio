@@ -8,7 +8,7 @@ class ResponsesController < ApplicationController
     end
 
     def create
-        response = Response.create!(params.permit(:user_id, :lyric_id, :color, :response))
+        response = Response.create!(params.permit(:user_id, :lyric_id, :color, :emotion, :response))
         render json: response, status: :created
     end
 end

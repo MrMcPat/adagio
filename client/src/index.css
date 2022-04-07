@@ -28,3 +28,7 @@ code {
   padding: 40px;
   margin: 0 100px !important;
 }
+
+.music-recommendations-container {
+  text-align: center;
+}
