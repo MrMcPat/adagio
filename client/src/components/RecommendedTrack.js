@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID, setFavedSong}) {
+function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID}) {
     const [userTodayEmotion, setUserTodayEmotion] = useState([])
     const [spotifySong, setSpotifySong] = useState("")
+    const [favedSong, setFavedSong] = useState([])
 
   useEffect(() => {
     async function handleFetch() {
@@ -14,7 +15,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
         const axiosInstance = axios.create({
           headers: {
               Accept: "application/json",
-              Authorization: "Bearer BQA3WtT8Y4hKzhscnf7YUIDO3BoGXZSNMN_raorjV26p9wzdiqsp9eXK8uzkY07dOLws-noUwE0djS-NKJ75kUVS6eMHcjjQEsAQUttKFqccnIjMAeTgPgD7E0dzezyDmOvSJqEfMgnGqE3Cvh96D7Fij0V-bc4aBU236GyeidaV2JEi-D5tdCgPet4IYfJxPE2chL12ZBbn4pZRYg",
+              Authorization: "Bearer BQDiLZjawXyGRVO9dwSU_Kn8ky9TbZCPrrx6Zn7E0ETxzLzi_lKfYRXq4Pxu7OA_CQH87Olver3mkosGNZq3WIBsCRanpWkndgdmS0ya6hEI_fMZF0vAbSLgPX6A75lYDVwIuxaWN0RWtF5rkLSOjZMO6fcgV7GA1thincnQW8WONkwVyllJ8L-7rMf5PdKLNTcRim43YwDWkYIFvg",
               "Content-Type": "application/json"
           }
         })
@@ -39,7 +40,11 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
       artist_name: track.artist_name,
       spotify_uri: spotifySong
     })
-    .then(resp => setFavedSong(resp.data))
+    // .then(resp => {
+    //   setFavedSong([...favedSong, resp.data])
+    // })
+    // console.log(favedSong)
+    // window.location.reload(false)
   }
 
   return (

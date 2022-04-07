@@ -11,7 +11,6 @@ function MusicRecommendations() {
   const [recTracks, setRecTracks] = useState([])
   const [spotifyUri, setSpotifyUri] = useState("")
   const [hide, setHide] = useState(true)
-  const [favedSong, setFavedSong] = useState([])
 
   useEffect(() => {
     async function handleFetch() {
@@ -26,21 +25,23 @@ function MusicRecommendations() {
       const filteredResponse = responses.data.find(response => response.user_id === user.data.id && response.created_at.slice(0, 10) ===  currentDate)
       setUserResponses(filteredResponse)
       
-      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=10&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=5bb8bab45c1e697b6ef3000e9c00bc1b`)
+      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=2&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=5bb8bab45c1e697b6ef3000e9c00bc1b`)
       setRecTracks(musixSongs.data.message.body.track_list)
     }
     handleFetch()
   }, [])
 
-  console.log(favedSong)
+  function handleReload() {
+    window.location.reload(false)
+  }
     
   return <div className="music-recommendations-container">
     {userResponse ? 
     <>
         <h1>You are feeling {userResponse.color} {userResponse.emotion}</h1> 
-        <h3>Here are your music recommendations for today.</h3>
+        <h3>Here are your music recommendations for today. <button onClick={handleReload}>Add to playlist</button></h3>
         {hide ? <div style={{display: "none"}}><MusicPlayer spotifyUri={spotifyUri}/></div> : <div><MusicPlayer spotifyUri={spotifyUri}/></div>}
-        {recTracks.map(track => <RecommendedTrack key={track.track.track_id} track={track.track} setSpotifyUri={setSpotifyUri} setHide={setHide} todaysEmotion={userResponse.emotion} userID={userID} setFavedSong={setFavedSong}/>)}
+        {recTracks.map(track => <RecommendedTrack key={track.track.track_id} track={track.track} setSpotifyUri={setSpotifyUri} setHide={setHide} todaysEmotion={userResponse.emotion} userID={userID}/>)}
     </>
     : <>
         <h1>You did not choose a color today.</h1>
@@ -49,7 +50,7 @@ function MusicRecommendations() {
     }
     <br/>
     <h3>Your Playlists</h3>
-  {userEmotions.map(playlist => <MusicPlaylist key={playlist.id} playlist={playlist} setSpotifyUri={setSpotifyUri} setHide={setHide} favedSong={favedSong}/>)}
+  {userEmotions.map(playlist => <MusicPlaylist key={playlist.id} playlist={playlist} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
   </div>
 }
 
