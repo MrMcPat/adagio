@@ -24,6 +24,8 @@ module Adagio
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+
     # This is set in apps generated with the --api flag, and removes session/cookie middleware
     config.api_only = true
 

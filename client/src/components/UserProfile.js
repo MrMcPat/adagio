@@ -18,7 +18,7 @@ function UserProfile() {
       const filteredResponse = responses.data.find(response => response.user_id === user.data.id && response.created_at.slice(0, 10) ===  currentDate)
       setUserResponses(filteredResponse)
       
-      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse.emotion}&page_size=10&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=5bb8bab45c1e697b6ef3000e9c00bc1b`)
+      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=10&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=5bb8bab45c1e697b6ef3000e9c00bc1b`)
       setRecTracks(musixSongs.data.message.body.track_list)
     }
     handleFetch()

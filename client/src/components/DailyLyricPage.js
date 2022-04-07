@@ -41,15 +41,19 @@ function DailyLyricPage() {
 
     function handleSubmit (e) {
       e.preventDefault()
-      axios.post("/responses", {
+      if (!inputColor) {
+        alert("Please pick a color.")
+      } else {
+        axios.post("/responses", {
         user_id: userID,
         lyric_id: dailyLyric.id,
         color: inputColor,
         emotion: inputEmotion,
         response: inputResponse
-    })
-    .then(resp => setUserResponses([...userResponses, resp.data]))
-    setInputResponse("")
+      })
+      .then(resp => setUserResponses([...userResponses, resp.data]))
+      setInputResponse("")
+      }
     }
 
     const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
