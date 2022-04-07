@@ -2,8 +2,16 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import MusicPlaylistSong from './MusicPlaylistSong'
 
-function MusicPlaylist({playlist, setSpotifyUri, setHide}) {
-    const [favSongList, setFavSongList] = useState(playlist.fav_songs)
+function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong}) {
+    const [favSongList, setFavSongList] = useState([])
+
+    useEffect(() => {
+        async function handleFetch() {
+            const userFavSongs = await axios.get("/fav_songs")
+            setFavSongList(userFavSongs.data.filter(favSong => favSong.emotion_id === playlist.id))
+        }
+        handleFetch()
+    }, [favedSong])
 
     function handleDelete(id) {
         axios.delete(`/fav_songs/${id}`)

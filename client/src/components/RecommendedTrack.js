@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID}) {
+function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID, setFavedSong}) {
     const [userTodayEmotion, setUserTodayEmotion] = useState([])
     const [spotifySong, setSpotifySong] = useState("")
-    const [favedSong, setFavedSong] = useState([])
 
   useEffect(() => {
     async function handleFetch() {
@@ -34,7 +33,6 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
   }
 
   function handleFavSong () {
-    console.log(spotifySong)
     if (spotifySong === "spotify:track:64FzSxCxQ0cBlktqiMQBey") {
       alert("Cannot add to playlist :( Song not found in spotify.")
     } else {
@@ -44,11 +42,9 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
         artist_name: track.artist_name,
         spotify_uri: spotifySong
       })
-      // .then(resp => setFavedSong([...favedSong, resp.data]))
+      .then(resp => setFavedSong(resp.data))
     }
-
   }
-  // console.log(favedSong)
 
   return (
     <div >
