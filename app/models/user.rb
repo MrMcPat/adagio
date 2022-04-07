@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :emotions
+    has_many :triggers
     has_many :responses
     has_many :lyrics, through: :responses
 
@@ -9,5 +10,6 @@ class User < ApplicationRecord
   
     validates :email, presence: true, uniqueness: true
     validates :username, presence: true, uniqueness: true
+    validates :description, length: {maximum: 100}
     
 end

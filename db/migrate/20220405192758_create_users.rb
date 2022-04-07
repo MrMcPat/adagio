@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :username
       t.string :profile_picture
+      t.string :description
       t.boolean :journal_is_private
       t.boolean :favorite_songs_is_private
       t.boolean :allow_email

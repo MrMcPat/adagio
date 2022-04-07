@@ -2,10 +2,13 @@
 User.destroy_all
 Emotion.destroy_all
 Lyric.destroy_all
+Response.destroy_all
+FavSong.destroy_all
+Trigger.destroy_all
 
-user1 = User.create(email: "p@p.com", password: "p", password_confirmation: "p", username: "p", journal_is_private: false, favorite_songs_is_private: false)
-user2 = User.create(email: "v@v.com", password: "v", password_confirmation: "v", username: "v", journal_is_private: false, favorite_songs_is_private: false)
-user3 = User.create(email: "l@l.com", password: "l", password_confirmation: "l", username: "l", journal_is_private: false, favorite_songs_is_private: false)
+user1 = User.create(email: "p@p.com", password: "p", password_confirmation: "p", username: "p", journal_is_private: false, favorite_songs_is_private: false, first_name: "Pat", last_name: "L", profile_picture: "https://cdn.shopify.com/s/files/1/0054/4371/5170/products/PatrickStar_467pin.png?v=1627414164", description: "I like chicken.")
+user2 = User.create(email: "v@v.com", password: "v", password_confirmation: "v", username: "v", journal_is_private: false, favorite_songs_is_private: false, first_name: "Viv", last_name: "L", profile_picture: "https://d3fd5j8wprxn3h.cloudfront.net/wp-content/uploads/2021/08/Genshin-Impact-Scaramouche-Signora.jpg", description: "I'm tired asf.")
+user3 = User.create(email: "l@l.com", password: "l", password_confirmation: "l", username: "l", journal_is_private: false, favorite_songs_is_private: false, first_name: "Lyn", last_name: "L", profile_picture: "https://kgmi-am.sagacom.com/files/2019/08/DMW-Lynden-Windmill-2-620x400-1200x768.jpg", description: "Don't say that.")
 
 Emotion.create(user_id: user1.id, color: "#FFC0CB", emotion: "happy")
 Emotion.create(user_id: user1.id, color: "#FF0000", emotion: "angry")
@@ -16,6 +19,10 @@ Emotion.create(user_id: user2.id, color: "#0000FF", emotion: "sad")
 Emotion.create(user_id: user3.id, color: "#FFC0CB", emotion: "happy")
 Emotion.create(user_id: user3.id, color: "#FF0000", emotion: "angry")
 Emotion.create(user_id: user3.id, color: "#0000FF", emotion: "sad")
+
+Trigger.create(user_id: user1.id, trigger: "eggs")
+Trigger.create(user_id: user2.id, trigger: "corn")
+Trigger.create(user_id: user3.id, trigger: "Patrick")
 
 Lyric.create(lyric: "Every little thing gonna be alright", artist_name: "Bob Marley and the Wailers", song_name: "Three Little Birds", spotify_uri:"spotify:track:6A9mKXlFRPMPem6ygQSt7z", date_of_lyric: "0101")
 Lyric.create(lyric: "I will survive! Oh as long as I know how to love I know I will stay alive!", artist_name: "Gloria Gaynor", song_name: "I Will Survive", spotify_uri:"spotify:track:7cv28LXcjAC3GsXbUvXKbX", date_of_lyric: "0102")
