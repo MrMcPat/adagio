@@ -15,7 +15,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
         const axiosInstance = axios.create({
           headers: {
               Accept: "application/json",
-              Authorization: "Bearer BQDiLZjawXyGRVO9dwSU_Kn8ky9TbZCPrrx6Zn7E0ETxzLzi_lKfYRXq4Pxu7OA_CQH87Olver3mkosGNZq3WIBsCRanpWkndgdmS0ya6hEI_fMZF0vAbSLgPX6A75lYDVwIuxaWN0RWtF5rkLSOjZMO6fcgV7GA1thincnQW8WONkwVyllJ8L-7rMf5PdKLNTcRim43YwDWkYIFvg",
+              Authorization: "Bearer BQCm5k2SagJbufxT2AJ9ugcLjgaSbqu9RY5towfdm5eG1iOEs9kEzHN9VPQz5DZSEeZ9NsxxcevRcNePZn-EzMIR5bv_3TmzgUMVwwAsTFICDA5N9VJKHf0wUJiDLWMI5VdifnuyRN6W3aebXCa5VyrzjdZPnJK0enFuAbXA8FJea0FbjjcsYyae4Xl7SdrQ6-GJhApLuO0yZRWoFg",
               "Content-Type": "application/json"
           }
         })
@@ -34,13 +34,19 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
   }
 
   function handleFavSong () {
-    axios.post("/fav_songs", {
-      emotion_id: userTodayEmotion[0].id,
-      song_name: track.track_name,
-      artist_name: track.artist_name,
-      spotify_uri: spotifySong
-    })
-    // .then(resp => setFavedSong([...favedSong, resp.data]))
+    console.log(spotifySong)
+    if (spotifySong === "spotify:track:64FzSxCxQ0cBlktqiMQBey") {
+      alert("Cannot add to playlist :( Song not found in spotify.")
+    } else {
+      axios.post("/fav_songs", {
+        emotion_id: userTodayEmotion[0].id,
+        song_name: track.track_name,
+        artist_name: track.artist_name,
+        spotify_uri: spotifySong
+      })
+      // .then(resp => setFavedSong([...favedSong, resp.data]))
+    }
+
   }
   // console.log(favedSong)
 
