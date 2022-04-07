@@ -28,6 +28,7 @@ function NavBar({ user, setUser }) {
               <p>Signed in as: {user.username}</p>
               <NavLink to="/dailylyric">Daily Lyric</NavLink>
               <NavLink to="/musicrecommendations">Music Recommendations</NavLink>
+              <NavLink to="/userprofile">User Profile</NavLink>
               <button onClick={handleLogoutClick}>Logout</button>
             </>
           ) : (

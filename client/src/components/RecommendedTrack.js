@@ -40,12 +40,9 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
       artist_name: track.artist_name,
       spotify_uri: spotifySong
     })
-    // .then(resp => {
-    //   setFavedSong([...favedSong, resp.data])
-    // })
-    // console.log(favedSong)
-    // window.location.reload(false)
+    // .then(resp => setFavedSong([...favedSong, resp.data]))
   }
+  // console.log(favedSong)
 
   return (
     <div >
