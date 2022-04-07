@@ -5,7 +5,7 @@ import Homepage from "./Homepage"
 import Login from "./Login"
 import SignUp from "./SignUp"
 import DailyLyricPage from "./DailyLyricPage"
-import UserProfile from "./UserProfile"
+import MusicRecommendations from "./MusicRecommendations"
 
 function App() {
   const [user, setUser] = useState("");
@@ -34,8 +34,8 @@ function App() {
         <Route path="/dailylyric">
           <DailyLyricPage/>
         </Route>
-        <Route pat="/userprofile">
-          <UserProfile />
+        <Route pat="/musicrecommendations">
+          <MusicRecommendations />
         </Route>
       </Switch>
     </div>
