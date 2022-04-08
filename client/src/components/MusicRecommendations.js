@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import RecommendedTrack from "./RecommendedTrack";
-import MusicPlaylist from "./MusicPlaylist";
-import MusicPlayer from "./MusicPlayer";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import RecommendedTrack from "./RecommendedTrack"
+import MusicPlaylist from "./MusicPlaylist"
+import MusicPlayer from "./MusicPlayer"
 
 function MusicRecommendations() {
-  const [userID, setUserID] = useState("");
-  const [userEmotions, setUserEmotions] = useState([]);
-  const [userResponse, setUserResponses] = useState([]);
-  const [recTracks, setRecTracks] = useState([]);
-  const [spotifyUri, setSpotifyUri] = useState("");
-  const [hide, setHide] = useState(true);
-  const [favedSong, setFavedSong] = useState([]);
+  const [userID, setUserID] = useState("")
+  const [userEmotions, setUserEmotions] = useState([])
+  const [userResponse, setUserResponses] = useState([])
+  const [recTracks, setRecTracks] = useState([])
+  const [spotifyUri, setSpotifyUri] = useState("spotify:track:64FzSxCxQ0cBlktqiMQBey")
+  const [hide, setHide] = useState(true)
+  const [favedSong, setFavedSong] = useState([])
 
   useEffect(() => {
     async function handleFetch() {
       const user = await axios.get("/me");
-      setUserID(user.data.id);
+      setUserID(user.data.id)
 
-      const emotions = await axios.get("/emotions");
+      const emotions = await axios.get("/emotions")
       setUserEmotions(
         emotions.data.filter((emotion) => emotion.user_id === user.data.id)
       );
@@ -29,19 +29,19 @@ function MusicRecommendations() {
         "-" +
         String(new Date().getMonth() + 1).padStart(2, "0") +
         "-" +
-        String(new Date().getDate()).padStart(2, "0");
+        String(new Date().getDate()).padStart(2, "0")
       const filteredResponse = responses.data.find(
         (response) =>
           response.user_id === user.data.id &&
           response.created_at.slice(0, 10) === currentDate
-      );
-      setUserResponses(filteredResponse);
+      )
+      setUserResponses(filteredResponse)
 
       const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=2&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=${process.env.REACT_APP_MUSIXMATCH_API_KEY}`)
       setRecTracks(musixSongs.data.message.body.track_list)
     }
-    handleFetch();
-  }, []);
+    handleFetch()
+  }, [])
 
   return (
     <div className="music-recommendations-container">

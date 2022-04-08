@@ -64,7 +64,7 @@ function DailyLyricPage() {
       <Row>
       <Col className="daily-lyric-container">
       <h1>{dailyLyric.lyric}</h1>
-        <MusicPlayer spotifyUri={dailyLyric.spotify_uri} />
+        <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} />
         <p>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
         {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>
