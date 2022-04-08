@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import AccountSettings from './AccountSettings'
+import UserAccountSettings from './UserAccountSettings'
+import Modal from "react-bootstrap/Modal"
+import InputGroup from "react-bootstrap/InputGroup"
+import FormControl from "react-bootstrap/FormControl"
 
 function UserSettings() {
   const [userProfile, setUserProfile] = useState([])
@@ -9,6 +12,26 @@ function UserSettings() {
   const [userEmotion, setUserEmotion] = useState("")
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
+
+  const [nameShow, setNameShow] = useState(false)
+  const [usernameShow, setUsernameShow] = useState(false)
+  const [imageShow, setImageShow] = useState(false)
+  const [descriptionShow, setDescriptionShow] = useState(false)
+
+  const [inputFirstName, setInputFirstName] = useState("")
+  const [inputLastName, setInputLastName] = useState("")
+  const [inputUsername, setInputUsername] = useState("")
+  const [inputImage, setInputImage] = useState("")
+  const [inputDescription, setInputDescription] = useState(false)
+
+  const handleNameClose = () => setNameShow(false)
+  const handleNameShow = () => setNameShow(true)
+  const handleUsernameClose = () => setUsernameShow(false)
+  const handleUsernameShow = () => setUsernameShow(true)
+  const handleImageClose = () => setImageShow(false)
+  const handleImageShow = () => setImageShow(true)
+  const handleDescriptionClose = () => setDescriptionShow(false)
+  const handleDescriptionShow = () => setDescriptionShow(true)
 
 
   useEffect(() => {
@@ -22,6 +45,42 @@ function UserSettings() {
     }
     handleFetch()
   }, [])
+
+  function handleNameChange(e) {
+    handleNameClose()
+    axios.patch(`/users/${userProfile.id}`, {
+      first_name: inputFirstName,
+      last_name: inputLastName
+    })
+  }
+
+  function handleImageChange(e) {
+    handleImageClose()
+    axios.patch(`/users/${userProfile.id}`, {
+      profile_picture: inputImage
+    })
+  }
+
+  function handleUsernameChange(e) {
+    handleUsernameClose()
+    axios.patch(`/users/${userProfile.id}`, {
+      username: inputUsername
+    })
+  }
+
+  function handleDescriptionChange(e) {
+    handleDescriptionClose()
+    axios.patch(`/users/${userProfile.id}`, {
+      description: inputDescription
+    })
+  }
+
+  function handleChecked (e) {
+    console.log(e.target.checked)
+    axios.patch(`/users/${userProfile.id}`, {
+      journal_is_private: e.target.checked
+    })
+  }
 
   function handleEmotionSubmit(e) {
     e.preventDefault()
@@ -64,10 +123,17 @@ function UserSettings() {
 
   return (
     <div style={{textAlign: "center"}}>
-    <p>{userProfile.first_name} {userProfile.last_name}</p>
-    <p>Username: {userProfile.username}</p>
+    <span>{userProfile.first_name} {userProfile.last_name}</span>
+    <button onClick={handleNameShow}>Change Name</button><br />
+    <span>Username: {userProfile.username}</span>
+    <button onClick={handleUsernameShow}>Change Username</button> <br />
+    <UserAccountSettings />
     <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
+    <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
+    <button onClick={handleDescriptionShow}>Change your description</button><br />
+    <label>Private your journals.</label>
+    <input type="checkbox"  onClick={handleChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>
@@ -80,6 +146,7 @@ function UserSettings() {
     <input type="color" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
     <button type="submit">Add a color</button>
     </form>
+
     <p>Your triggers:</p>
     {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
@@ -91,7 +158,77 @@ function UserSettings() {
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
       <button type="submit">Submit</button>
     </form>
-    <AccountSettings userProfile={userProfile}/>
+
+    <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>Change your name</Modal.Title>
+        </Modal.Header>
+        <form onSubmit={handleNameChange}>
+          <Modal.Body>
+            <InputGroup>
+            <InputGroup.Text>Your first name</InputGroup.Text>
+            <FormControl onChange={e => setInputFirstName(e.target.value)} />
+            <InputGroup.Text>Your last name</InputGroup.Text>
+            <FormControl onChange={e => setInputLastName(e.target.value)} />
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="setting-button" style={{ marginLeft: "6px", background: "#94B49F" }} type="submit">Save Changes</button>
+          </Modal.Footer>
+        </form>
+      </Modal>
+
+    <Modal show={usernameShow} onHide={handleUsernameClose} style={{ textAlign: "center" }} centered={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>Change Username</Modal.Title>
+        </Modal.Header>
+        <form onSubmit={handleUsernameChange}>
+          <Modal.Body>
+            <InputGroup>
+            <InputGroup.Text>New Username</InputGroup.Text>
+            <FormControl onChange={e => setInputUsername(e.target.value)} />
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="setting-button" style={{ marginLeft: "6px", background: "#94B49F" }} type="submit">Save Changes</button>
+          </Modal.Footer>
+        </form>
+      </Modal>
+
+    <Modal show={imageShow} onHide={handleImageClose} style={{ textAlign: "center" }} centered={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>Change Profile Picture</Modal.Title>
+        </Modal.Header>
+        <form onSubmit={handleImageChange}>
+          <Modal.Body>
+            <InputGroup>
+            <InputGroup.Text>New Profile Picture</InputGroup.Text>
+            <FormControl onChange={e => setInputImage(e.target.value)} />
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="setting-button" style={{ marginLeft: "6px", background: "#94B49F" }} type="submit">Save Changes</button>
+          </Modal.Footer>
+        </form>
+      </Modal>
+
+      <Modal show={descriptionShow} onHide={handleDescriptionClose} style={{ textAlign: "center" }} centered={true}>
+        <Modal.Header closeButton>
+          <Modal.Title>Change Description</Modal.Title>
+        </Modal.Header>
+        <form onSubmit={handleDescriptionChange}>
+          <Modal.Body>
+            <InputGroup>
+            <InputGroup.Text>New Description</InputGroup.Text>
+            <FormControl onChange={e => setInputDescription(e.target.value)} />
+            </InputGroup>
+          </Modal.Body>
+          <Modal.Footer>
+            <button className="setting-button" style={{ marginLeft: "6px", background: "#94B49F" }} type="submit">Save Changes</button>
+          </Modal.Footer>
+        </form>
+      </Modal>
+
   </div>
   )
 }

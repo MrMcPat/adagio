@@ -48,7 +48,7 @@ function MusicRecommendations() {
       {userResponse ? (
         <>
           <h1>
-            You are feeling {userResponse.color} {userResponse.emotion}
+            <span style={{background: userResponse.color}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>You are feeling {userResponse.emotion}
           </h1>
           <h3>Here are your music recommendations for today.</h3>
           {hide ? (

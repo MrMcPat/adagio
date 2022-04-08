@@ -19,7 +19,7 @@ function UserProfile() {
     <div style={{textAlign: "center"}}>
       <p>{userProfile.first_name} {userProfile.last_name}</p>
       <p>Username: {userProfile.username}</p>
-      <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", borderRadius: "50%"}}/>
+      <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
       <p>{userProfile.description}</p>
       <p>Your colors:</p>
       {userColorList.map(emotion => {
