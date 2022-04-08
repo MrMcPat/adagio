@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :fav_songs
   resources :emotions
   resources :responses
+  resources :triggers
   resources :users
   resources :lyrics, only: [:index, :show, :create]
 
