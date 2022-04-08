@@ -7,6 +7,7 @@ import SignUp from "./SignUp"
 import DailyLyricPage from "./DailyLyricPage"
 import MusicRecommendations from "./MusicRecommendations"
 import UserProfile from "./UserProfile"
+import UserSettings from "./UserSettings"
 
 function App() {
   const [user, setUser] = useState("");
@@ -40,6 +41,9 @@ function App() {
         </Route>
         <Route path="/userprofile">
           <UserProfile />
+        </Route>
+        <Route path="/usersettings">
+          <UserSettings />
         </Route>
       </Switch>
     </div>

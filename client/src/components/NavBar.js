@@ -29,6 +29,7 @@ function NavBar({ user, setUser }) {
               <NavLink to="/dailylyric">Daily Lyric</NavLink>
               <NavLink to="/musicrecommendations">Music Recommendations</NavLink>
               <NavLink to="/userprofile">User Profile</NavLink>
+              <NavLink to="/usersettings">User Settings</NavLink>
               <button onClick={handleLogoutClick}>Logout</button>
             </>
           ) : (
