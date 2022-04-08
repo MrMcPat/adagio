@@ -29,7 +29,7 @@ function MusicRecommendations() {
       // 5bb8bab45c1e697b6ef3000e9c00bc1b
       // c0efe112eb9eb6b42feea2cfda0b7b7e
       
-      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=2&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=c0efe112eb9eb6b42feea2cfda0b7b7e`)
+      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=2&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=${process.env.REACT_APP_MUSIXMATCH_API_KEY2}`)
       setRecTracks(musixSongs.data.message.body.track_list)
     }
     handleFetch()

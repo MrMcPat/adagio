@@ -14,7 +14,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
         const axiosInstance = axios.create({
           headers: {
               Accept: "application/json",
-              Authorization: "Bearer BQBVXj6Z1FbHU-eIOUwGFX9pdWSZFQiTKVYJ0ceBn2SZT0Qb1O-pGbuaq8OepgpeS9cktugao0ClemK9yVnakVQI9ElWOXzCf-IAmWPxDukX38Rpap2Sc8ZyI6FZj-dOA8aJ9sq2UqwRjcJHPBknUClvkf6bqCpJGeSSBLkC0yl9Aiq1t24703lm49ve2b11rgKnwsVUE1BEFKDUDA",
+              Authorization: `Bearer ${process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN}`,
               "Content-Type": "application/json"
           }
         })
