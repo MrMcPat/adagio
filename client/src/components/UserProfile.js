@@ -30,7 +30,8 @@ function UserProfile() {
       return <div key={emotion.id}><span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}</div>
     })}
       <h2>Your Journal Entries</h2>
-      {userJournalEntries.map(entry => {
+      {userJournalEntries.length === 0 ? <p>You do not have any journal entries.</p> 
+      : userJournalEntries.map(entry => {
         return <div key={entry.id}>
           <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
           <p>{entry.is_private ? "Marked as private" : "Public"}</p>

@@ -14,14 +14,13 @@ function NewJournalEntry() {
       setUserID(userData.data.id)
     }
     handleFetch()
-  })
+  }, [])
 
   function handleSubmit (e) {
     e.preventDefault()
     if (inputTitle.length === 0 || inputBody.length === 0) {
       alert("Please write something...")
     } else {
-      console.log(inputTitle, inputBody, inputPrivate)
       axios.post("/journal_entries", {
         user_id: userID,
         title: inputTitle,
@@ -59,7 +58,6 @@ function NewJournalEntry() {
       </form>
       </>
     }
-
     </div>
   )
 }

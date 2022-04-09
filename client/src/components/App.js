@@ -10,6 +10,7 @@ import UserProfile from "./UserProfile"
 import UserSettings from "./UserSettings"
 import NewJournalEntry from "./NewJournalEntry"
 import JournalEntryPage from "./JournalEntryPage"
+import EditJournalEntry from "./EditJournalEntry"
 
 function App() {
   const [user, setUser] = useState("");
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path="/journalentry/:id">
           <JournalEntryPage />
+        </Route>
+        <Route path="/editentry/:id">
+          <EditJournalEntry />
         </Route>
       </Switch>
     </div>
