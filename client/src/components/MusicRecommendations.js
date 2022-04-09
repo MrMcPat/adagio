@@ -39,6 +39,16 @@ function MusicRecommendations() {
 
       const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=2&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=${process.env.REACT_APP_MUSIXMATCH_API_KEY}`)
       setRecTracks(musixSongs.data.message.body.track_list)
+
+      // const axiosInstance = axios.create({
+      //   headers: {
+      //     Accept: "application/json",
+      //     Authorization: "Bearer KjrFz1-RopkrUi8SQd1z5tTXaHxY_B5JE-pc_Y1E74ge3Ojh6CQMXSCSLoHcXt1c",
+      //     "Content-Type": "application/json"
+      //   }
+      // })
+      // const geniusSongs = await axios.all([axiosInstance.get(`https://api.genius.comsearch?q=Kendrick%20Lamar`)])
+      // console.log(geniusSongs.data)
     }
     handleFetch()
   }, [])
