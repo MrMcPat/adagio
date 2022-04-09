@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_010248) do
   create_table "journal_entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title"
-    t.string "body"
+    t.text "body"
     t.boolean "is_private"
     t.integer "heart_count"
     t.integer "praying_count"
