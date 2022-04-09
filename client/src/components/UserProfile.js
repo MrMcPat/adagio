@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import { Link } from "react-router-dom"
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState([])
@@ -31,8 +32,7 @@ function UserProfile() {
       <h2>Your Journal Entries</h2>
       {userJournalEntries.map(entry => {
         return <div key={entry.id}>
-          <h3>{entry.title}</h3>
-          <p>{entry.body}</p>
+          <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
           <p>{entry.is_private ? "Marked as private" : "Public"}</p>
         </div>
       })}
