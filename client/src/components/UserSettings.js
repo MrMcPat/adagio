@@ -158,7 +158,7 @@ function UserSettings() {
     })}
     <form onSubmit={handleTriggerSubmit}>
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
-      <button type="submit">Submit</button>
+      <button type="submit">Add a trigger</button>
     </form>
 
     <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>

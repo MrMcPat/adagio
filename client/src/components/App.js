@@ -14,14 +14,14 @@ import EditJournalEntry from "./EditJournalEntry"
 import ExploreJournalEntries from "./ExploreJournalEntries"
 
 function App() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("")
 
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => setUser(user))
       }
-    });
+    })
   }, [])
 
   return (
@@ -66,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
