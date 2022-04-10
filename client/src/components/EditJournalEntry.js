@@ -3,10 +3,22 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 
 function EditJournalEntry() {
-    const { id } = useParams()
+    const [userID, setUserID] = useState([])
+    const [journalEntry, setJournalEntry] = useState([])
     const [editTitle, setEditTitle] = useState([])
     const [editBody, setEditBody] = useState([])
     const [isEdited, setIsEdited] = useState(false)
+    const { id } = useParams()
+    
+    useEffect(() => {
+      async function handleFetch() {
+        const userData = await axios.get("/me")
+        setUserID(userData.data.id)
+        const journalEntryData = await axios.get(`/journal_entries/${id}`)
+        setJournalEntry(journalEntryData.data)
+      }
+      handleFetch()
+    }, [])
 
     function handleSubmit (e) {
         e.preventDefault()
@@ -23,7 +35,9 @@ function EditJournalEntry() {
 
   return (
     <div style={{textAlign: "center"}}>
-    {isEdited ? <p>Your journal entry has been edited.</p> :
+      {userID === journalEntry.user_id ?
+      <>
+      {isEdited ? <p>Your journal entry has been edited.</p> :
     <>
     <h1>Edit your journal entry</h1>
     <form onSubmit={handleSubmit}>
@@ -37,6 +51,12 @@ function EditJournalEntry() {
     </form>
     </>
         }  
+      </>
+      :
+      <h1>Access Denied.</h1>
+      }
+
+
   </div>
   )
 }

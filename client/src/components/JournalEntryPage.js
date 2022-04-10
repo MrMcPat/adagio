@@ -4,21 +4,37 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 function JournalEntryPage() {
-  const { id } = useParams()
+  const [userID, setUserID] = useState([])
   const [journalEntry, setJournalEntry] = useState([])
+  const { id } = useParams()
 
   useEffect(() => {
     async function handleFetch() {
+      const userData = await axios.get("/me")
+      setUserID(userData.data.id)
       const journalEntryData = await axios.get(`/journal_entries/${id}`)
       setJournalEntry(journalEntryData.data)
     }
     handleFetch()
   }, [])
 
+  if (!journalEntry.user) return null
+
   return <div style={{textAlign: "center"}}>
-      <h3>{journalEntry.title}</h3>
+    {userID === journalEntry.user_id ?
+    <>
+    <h3>{journalEntry.title}</h3>
       <p>{journalEntry.body}</p>
       <Link to={`/editentry/${id}`}><button>Edit Entry</button></Link>
+    </>
+    : 
+    <>
+    <h3>{journalEntry.title} by {journalEntry.user.username}</h3>
+    <p>{journalEntry.body}</p>
+    </>
+    }
+
+
   </div>
 }
 
