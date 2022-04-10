@@ -7,6 +7,7 @@ function EditJournalEntry() {
     const [journalEntry, setJournalEntry] = useState([])
     const [editTitle, setEditTitle] = useState([])
     const [editBody, setEditBody] = useState([])
+    const [editPrivate, setEditPrivate] = useState(false)
     const [isEdited, setIsEdited] = useState(false)
     const { id } = useParams()
     
@@ -27,7 +28,8 @@ function EditJournalEntry() {
         } else {
             axios.patch(`/journal_entries/${id}`, {
                 title: editTitle,
-                body: editBody
+                body: editBody,
+                is_private: editPrivate
             })
         }
         setIsEdited(true)
@@ -46,7 +48,7 @@ function EditJournalEntry() {
       <label>Journal Entry Body</label><br/>
       <textarea rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
       <label>Private this journal entry</label>
-      <input type="checkbox" />
+      <input type="checkbox" onChange={e => setEditPrivate(e.target.checked)}/>
       <button type="submit">Edit Entry</button>
     </form>
     </>

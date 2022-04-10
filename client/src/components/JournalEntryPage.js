@@ -27,11 +27,13 @@ function JournalEntryPage() {
       <p>{journalEntry.body}</p>
       <Link to={`/editentry/${id}`}><button>Edit Entry</button></Link>
     </>
-    : 
-    <>
-    <h3>{journalEntry.title} by {journalEntry.user.username}</h3>
-    <p>{journalEntry.body}</p>
-    </>
+    : journalEntry.is_private ?
+    <h3>{journalEntry.user.username} has made this journal entry private.</h3>
+    :
+      <>
+      <h3>{journalEntry.title} by {journalEntry.user.username}</h3>
+      <p>{journalEntry.body}</p>
+      </>
     }
 
 
