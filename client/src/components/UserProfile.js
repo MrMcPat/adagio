@@ -34,7 +34,7 @@ function UserProfile() {
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
           <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
-          <p>{entry.is_private ? "Marked as private" : "Public"}</p>
+          <p>{entry.is_private || userProfile.journal_is_private ? "Marked as private" : "Public"}</p>
         </div>
       })}
     </div>

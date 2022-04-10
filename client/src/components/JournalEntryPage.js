@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 function JournalEntryPage() {
   const [userID, setUserID] = useState([])
+  const [journalEntryUser, setJournalEntryUser] = useState("")
   const [journalEntry, setJournalEntry] = useState([])
   const { id } = useParams()
 
@@ -12,8 +13,13 @@ function JournalEntryPage() {
     async function handleFetch() {
       const userData = await axios.get("/me")
       setUserID(userData.data.id)
+
+      
       const journalEntryData = await axios.get(`/journal_entries/${id}`)
       setJournalEntry(journalEntryData.data)
+      const allUserData = await axios.get("/users")
+      setJournalEntryUser(allUserData.data.find(user => user.id === journalEntryData.data.user_id))
+
     }
     handleFetch()
   }, [])
@@ -27,7 +33,7 @@ function JournalEntryPage() {
       <p>{journalEntry.body}</p>
       <Link to={`/editentry/${id}`}><button>Edit Entry</button></Link>
     </>
-    : journalEntry.is_private ?
+    : journalEntry.is_private || journalEntryUser.journal_is_private ?
     <h3>{journalEntry.user.username} has made this journal entry private.</h3>
     :
       <>

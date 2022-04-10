@@ -25,7 +25,8 @@ function NavBar({ user, setUser }) {
         <div>
           {user ? (
             <>
-              <p>Signed in as: {user.username}</p>
+              <span>Signed in as: {user.username}</span>
+              <NavLink to="/journalentries">Explore Journal Entries</NavLink>
               <NavLink to="/newjournalentry">+Create journal entry</NavLink>
               <NavLink to="/dailylyric">Daily Lyric</NavLink>
               <NavLink to="/musicrecommendations">Music Recommendations</NavLink>

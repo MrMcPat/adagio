@@ -12,6 +12,7 @@ function UserSettings() {
   const [userEmotion, setUserEmotion] = useState("")
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
+  const [userJournalPrivate, setUserJournalPrivate] = useState(null)
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -38,6 +39,7 @@ function UserSettings() {
     async function handleFetch() {
       const userData = await axios.get("/me")
       setUserProfile(userData.data)
+      setUserJournalPrivate(userData.data.journal_is_private)
       const userEmotionData = await axios.get("/emotions")
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userTriggerData = await axios.get("/triggers")
@@ -76,7 +78,7 @@ function UserSettings() {
   }
 
   function handleChecked (e) {
-    console.log(e.target.checked)
+    setUserJournalPrivate(e.target.checked)
     axios.patch(`/users/${userProfile.id}`, {
       journal_is_private: e.target.checked
     })
@@ -132,8 +134,8 @@ function UserSettings() {
     <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
-    <label>Private your journals.</label>
-    <input type="checkbox"  onClick={handleChecked}/>
+    <label>Private all journals?</label>
+    <input type="checkbox" checked={userJournalPrivate} onChange={handleChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>

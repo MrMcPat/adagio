@@ -17,6 +17,9 @@ function EditJournalEntry() {
         setUserID(userData.data.id)
         const journalEntryData = await axios.get(`/journal_entries/${id}`)
         setJournalEntry(journalEntryData.data)
+        setEditTitle(journalEntryData.data.title)
+        setEditBody(journalEntryData.data.body)
+        setEditPrivate(journalEntryData.data.is_private)
       }
       handleFetch()
     }, [])
@@ -48,7 +51,7 @@ function EditJournalEntry() {
       <label>Journal Entry Body</label><br/>
       <textarea rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
       <label>Private this journal entry</label>
-      <input type="checkbox" onChange={e => setEditPrivate(e.target.checked)}/>
+      <input type="checkbox" checked={editPrivate} onChange={e => setEditPrivate(e.target.checked)}/>
       <button type="submit">Edit Entry</button>
     </form>
     </>
@@ -57,8 +60,6 @@ function EditJournalEntry() {
       :
       <h1>Access Denied.</h1>
       }
-
-
   </div>
   )
 }
