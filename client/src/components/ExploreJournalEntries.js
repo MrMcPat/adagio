@@ -34,7 +34,7 @@ function ExploreJournalEntries() {
       const allJournalEntries = await axios.get("/journal_entries/")
       const otherJournalEntries = allJournalEntries.data.filter(entry => entry.user_id !== userData.data.id && (entry.is_private === false && entry.user.journal_is_private === false))
       const filteredJournals = otherJournalEntries.filter(entry => {
-        if (userTriggers.filter(trigger => entry.title.toLowerCase().includes(trigger.trigger.toLowerCase())).length === 0) {
+        if (userTriggers.filter(trigger => entry.title.toLowerCase().includes(trigger.trigger.toLowerCase())).length === 0 || userTriggers.filter(trigger => entry.body.toLowerCase().includes(trigger.trigger.toLowerCase())).length === 0 ) {
           return true
         } else {
           return false
