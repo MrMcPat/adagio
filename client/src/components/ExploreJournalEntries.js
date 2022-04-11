@@ -25,13 +25,6 @@ function ExploreJournalEntries() {
   }, [])
 
   async function handleSearch(e) {
-    // if (e.target.value.length > 0) {
-    //   setUserJournalEntries(userJournalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase())))
-    // } else {
-    //   const userData = await axios.get("/me")
-    //   const userJournalEntryData = await axios.get("/journal_entries")
-    //   setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
-    // }
     if (e.target.value.length > 0) {
       setJournalEntries(journalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase())))
     } else {

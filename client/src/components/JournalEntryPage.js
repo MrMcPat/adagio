@@ -7,6 +7,10 @@ function JournalEntryPage() {
   const [userID, setUserID] = useState([])
   const [journalEntryUser, setJournalEntryUser] = useState("")
   const [journalEntry, setJournalEntry] = useState([])
+  const [heartCount, setHeartCount] = useState([])
+  const [prayingCount, setPrayingCount] = useState([])
+  const [shockedCount, setShockedCount] = useState([])
+  const [sadCount, setSadCount] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -16,9 +20,12 @@ function JournalEntryPage() {
       
       const journalEntryData = await axios.get(`/journal_entries/${id}`)
       setJournalEntry(journalEntryData.data)
+      setHeartCount(journalEntryData.data.heart_count)
+      setPrayingCount(journalEntryData.data.praying_count)
+      setShockedCount(journalEntryData.data.shocked_count)
+      setSadCount(journalEntryData.data.sad_count)
       const allUserData = await axios.get("/users")
       setJournalEntryUser(allUserData.data.find(user => user.id === journalEntryData.data.user_id))
-
     }
     handleFetch()
   }, [])
@@ -27,6 +34,34 @@ function JournalEntryPage() {
     axios.delete(`/journal_entries/${id}`)
     alert("Your journal entry has been deleted.")
   }
+
+  function handleHeart() {
+    setHeartCount(heartCount + 1)
+    axios.patch(`/journal_entries/${id}`, {
+        heart_count: heartCount + 1
+    })
+}
+
+function handlePraying() {
+    setPrayingCount(prayingCount + 1)
+    axios.patch(`/journal_entries/${id}`, {
+        praying_count: prayingCount + 1
+    })
+}
+
+function handleShocked() {
+    setShockedCount(shockedCount + 1)
+    axios.patch(`/journal_entries/${id}`, {
+        shocked_count: shockedCount + 1
+    })
+}
+
+function handleSad() {
+    setSadCount(sadCount + 1)
+    axios.patch(`/journal_entries/${id}`, {
+        sad_count: sadCount + 1
+    })
+}
 
   if (!journalEntry.user) return null
 
@@ -50,6 +85,7 @@ function JournalEntryPage() {
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
+      <p><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
       </>
     }
 
