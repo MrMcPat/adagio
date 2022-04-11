@@ -48,10 +48,10 @@ function EditJournalEntry() {
     <form onSubmit={handleSubmit}>
       <label>Journal Entry Title</label><br />
       <input value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br />
+      <label>Private this journal entry</label>
+      <input type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/><br />
       <label>Journal Entry Body</label><br/>
       <textarea rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
-      <label>Private this journal entry</label>
-      <input type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/>
       <button type="submit">Edit Entry</button>
     </form>
     </>

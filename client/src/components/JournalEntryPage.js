@@ -11,6 +11,7 @@ function JournalEntryPage() {
   const [prayingCount, setPrayingCount] = useState([])
   const [shockedCount, setShockedCount] = useState([])
   const [sadCount, setSadCount] = useState([])
+  const [journalIsPrivate, setJournalIsPrivate] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function JournalEntryPage() {
       setPrayingCount(journalEntryData.data.praying_count)
       setShockedCount(journalEntryData.data.shocked_count)
       setSadCount(journalEntryData.data.sad_count)
+      setJournalIsPrivate(journalEntryData.data.is_private)
       const allUserData = await axios.get("/users")
       setJournalEntryUser(allUserData.data.find(user => user.id === journalEntryData.data.user_id))
     }
@@ -35,7 +37,7 @@ function JournalEntryPage() {
     alert("Your journal entry has been deleted.")
   }
 
-  function handleHeart() {
+function handleHeart() {
     setHeartCount(heartCount + 1)
     axios.patch(`/journal_entries/${id}`, {
         heart_count: heartCount + 1
@@ -63,6 +65,13 @@ function handleSad() {
     })
 }
 
+function handleIsPrivate(e){
+  setJournalIsPrivate(e.target.checked)
+  axios.patch(`/journal_entries/${id}`, {
+    is_private: e.target.checked
+  })
+}
+
   if (!journalEntry.user) return null
 
   return <div style={{textAlign: "center"}}>
@@ -75,6 +84,8 @@ function handleSad() {
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
       <Link to={`/editentry/${id}`}><button>Edit Entry</button></Link>
       <Link to="/userprofile"><button onClick={handleDelete}>Delete Entry</button></Link>
+      <label>Private this journal entry</label>
+      <input type="checkbox" checked={journalIsPrivate} onClick={handleIsPrivate}/>
     </>
     : journalEntry.is_private || journalEntryUser.journal_is_private ?
     <h3>{journalEntry.user.username} has made this journal entry private.</h3>
