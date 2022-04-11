@@ -29,7 +29,7 @@ function JournalEntryPage() {
   }
 
   if (!journalEntry.user) return null
-  console.log(journalEntry.created_at)
+
   return <div style={{textAlign: "center"}}>
     {userID === journalEntry.user_id ?
     <>

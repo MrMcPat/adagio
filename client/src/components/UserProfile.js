@@ -6,6 +6,7 @@ function UserProfile() {
   const [userProfile, setUserProfile] = useState([])
   const [userColorList, setUserColorList] = useState([])
   const [userJournalEntries, setUserJournalEntries] = useState([])
+  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
     async function handleFetch() {
@@ -19,6 +20,20 @@ function UserProfile() {
     handleFetch()
   }, [])
 
+  function handleToggle() {
+    setToggle(toggle => !toggle)
+  }
+
+  async function handleSearch(e) {
+    if (e.target.value.length > 0) {
+      setUserJournalEntries(userJournalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase())))
+    } else {
+      const userData = await axios.get("/me")
+      const userJournalEntryData = await axios.get("/journal_entries")
+      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
+    }
+  }
+
   return (
     <div style={{textAlign: "center"}}>
       <p>{userProfile.first_name} {userProfile.last_name}</p>
@@ -30,7 +45,9 @@ function UserProfile() {
       return <div key={emotion.id}><span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}</div>
     })}
       <h2>Your Journal Entries</h2>
-      {userJournalEntries.length === 0 ? <p>You do not have any journal entries.</p> 
+      <button onClick={handleToggle}>Search</button>
+      {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
+      {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
           <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>

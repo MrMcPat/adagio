@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import UserAccountSettings from './UserAccountSettings'
+import UserJournalSettings from './UserJournalSettings'
 import Modal from "react-bootstrap/Modal"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
@@ -13,6 +14,7 @@ function UserSettings() {
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
+  const [userJournalEntries, setUserJournalEntries] = useState([])
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -44,9 +46,12 @@ function UserSettings() {
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userTriggerData = await axios.get("/triggers")
       setUserTriggerList(userTriggerData.data.filter(trigger => trigger.user_id === userData.data.id))
+      const userJournalEntryData = await axios.get("/journal_entries")
+      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
     }
     handleFetch()
   }, [])
+
 
   function handleNameChange(e) {
     handleNameClose()
@@ -135,7 +140,7 @@ function UserSettings() {
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
     <label>Private all journals?</label>
-    <input type="checkbox" checked={userJournalPrivate} onChange={handleChecked}/>
+    <input type="checkbox" defaultChecked={userJournalPrivate} onChange={handleChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>
@@ -160,6 +165,7 @@ function UserSettings() {
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
       <button type="submit">Add a trigger</button>
     </form>
+    <UserJournalSettings userProfile={userProfile} userJournalPrivate={userJournalPrivate}/>
 
     <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
