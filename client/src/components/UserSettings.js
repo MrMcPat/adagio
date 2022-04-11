@@ -140,7 +140,7 @@ function UserSettings() {
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
     <label>Private all journals?</label>
-    <input type="checkbox" defaultChecked={userJournalPrivate} onChange={handleChecked}/>
+    <input type="checkbox" checked={userJournalPrivate} onChange={handleChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>
