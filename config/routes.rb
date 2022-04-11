@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :replies
+  resources :posts
   resources :journal_entries
   resources :fav_songs
   resources :emotions
