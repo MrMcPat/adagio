@@ -12,6 +12,9 @@ import NewJournalEntry from "./NewJournalEntry"
 import JournalEntryPage from "./JournalEntryPage"
 import EditJournalEntry from "./EditJournalEntry"
 import ExploreJournalEntries from "./ExploreJournalEntries"
+import ForumPosts from "./ForumPosts"
+import NewPost from "./NewPost"
+import PostPage from "./PostPage"
 
 function App() {
   const [user, setUser] = useState("")
@@ -60,6 +63,15 @@ function App() {
         </Route>
         <Route path="/journalentries">
           <ExploreJournalEntries />
+        </Route>
+        <Route path="/forumposts">
+          <ForumPosts />
+        </Route>
+        <Route path="/newpost">
+          <NewPost />
+        </Route>
+        <Route path="/post/:id">
+          <PostPage />
         </Route>
       </Switch>
     </div>

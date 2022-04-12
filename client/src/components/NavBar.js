@@ -26,6 +26,7 @@ function NavBar({ user, setUser }) {
           {user ? (
             <>
               <span>Signed in as: {user.username}</span>
+              <NavLink to="/forumposts">Forums</NavLink>
               <NavLink to="/journalentries">Explore Journal Entries</NavLink>
               <NavLink to="/newjournalentry">+Create journal entry</NavLink>
               <NavLink to="/dailylyric">Daily Lyric</NavLink>
