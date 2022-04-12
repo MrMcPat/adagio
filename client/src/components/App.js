@@ -15,6 +15,7 @@ import ExploreJournalEntries from "./ExploreJournalEntries"
 import ForumPosts from "./ForumPosts"
 import NewPost from "./NewPost"
 import PostPage from "./PostPage"
+import EditPost from "./EditPost"
 
 function App() {
   const [user, setUser] = useState("")
@@ -72,6 +73,9 @@ function App() {
         </Route>
         <Route path="/post/:id">
           <PostPage />
+        </Route>
+        <Route path="/editpost/:id">
+          <EditPost />
         </Route>
       </Switch>
     </div>
