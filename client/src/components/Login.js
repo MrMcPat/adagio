@@ -23,7 +23,7 @@ function Login({setUser}) {
     }
 
   return (
-    <div>
+    <div style={{textAlign: "center"}}>
         <form onSubmit={handleSubmit}>
         <h1>Login</h1>
         <label htmlFor="email">Email</label>

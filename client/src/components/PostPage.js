@@ -19,6 +19,11 @@ function PostPage() {
         handleFetch()
     }, [])
 
+    function handleDelete() {
+        axios.delete(`/posts/${id}`)
+        alert("Your journal entry has been deleted.")
+      }
+
     if (!post.created_at || !post.updated_at) return null
 
   return (
@@ -31,7 +36,7 @@ function PostPage() {
         `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
         `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
         <Link to={`/editpost/${id}`}><button>Edit Post</button></Link>
-        <Link to="/forumposts"><button onClick={null}>Delete Post</button></Link>
+        <Link to="/forumposts"><button onClick={handleDelete}>Delete Post</button></Link>
         </> : 
         <>
         <h3>{post.title} by {post.user.username}</h3>
