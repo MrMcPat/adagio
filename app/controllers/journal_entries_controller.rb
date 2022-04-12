@@ -1,6 +1,6 @@
 class JournalEntriesController < ApplicationController
     def index
-        render json: JournalEntry.all.all.order(created_at: :desc)
+        render json: JournalEntry.all.order(created_at: :desc)
     end
 
     def show
