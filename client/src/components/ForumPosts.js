@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import ForumPost from './ForumPost'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 function ForumPosts() {
     const [forumPosts, setForumPosts] = useState([])
+    const [count, setCount] = useState(7)
 
     useEffect(() => {
         async function handleFetch() {
@@ -19,15 +21,23 @@ function ForumPosts() {
                     return false
                 }
             })
-            setForumPosts(filteredPosts)
+            setForumPosts(filteredPosts.slice(0, count))
         }
         handleFetch()
-    }, [])
+    }, [count])
+
 
   return (
     <div style={{textAlign: "center"}}>
         <Link to="/newpost"><button>Create new post</button></Link>
+        <InfiniteScroll
+        dataLength={forumPosts.length}
+        next={() => setCount(count + 6)} 
+        hasMore={true}
+        >
         {forumPosts.map(post => <ForumPost key={post.id} post={post} />)}
+        </InfiniteScroll>
+
     </div>
   )
 }

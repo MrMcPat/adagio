@@ -6,6 +6,7 @@ function UserProfile() {
   const [userProfile, setUserProfile] = useState([])
   const [userColorList, setUserColorList] = useState([])
   const [userJournalEntries, setUserJournalEntries] = useState([])
+  const [userPosts, setUserPosts] = useState([])
   const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
@@ -16,6 +17,8 @@ function UserProfile() {
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userJournalEntryData = await axios.get("/journal_entries")
       setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
+      const userPostData = await axios.get("/posts")
+      setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id))
     }
     handleFetch()
   }, [])
@@ -56,6 +59,17 @@ function UserProfile() {
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
           <span>❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
+        </div>
+      })}
+      <h2>Your Posts</h2>
+      {userPosts.length === 0 ? <p>No posts :</p>
+      : userPosts.map(post => {
+        return <div key={post.id}>
+          <Link to={`/post/${post.id}`}><h3>{post.title}</h3></Link>
+          <p>{post.body}</p>
+          <p>{post.created_at === post.updated_at ? 
+          `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
+          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
         </div>
       })}
     </div>

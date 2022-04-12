@@ -33,7 +33,7 @@ function NewPost() {
   return (
     <div style={{textAlign: "center"}}>
         {isSubmitted ? 
-        <><h1>You have submitted your post.</h1><Link to="forumposts"><button>Go to forums</button></Link></> :
+        <><h1>You have submitted your post.</h1><Link to="/forumposts"><button>Go to forums</button></Link></> :
         <>
         <h1>New Post</h1>
         <form onSubmit={handleSubmit}>
