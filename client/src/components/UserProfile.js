@@ -16,26 +16,12 @@ function UserProfile() {
       const userEmotionData = await axios.get("/emotions")
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userJournalEntryData = await axios.get("/journal_entries")
-      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
+      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id).slice(0, 5))
       const userPostData = await axios.get("/posts")
-      setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id))
+      setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id).slice(0, 5))
     }
     handleFetch()
   }, [])
-
-  function handleToggle() {
-    setToggle(toggle => !toggle)
-  }
-
-  async function handleSearch(e) {
-    if (e.target.value.length > 0) {
-      setUserJournalEntries(userJournalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase())))
-    } else {
-      const userData = await axios.get("/me")
-      const userJournalEntryData = await axios.get("/journal_entries")
-      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
-    }
-  }
 
   return (
     <div style={{textAlign: "center"}}>
@@ -47,9 +33,9 @@ function UserProfile() {
       {userColorList.map(emotion => {
       return <div key={emotion.id}><span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}</div>
     })}
-      <h2>Your Journal Entries</h2>
-      <button onClick={handleToggle}>Search</button>
-      {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
+      <h2>Most Recent Journal Entries</h2>
+      {/* <button onClick={handleToggle}>Search</button> */}
+      {/* {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null} */}
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
@@ -61,7 +47,7 @@ function UserProfile() {
           <span>❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
         </div>
       })}
-      <h2>Your Posts</h2>
+      <h2>Most Recent Posts</h2>
       {userPosts.length === 0 ? <p>No posts :</p>
       : userPosts.map(post => {
         return <div key={post.id}>

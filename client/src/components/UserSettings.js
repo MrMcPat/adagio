@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import UserAccountSettings from './UserAccountSettings'
 import UserJournalSettings from './UserJournalSettings'
+import UserPostSettings from './UserPostSettings'
 import Modal from "react-bootstrap/Modal"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
@@ -165,7 +166,8 @@ function UserSettings() {
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
       <button type="submit">Add a trigger</button>
     </form>
-    <UserJournalSettings userProfile={userProfile} userJournalPrivate={userJournalPrivate}/>
+    <UserJournalSettings />
+    <UserPostSettings />
 
     <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>

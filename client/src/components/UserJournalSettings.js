@@ -28,7 +28,7 @@ function UserJournalSettings() {
 
     async function handleSearch(e) {
         if (e.target.value.length > 0) {
-          setUserJournalEntries(userJournalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase())))
+          setUserJournalEntries(userJournalEntries.filter(entry => entry.title.toLowerCase().includes(e.target.value.toLowerCase()) || entry.updated_at.toLowerCase().includes(e.target.value.toLowerCase())))
         } else {
           const userData = await axios.get("/me")
           const userJournalEntryData = await axios.get("/journal_entries")
