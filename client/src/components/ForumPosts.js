@@ -6,7 +6,9 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 
 function ForumPosts() {
     const [forumPosts, setForumPosts] = useState([])
+    const [allForumPosts, setAllForumPosts] = useState([])
     const [count, setCount] = useState(7)
+    const [input, setInput] = useState("")
 
     useEffect(() => {
         async function handleFetch() {
@@ -22,14 +24,23 @@ function ForumPosts() {
                 }
             })
             setForumPosts(filteredPosts.slice(0, count))
+            setAllForumPosts(filteredPosts)
         }
         handleFetch()
     }, [count])
 
+    async function handleSearch(e) {
+        e.preventDefault()
+        setForumPosts(allForumPosts.filter(post => post.title.toLowerCase().includes(input.toLowerCase())))
+    }
 
   return (
     <div style={{textAlign: "center"}}>
         <Link to="/newpost"><button>Create new post</button></Link>
+        <form onSubmit={handleSearch}>
+        <input type="search" placeholder="Filter posts..." onChange={e => setInput(e.target.value)}></input>
+        <button type="submit">Search</button>
+        </form>
         <InfiniteScroll
         dataLength={forumPosts.length}
         next={() => setCount(count + 6)} 
@@ -37,7 +48,6 @@ function ForumPosts() {
         >
         {forumPosts.map(post => <ForumPost key={post.id} post={post} />)}
         </InfiniteScroll>
-
     </div>
   )
 }
