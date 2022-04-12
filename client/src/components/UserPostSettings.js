@@ -27,6 +27,10 @@ function UserPostSettings() {
     async function handleSearch(e) {
         if (e.target.value.length > 0) {
             setUserPosts(userPosts.filter(post => post.title.toLowerCase().includes(e.target.value.toLowerCase()) || post.updated_at.toLowerCase().includes(e.target.value.toLowerCase())))
+        } else {
+          const userData = await axios.get("/me")
+          const userPostData = await axios.get("/posts")
+          setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id))
         }
     }
 
