@@ -1,12 +1,10 @@
 import React, { useState } from "react"
-import { useHistory } from 'react-router-dom'
 
 function SignUp({setUser}) {
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
-  let history = useHistory()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +22,7 @@ function SignUp({setUser}) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user))
-        history.push("/dailylyric")
+        window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
       }
     });
   }

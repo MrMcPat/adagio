@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import Homepage from "./Homepage"
 import Login from "./Login"
 import SignUp from "./SignUp"
+import Callback from "./Callback"
 import DailyLyricPage from "./DailyLyricPage"
 import MusicRecommendations from "./MusicRecommendations"
 import UserProfile from "./UserProfile"
@@ -19,6 +20,7 @@ import EditPost from "./EditPost"
 
 function App() {
   const [user, setUser] = useState("")
+  const [token, setToken] = useState("")
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -27,6 +29,12 @@ function App() {
       }
     })
   }, [])
+
+  function getToken(accessToken) {{
+    localStorage.setItem("tokenKey", accessToken)
+  }}
+
+  const storedToken = localStorage.getItem("tokenKey")
 
   return (
     <div className="App">
@@ -41,11 +49,14 @@ function App() {
         <Route path="/login">
           <Login setUser={setUser}/>
         </Route>
+        <Route path="/callback">
+          <Callback getToken={getToken}/>
+        </Route>
         <Route path="/dailylyric">
-          <DailyLyricPage/>
+          <DailyLyricPage token={storedToken}/>
         </Route>
         <Route path="/musicrecommendations">
-          <MusicRecommendations />
+          <MusicRecommendations token={storedToken}/>
         </Route>
         <Route path="/userprofile">
           <UserProfile />

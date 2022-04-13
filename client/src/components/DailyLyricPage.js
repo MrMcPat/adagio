@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col"
 import MusicPlayer from "./MusicPlayer"
 import DailyLyricResponses from './DailyLyricResponses'
 
-function DailyLyricPage() {
+function DailyLyricPage({token}) {
     const [userID, setUserID] = useState("")
     const [dailyLyric, setDailyLyric] = useState([])
     const [userEmotions, setUserEmotions] = useState([])
@@ -64,7 +64,7 @@ function DailyLyricPage() {
       <Row>
       <Col className="daily-lyric-container">
       <h1>{dailyLyric.lyric}</h1>
-        <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} />
+        <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} token={token}/>
         <p>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
         {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID, setFavedSong}) {
+function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID, setFavedSong, token}) {
     const [userTodayEmotion, setUserTodayEmotion] = useState([])
     const [spotifySong, setSpotifySong] = useState("")
 
@@ -14,7 +14,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
         const axiosInstance = axios.create({
           headers: {
               Accept: "application/json",
-              Authorization: `Bearer ${process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN}`,
+              Authorization: `Bearer ${token}`,
               "Content-Type": "application/json"
           }
         })

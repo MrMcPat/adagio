@@ -4,7 +4,7 @@ import RecommendedTrack from "./RecommendedTrack"
 import MusicPlaylist from "./MusicPlaylist"
 import MusicPlayer from "./MusicPlayer"
 
-function MusicRecommendations() {
+function MusicRecommendations({token}) {
   const [userID, setUserID] = useState("")
   const [userEmotions, setUserEmotions] = useState([])
   const [userResponse, setUserResponses] = useState([])
@@ -53,11 +53,11 @@ function MusicRecommendations() {
           <h3>Here are your music recommendations for today.</h3>
           {hide ? (
             <div style={{ display: "none" }}>
-              <MusicPlayer spotifyUri={spotifyUri} />
+              <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div>
           ) : (
             <div>
-              <MusicPlayer spotifyUri={spotifyUri} />
+              <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div>
           )}
           {recTracks.map((track) => (
@@ -69,6 +69,7 @@ function MusicRecommendations() {
               todaysEmotion={userResponse.emotion}
               userID={userID}
               setFavedSong={setFavedSong}
+              token={token}
             />
           ))}
         </>

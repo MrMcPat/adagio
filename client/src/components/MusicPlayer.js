@@ -1,9 +1,7 @@
 import React from "react"
 import SpotifyPlayer from "react-spotify-web-playback"
 
-function MusicPlayer({spotifyUri}) {
-
-  const token = process.env.REACT_APP_SPOTIFY_ACCESS_TOKEN
+function MusicPlayer({spotifyUri, token}) {
 
   return (
     <div>
