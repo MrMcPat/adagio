@@ -134,6 +134,10 @@ function UserSettings() {
     setUserTriggerList(userTriggerList.filter(trigger => trigger.id !== parseInt(e.target.value)))
   }
 
+  function handleToken() {
+    window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+  }
+
   return (
     <div style={{textAlign: "center"}}>
     <span>{userProfile.first_name} {userProfile.last_name}</span>
@@ -145,6 +149,7 @@ function UserSettings() {
     <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
+    <button onClick={handleToken}>Refresh music player token</button><br />
     <label>Private all journals?</label>
     <input type="checkbox" checked={userJournalPrivate || ""} onChange={handleChecked}/>
     <p>Your colors:</p>

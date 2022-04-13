@@ -20,8 +20,8 @@ class UsersController < ApplicationController
       user.update!(params.permit(:first_name, :last_name, :username, :profile_picture, :description, :journal_is_private, :favorite_songs_is_private, :allow_email, :email))
       render json: user
       if user.authenticate(params[:old_password])
-      user.update!(params.permit(:password, :password_confirmation))
-      render json: user
+        user.update!(params.permit(:password, :password_confirmation))
+        render json: user
       else
         render json: { error: "Incorrect old password." }, status: :not_found
       end

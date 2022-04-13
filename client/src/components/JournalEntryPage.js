@@ -99,8 +99,6 @@ function handleIsPrivate(e){
       <p><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
       </>
     }
-
-
   </div>
 }
 

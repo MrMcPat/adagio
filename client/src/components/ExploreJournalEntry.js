@@ -37,7 +37,7 @@ function ExploreJournalEntry({entry}) {
     }
 
   return (
-    <div>
+    <>
         <Link to={`/journalentry/${entry.id}`}><span>{entry.title}</span></Link><span> by <Link to={`/user/${entry.user.username}`}>{entry.user.username}</Link></span>
         <p>{entry.body}</p>
         <p>{entry.is_private || entry.user.journal_is_private ? "Marked as private" : "Public"}</p>
@@ -45,7 +45,7 @@ function ExploreJournalEntry({entry}) {
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
          <p><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
-    </div>
+    </>
   )
 }
 
