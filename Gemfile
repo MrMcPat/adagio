@@ -27,7 +27,7 @@ gem 'rack-cors'
 
 gem 'whenever', require: false
 
-gem "nokogiri"
+gem "nokogiri", ">= 1.13.4"
 
 # gem "rest-client"
 
