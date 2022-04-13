@@ -10,12 +10,11 @@ import FormControl from "react-bootstrap/FormControl"
 function UserSettings() {
   const [userProfile, setUserProfile] = useState([])
   const [userColorList, setUserColorList] = useState([])
-  const [userColor, setUserColor] = useState("#008080")
+  const [userColor, setUserColor] = useState("#FFC0CB")
   const [userEmotion, setUserEmotion] = useState("")
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
-  const [userJournalEntries, setUserJournalEntries] = useState([])
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -47,8 +46,6 @@ function UserSettings() {
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userTriggerData = await axios.get("/triggers")
       setUserTriggerList(userTriggerData.data.filter(trigger => trigger.user_id === userData.data.id))
-      const userJournalEntryData = await axios.get("/journal_entries")
-      setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
     }
     handleFetch()
   }, [])
