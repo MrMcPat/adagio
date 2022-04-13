@@ -19,6 +19,7 @@ import PostPage from "./PostPage"
 import EditPost from "./EditPost"
 import AllUserJournalEntries from "./AllUserJournalEntries"
 import AllUserPosts from "./AllUserPosts"
+import OtherUserProfile from "./OtherUserProfile"
 
 function App() {
   const [user, setUser] = useState("")
@@ -92,6 +93,9 @@ function App() {
         </Route>
         <Route path="/userposts">
           <AllUserPosts />
+        </Route>
+        <Route path="/user/:username">
+          <OtherUserProfile />
         </Route>
       </Switch>
     </div>

@@ -5,6 +5,7 @@ import ForumPost from './ForumPost'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 function ForumPosts() {
+    const [userID, setUserID] = useState([])
     const [forumPosts, setForumPosts] = useState([])
     const [allForumPosts, setAllForumPosts] = useState([])
     const [count, setCount] = useState(7)
@@ -13,6 +14,7 @@ function ForumPosts() {
     useEffect(() => {
         async function handleFetch() {
             const userData = await axios.get("/me")
+            setUserID(userData.data.id)
             const allTriggers = await axios.get("/triggers")
             const userTriggers = allTriggers.data.filter(trigger => trigger.user_id === userData.data.id)
             const allPosts = await axios.get("/posts")
@@ -46,7 +48,7 @@ function ForumPosts() {
         next={() => setCount(count + 6)} 
         hasMore={true}
         >
-        {forumPosts.map(post => <ForumPost key={post.id} post={post} />)}
+        {forumPosts.map(post => <ForumPost key={post.id} post={post} userID={userID}/>)}
         </InfiniteScroll>
     </div>
   )

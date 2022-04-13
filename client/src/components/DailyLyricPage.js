@@ -82,7 +82,7 @@ function DailyLyricPage({token}) {
         : <p>You posted for the day.</p>}
       </Col>
         <Col className="daily-lyric-responses">
-          {userResponses.map(response => <DailyLyricResponses key={response.id} response={response}/>)}
+          {userResponses.map(response => <DailyLyricResponses key={response.id} response={response} userID={userID}/>)}
         </Col>
       </Row>
     </Container>
