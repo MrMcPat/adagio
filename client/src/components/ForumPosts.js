@@ -40,7 +40,7 @@ function ForumPosts() {
     <div style={{textAlign: "center"}}>
         <Link to="/newpost"><button>Create new post</button></Link>
         <form onSubmit={handleSearch}>
-        <input type="search" placeholder="Filter posts..." onChange={e => setInput(e.target.value)}></input>
+        <input type="search" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
         <button type="submit">Search</button>
         </form>
         <InfiniteScroll

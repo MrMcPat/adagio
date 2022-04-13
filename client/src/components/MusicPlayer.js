@@ -11,7 +11,7 @@ function MusicPlayer({spotifyUri, token}) {
         autoPlay={false}
       />
     </div>
-  );
+  )
 }
 
 export default MusicPlayer

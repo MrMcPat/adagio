@@ -4,15 +4,15 @@ import Container from "react-bootstrap/Container"
 import { NavLink, useHistory } from "react-router-dom"
 
 function NavBar({ user, setUser }) {
-  let history = useHistory();
+  let history = useHistory()
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(null);
+        setUser(null)
         history.push("/")
       }
-    });
+    })
   }
 
   return (
@@ -48,4 +48,4 @@ function NavBar({ user, setUser }) {
   );
 }
 
-export default NavBar;
+export default NavBar

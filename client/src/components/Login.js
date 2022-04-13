@@ -5,7 +5,7 @@ function Login({setUser}) {
     const [password, setPassword] = useState("")
   
     function handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault()
       fetch("/login", {
         method: "POST",
         headers: {
@@ -17,7 +17,7 @@ function Login({setUser}) {
           r.json().then((user) => setUser(user))
           window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
         }
-      });
+      })
     }
 
   return (
