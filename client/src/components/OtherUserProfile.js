@@ -46,7 +46,7 @@ function OtherUserProfile({token}) {
           )}
         {userEmotions.map(emotion => <OtherUserPlaylist key={emotion.id} emotion={emotion} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
         <h2>Most Recent Journal Entries</h2>
-      <Link to="/userjournalentries"><button>See All Journal Entries</button></Link>
+      <Link to={`/user/${username}/journalentries`}><button>See All Journal Entries</button></Link>
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
@@ -59,7 +59,7 @@ function OtherUserProfile({token}) {
         </div>
       })}
       <h2>Most Recent Posts</h2>
-      <Link to="/userposts"><button>See All Posts</button></Link>
+      <Link to={`/user/${username}/posts`}><button>See All Posts</button></Link>
       {userPosts.length === 0 ? <p>No posts :</p>
       : userPosts.map(post => {
         return <div key={post.id}>

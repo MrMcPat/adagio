@@ -20,6 +20,8 @@ import EditPost from "./EditPost"
 import AllUserJournalEntries from "./AllUserJournalEntries"
 import AllUserPosts from "./AllUserPosts"
 import OtherUserProfile from "./OtherUserProfile"
+import OtherUserJournalEntries from "./OtherUserJournalEntries"
+import OtherUserPosts from "./OtherUserPosts"
 
 function App() {
   const [user, setUser] = useState("")
@@ -94,8 +96,14 @@ function App() {
         <Route path="/userposts">
           <AllUserPosts />
         </Route>
-        <Route path="/user/:username">
+        <Route exact path="/user/:username">
           <OtherUserProfile token={localStorage.getItem("tokenKey")}/>
+        </Route>
+        <Route exact path="/user/:username/journalentries">
+          <OtherUserJournalEntries />
+        </Route>
+        <Route exact path="/user/:username/posts">
+          <OtherUserPosts />
         </Route>
       </Switch>
     </div>
