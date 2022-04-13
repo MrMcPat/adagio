@@ -37,6 +37,7 @@ function DailyLyricPage({token}) {
     function handleChange (e) {
       setInputColor(e.target.value)
       setInputEmotion(e.target.id)
+      console.log(e.target.htmlFor)
     }
 
     function handleSubmit (e) {
@@ -54,6 +55,15 @@ function DailyLyricPage({token}) {
       .then(resp => setUserResponses([...userResponses, resp.data]))
       setInputResponse("")
       }
+    }
+
+    function handleLike() {
+      axios.post("/fav_songs", {
+        emotion_id: userEmotions.filter(emotion => emotion.emotion === userResponses[0].emotion)[0].id,
+        song_name: dailyLyric.song_name,
+        artist_name: dailyLyric.artist_name,
+        spotify_uri: dailyLyric.spotify_uri
+      })
     }
 
     const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
@@ -79,7 +89,7 @@ function DailyLyricPage({token}) {
                 })}
                 <button type="submit">Share</button>
               </form>
-        : <p>You posted for the day.</p>}
+        : <><p>You posted for the day.</p><button onClick={handleLike}>Like song</button></>}
       </Col>
         <Col className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response} userID={userID}/>)}

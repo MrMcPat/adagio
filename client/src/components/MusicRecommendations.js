@@ -15,7 +15,7 @@ function MusicRecommendations({token}) {
 
   useEffect(() => {
     async function handleFetch() {
-      const user = await axios.get("/me");
+      const user = await axios.get("/me")
       setUserID(user.data.id)
 
       const emotions = await axios.get("/emotions")
@@ -23,7 +23,7 @@ function MusicRecommendations({token}) {
         emotions.data.filter((emotion) => emotion.user_id === user.data.id)
       );
 
-      const responses = await axios.get("/responses");
+      const responses = await axios.get("/responses")
       const currentDate =
         String(new Date().getFullYear()).padStart(2, "0") +
         "-" +
@@ -94,4 +94,4 @@ function MusicRecommendations({token}) {
   );
 }
 
-export default MusicRecommendations;
+export default MusicRecommendations
