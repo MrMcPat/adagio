@@ -31,7 +31,7 @@ function ExploreJournalEntries() {
 
   async function handleSearch(e) {
     e.preventDefault()
-    setJournalEntries(allJournalEntries.filter(post => post.title.toLowerCase().includes(input.toLowerCase())))
+    setJournalEntries(allJournalEntries.filter(entry => entry.title.toLowerCase().includes(input.toLowerCase())))
     setInput("")
   }
 

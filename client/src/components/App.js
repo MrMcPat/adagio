@@ -17,10 +17,11 @@ import ForumPosts from "./ForumPosts"
 import NewPost from "./NewPost"
 import PostPage from "./PostPage"
 import EditPost from "./EditPost"
+import AllUserJournalEntries from "./AllUserJournalEntries"
+import AllUserPosts from "./AllUserPosts"
 
 function App() {
   const [user, setUser] = useState("")
-  const [token, setToken] = useState("")
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -33,8 +34,6 @@ function App() {
   function getToken(accessToken) {{
     localStorage.setItem("tokenKey", accessToken)
   }}
-
-  const storedToken = localStorage.getItem("tokenKey")
 
   return (
     <div className="App">
@@ -53,10 +52,10 @@ function App() {
           <Callback getToken={getToken}/>
         </Route>
         <Route path="/dailylyric">
-          <DailyLyricPage token={storedToken}/>
+          <DailyLyricPage token={localStorage.getItem("tokenKey")}/>
         </Route>
         <Route path="/musicrecommendations">
-          <MusicRecommendations token={storedToken}/>
+          <MusicRecommendations token={localStorage.getItem("tokenKey")}/>
         </Route>
         <Route path="/userprofile">
           <UserProfile />
@@ -87,6 +86,12 @@ function App() {
         </Route>
         <Route path="/editpost/:id">
           <EditPost />
+        </Route>
+        <Route path="/userjournalentries">
+          <AllUserJournalEntries />
+        </Route>
+        <Route path="/userposts">
+          <AllUserPosts />
         </Route>
       </Switch>
     </div>

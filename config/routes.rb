@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :follows
   resources :replies
   resources :posts
   resources :journal_entries

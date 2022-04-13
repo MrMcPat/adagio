@@ -7,7 +7,6 @@ function UserProfile() {
   const [userColorList, setUserColorList] = useState([])
   const [userJournalEntries, setUserJournalEntries] = useState([])
   const [userPosts, setUserPosts] = useState([])
-  const [toggle, setToggle] = useState(false)
 
   useEffect(() => {
     async function handleFetch() {
@@ -34,8 +33,7 @@ function UserProfile() {
       return <div key={emotion.id}><span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}</div>
     })}
       <h2>Most Recent Journal Entries</h2>
-      {/* <button onClick={handleToggle}>Search</button> */}
-      {/* {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null} */}
+      <Link to="/userjournalentries"><button>See All Journal Entries</button></Link>
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
@@ -48,6 +46,7 @@ function UserProfile() {
         </div>
       })}
       <h2>Most Recent Posts</h2>
+      <Link to="/userposts"><button>See All Posts</button></Link>
       {userPosts.length === 0 ? <p>No posts :</p>
       : userPosts.map(post => {
         return <div key={post.id}>
