@@ -95,7 +95,7 @@ function App() {
           <AllUserPosts />
         </Route>
         <Route path="/user/:username">
-          <OtherUserProfile />
+          <OtherUserProfile token={localStorage.getItem("tokenKey")}/>
         </Route>
       </Switch>
     </div>
