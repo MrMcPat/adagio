@@ -48,36 +48,44 @@ function UserSettings() {
       setUserTriggerList(userTriggerData.data.filter(trigger => trigger.user_id === userData.data.id))
     }
     handleFetch()
-  }, [])
+  }, [nameShow ||usernameShow || imageShow || descriptionShow])
 
 
   function handleNameChange(e) {
-    handleNameClose()
+    e.preventDefault()
     axios.patch(`/users/${userProfile.id}`, {
       first_name: inputFirstName,
       last_name: inputLastName
     })
+    alert("Name changed.")
+    handleNameClose()
   }
 
   function handleImageChange(e) {
-    handleImageClose()
+    e.preventDefault()
     axios.patch(`/users/${userProfile.id}`, {
       profile_picture: inputImage
     })
+    alert("Profile picture changed.")
+    handleImageClose()
   }
 
   function handleUsernameChange(e) {
-    handleUsernameClose()
+    e.preventDefault()
     axios.patch(`/users/${userProfile.id}`, {
       username: inputUsername
     })
+    alert("Username changed.")
+    handleUsernameClose()
   }
 
   function handleDescriptionChange(e) {
-    handleDescriptionClose()
+    e.preventDefault()
     axios.patch(`/users/${userProfile.id}`, {
       description: inputDescription
     })
+    alert("Description changed.")
+    handleDescriptionClose()
   }
 
   function handleChecked (e) {
@@ -193,7 +201,7 @@ function UserSettings() {
           <Modal.Body>
             <InputGroup>
             <InputGroup.Text>New Username</InputGroup.Text>
-            <FormControl onChange={e => setInputUsername(e.target.value)} />
+            <FormControl onChange={e => {setInputUsername(e.target.value)}} />
             </InputGroup>
           </Modal.Body>
           <Modal.Footer>

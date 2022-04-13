@@ -26,13 +26,15 @@ function UserAccountSettings() {
       setUserProfile(userInfo.data.find(user => user.id === userData.data.id))
     }
     handleFetch()
-  }, [])
+  }, [emailShow])
 
   function handleEmailChange(e) {
-    handleEmailClose()
+    e.preventDefault()
     axios.patch(`/users/${userProfile.id}`, {
       email: inputEmail
     })
+    alert("Email changed.")
+    handleEmailClose()
   }
 
   function handlePasswordChange(e) {
