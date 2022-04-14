@@ -33,7 +33,7 @@ function ForumPosts() {
 
     async function handleSearch(e) {
         e.preventDefault()
-        setForumPosts(allForumPosts.filter(post => post.title.toLowerCase().includes(input.toLowerCase())))
+        setForumPosts(allForumPosts.filter(post => post.title.toLowerCase().includes(input.toLowerCase()) || post.body.toLowerCase().includes(input.toLowerCase()) || post.user.username.toLowerCase().includes(input.toLowerCase())))
     }
 
   return (

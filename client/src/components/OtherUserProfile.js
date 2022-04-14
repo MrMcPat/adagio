@@ -6,19 +6,26 @@ import OtherUserPlaylist from "./OtherUserPlaylist"
 import MusicPlayer from "./MusicPlayer"
 
 function OtherUserProfile({token}) {
+    const [userID, setUserID] = useState([])
     const [userProfile, setUserProfile] = useState([])
     const [userEmotions, setUserEmotions] = useState([])
     const [userJournalEntries, setUserJournalEntries] = useState([])
     const [userPosts, setUserPosts] = useState([])
     const [spotifyUri, setSpotifyUri] = useState("spotify:track:64FzSxCxQ0cBlktqiMQBey")
     const [hide, setHide] = useState(true)
+    const [followed, setFollowed] = useState(null)
+    const [toggle, setToggle] = useState(false)
     const { username } = useParams()
 
     useEffect(() => {
         async function handleFetch() {
+            const user = await axios.get("/me")
+            setUserID(user.data.id)
             const userData = await axios.get("/users")
             const filteredUser = userData.data.find(user => user.username == username)
             setUserProfile(filteredUser)
+            const followData = await axios.get("/follows")
+            setFollowed(followData.data.find(follow => follow.followed_user_id === filteredUser.id && follow.user_id === user.data.id))
             const emotionData = await axios.get("/emotions")
             setUserEmotions(emotionData.data.filter(emotion => emotion.user_id === filteredUser.id))
             const journalData = await axios.get("/journal_entries")
@@ -27,7 +34,20 @@ function OtherUserProfile({token}) {
             setUserPosts(postData.data.filter(post => post.user_id === filteredUser.id).slice(0, 5))
         }
         handleFetch()
-    }, [])
+    }, [toggle])
+
+    function handleFollow() {
+      axios.post("/follows", {
+        user_id: userID,
+        followed_user_id: userProfile.id
+      })
+      setToggle(toggle => !toggle)
+    }
+
+    function handleUnfollow() {
+      axios.delete(`/follows/${followed.id}`)
+      setToggle(toggle => !toggle)
+    }
 
   return (
     <div style={{textAlign: "center"}}>
@@ -35,6 +55,7 @@ function OtherUserProfile({token}) {
         <p>Username: {userProfile.username}</p>
         <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
         <p>{userProfile.description}</p>
+        {followed ? <button onClick={handleUnfollow}>Unfollow</button>:<button onClick={handleFollow}>Follow</button>}
         {hide ? (
             <div style={{ display: "none" }}>
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>

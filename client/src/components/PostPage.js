@@ -61,7 +61,7 @@ function PostPage() {
         <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
         </> : 
         <>
-        <h3>{post.title} by {post.user.username}</h3>
+        <h3>{post.title} by <Link to={`/user/${post.user.username}`}>{post.user.username}</Link></h3>
         <p>{post.body}</p>
         <p>{post.created_at === post.updated_at ? 
         `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :

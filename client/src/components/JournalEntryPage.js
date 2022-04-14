@@ -91,7 +91,7 @@ function handleIsPrivate(e){
     <h3>{journalEntry.user.username} has made this journal entry private.</h3>
     :
       <>
-      <h3>{journalEntry.title} by {journalEntry.user.username}</h3>
+      <h3>{journalEntry.title} by <Link to={`/user/${journalEntry.user.username}`}>{journalEntry.user.username}</Link></h3>
       <p>{journalEntry.body}</p>
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :

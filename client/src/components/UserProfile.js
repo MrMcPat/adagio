@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import UserFollow from './UserFollow'
 
 function UserProfile() {
   const [userProfile, setUserProfile] = useState([])
+  const [userFollow, setUserFollow] = useState([])
   const [userColorList, setUserColorList] = useState([])
   const [userJournalEntries, setUserJournalEntries] = useState([])
   const [userPosts, setUserPosts] = useState([])
@@ -14,6 +16,8 @@ function UserProfile() {
       setUserProfile(userData.data)
       const userEmotionData = await axios.get("/emotions")
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
+      const userFollowData = await axios.get("follows")
+      setUserFollow(userFollowData.data.filter(follow => follow.user_id === userData.data.id))
       const userJournalEntryData = await axios.get("/journal_entries")
       setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id).slice(0, 5))
       const userPostData = await axios.get("/posts")
@@ -21,6 +25,10 @@ function UserProfile() {
     }
     handleFetch()
   }, [])
+
+  function handleUnfollow(followID) {
+    setUserFollow(userFollow.filter(follow => follow.id !== followID))
+  }
 
   return (
     <div style={{textAlign: "center"}}>
@@ -32,6 +40,9 @@ function UserProfile() {
       {userColorList.map(emotion => {
       return <div key={emotion.id}><span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}</div>
     })}
+      <h2>Following</h2>
+      <span>{userFollow.length} follows</span>
+      {userFollow.map(follow => <UserFollow key={follow.id} follow={follow} onUnfollow={handleUnfollow}/>)}
       <h2>Most Recent Journal Entries</h2>
       <Link to="/userjournalentries"><button>See All Journal Entries</button></Link>
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
@@ -47,7 +58,7 @@ function UserProfile() {
       })}
       <h2>Most Recent Posts</h2>
       <Link to="/userposts"><button>See All Posts</button></Link>
-      {userPosts.length === 0 ? <p>No posts :</p>
+      {userPosts.length === 0 ? <p>No posts :(</p>
       : userPosts.map(post => {
         return <div key={post.id}>
           <Link to={`/post/${post.id}`}><h3>{post.title}</h3></Link>

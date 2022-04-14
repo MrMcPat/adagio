@@ -4,7 +4,6 @@ import Modal from "react-bootstrap/Modal"
 
 function OtherUserPlaylistSong({song, setSpotifyUri, setHide}) {
   const [userEmotions, setUserEmotions] = useState([])
-  const [inputColor, setInputColor] = useState("")
   const [inputEmotion, setInputEmotion] = useState("")
   const [show, setShow] = useState(false)
 
@@ -20,13 +19,12 @@ function OtherUserPlaylistSong({song, setSpotifyUri, setHide}) {
     handleFetch()
   }, [])
 
-    function handleClick(e) {
+    function handleClick() {
         setSpotifyUri(song.spotify_uri)
         setHide(false)
     }
 
     function handleChange(e) {
-      setInputColor(e.target.value)
       setInputEmotion(e.target.id)
     }
 
