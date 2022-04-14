@@ -49,7 +49,6 @@ function ExploreJournalEntries() {
         >
         {journalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
         </InfiniteScroll>
-
     </div>
   )
 }

@@ -22,6 +22,8 @@ import AllUserPosts from "./AllUserPosts"
 import OtherUserProfile from "./OtherUserProfile"
 import OtherUserJournalEntries from "./OtherUserJournalEntries"
 import OtherUserPosts from "./OtherUserPosts"
+import FollowedUserJournalEntries from "./FollowedUserJournalEntries"
+import FollowedUserPosts from "./FollowedUserPosts"
 
 function App() {
   const [user, setUser] = useState("")
@@ -104,6 +106,12 @@ function App() {
         </Route>
         <Route exact path="/user/:username/posts">
           <OtherUserPosts />
+        </Route>
+        <Route path="/followedjournalentries">
+          <FollowedUserJournalEntries />
+        </Route>
+        <Route path="/followedposts">
+          <FollowedUserPosts />
         </Route>
       </Switch>
     </div>
