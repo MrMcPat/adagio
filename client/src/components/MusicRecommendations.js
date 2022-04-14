@@ -37,7 +37,7 @@ function MusicRecommendations({token}) {
       )
       setUserResponses(filteredResponse)
 
-      const musixSongs = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_lyrics=${filteredResponse ? filteredResponse.emotion : ""}&page_size=10&page=${Math.floor(Math.random()*100)+1}&s_track_rating=desc&f_music_genre_id&apikey=${process.env.REACT_APP_MUSIXMATCH_API_KEY}`)
+      const musixSongs = await axios.get(`/musixmatch?emotion=${filteredResponse ? filteredResponse.emotion : ""}&page=${Math.floor(Math.random()*100)+1}&apikey=${process.env.REACT_APP_MUSIXMATCH_API_KEY}`)
       setRecTracks(musixSongs.data.message.body.track_list)
     }
     handleFetch()
