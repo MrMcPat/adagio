@@ -15,6 +15,7 @@ function UserSettings() {
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
+  const [userEmailAllow, setUserEmailAllow] = useState(null)
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -42,6 +43,7 @@ function UserSettings() {
       const userData = await axios.get("/me")
       setUserProfile(userData.data)
       setUserJournalPrivate(userData.data.journal_is_private)
+      setUserEmailAllow(userData.data.allow_email)
       const userEmotionData = await axios.get("/emotions")
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userTriggerData = await axios.get("/triggers")
@@ -87,8 +89,15 @@ function UserSettings() {
     alert("Description changed.")
     handleDescriptionClose()
   }
+  
+  function handleEmailChecked (e) {
+    setUserEmailAllow(e.target.checked)
+    axios.patch(`/users/${userProfile.id}`, {
+      allow_email: e.target.checked
+    })
+  }
 
-  function handleChecked (e) {
+  function handlePrivatedChecked (e) {
     setUserJournalPrivate(e.target.checked)
     axios.patch(`/users/${userProfile.id}`, {
       journal_is_private: e.target.checked
@@ -150,8 +159,10 @@ function UserSettings() {
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
     <button onClick={handleToken}>Refresh music player token</button><br />
+    <label> Disable others from contacting you?</label>
+    <input type="checkbox" checked={userEmailAllow || ""} onChange={handleEmailChecked} />
     <label>Private all journals?</label>
-    <input type="checkbox" checked={userJournalPrivate || ""} onChange={handleChecked}/>
+    <input type="checkbox" checked={userJournalPrivate || ""} onChange={handlePrivatedChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>

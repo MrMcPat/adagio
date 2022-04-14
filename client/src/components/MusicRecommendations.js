@@ -21,7 +21,7 @@ function MusicRecommendations({token}) {
       const emotions = await axios.get("/emotions")
       setUserEmotions(
         emotions.data.filter((emotion) => emotion.user_id === user.data.id)
-      );
+      )
 
       const responses = await axios.get("/responses")
       const currentDate =
