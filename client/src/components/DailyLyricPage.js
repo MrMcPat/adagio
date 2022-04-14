@@ -37,7 +37,6 @@ function DailyLyricPage({token}) {
     function handleChange (e) {
       setInputColor(e.target.value)
       setInputEmotion(e.target.id)
-      console.log(e.target.htmlFor)
     }
 
     function handleSubmit (e) {

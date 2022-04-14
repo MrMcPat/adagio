@@ -1,5 +1,5 @@
 class FavSong < ApplicationRecord
     belongs_to :emotion
 
-    validates :spotify_uri, uniqueness: true
+    validates :emotion_id, presence: true, uniqueness: {scope: :spotify_uri}
 end
