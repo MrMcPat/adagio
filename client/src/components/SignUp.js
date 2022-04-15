@@ -48,7 +48,6 @@ function SignUp({setUser}) {
       if (r.ok) {
         r.json().then((user) => setUser(user))
         setNext(next + 1)
-        // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
       }
     })
   }
@@ -168,7 +167,7 @@ function SignUp({setUser}) {
       <button type="submit">Add a trigger</button>
     </form>
       </>: null}
-      <button onClick={handleSkip}>Done</button>
+      {next === 3 ? <button onClick={handleSkip}>Done</button> : null}
   {next === 0 || next === 3 ? null : <button onClick={handleSkip}>Skip</button>
 }  </div>
 }

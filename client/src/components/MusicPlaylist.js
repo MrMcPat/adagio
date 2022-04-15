@@ -33,7 +33,7 @@ function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong}) {
       }
 
   return (
-    <div>
+    <div className="playlist">
         <h3><span style={{background: `${playlist.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span> {playlist.emotion}</h3>
         <button onClick={handleToggle}>Search</button>
         {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}

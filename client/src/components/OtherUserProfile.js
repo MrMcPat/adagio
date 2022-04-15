@@ -29,9 +29,9 @@ function OtherUserProfile({token}) {
             const emotionData = await axios.get("/emotions")
             setUserEmotions(emotionData.data.filter(emotion => emotion.user_id === filteredUser.id))
             const journalData = await axios.get("/journal_entries")
-            setUserJournalEntries(journalData.data.filter(entry => entry.user_id === filteredUser.id).slice(0, 5))
+            setUserJournalEntries(journalData.data.filter(entry => entry.user_id === filteredUser.id).slice(0, 3))
             const postData = await axios.get("/posts")
-            setUserPosts(postData.data.filter(post => post.user_id === filteredUser.id).slice(0, 5))
+            setUserPosts(postData.data.filter(post => post.user_id === filteredUser.id).slice(0, 3))
         }
         handleFetch()
     }, [toggle])

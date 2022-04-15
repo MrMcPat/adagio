@@ -46,20 +46,21 @@ function MusicRecommendations({token}) {
   return (
     <div style={{textAlign: "center"}}>
       {userResponse ? (
-        <>
+        <div>
           <h1>
             <span style={{background: userResponse.color}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>You are feeling {userResponse.emotion}
           </h1>
           <h3>Here are your music recommendations for today.</h3>
           {hide ? (
-            <div style={{ display: "none" }}>
+            <div style={{ display: "none" }} className="musicplayer">
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div>
           ) : (
-            <div>
+            <div className="musicplayer">
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div>
           )}
+          <div className="recommended-track-container">
           {recTracks.map((track) => (
             <RecommendedTrack
               key={track.track.track_id}
@@ -72,15 +73,17 @@ function MusicRecommendations({token}) {
               token={token}
             />
           ))}
-        </>
+          </div>
+        </div>
       ) : (
-        <>
+        <div>
           <h1>You did not choose a color today.</h1>
           <h3>Tell me how you feel today, I'll fetch some music for you.</h3>
-        </>
+        </div>
       )}
       <br />
-      <h3>Your Playlists</h3>
+      <h2>Your Playlists</h2>
+      <div className="playlists-container">
       {userEmotions.map((playlist) => (
         <MusicPlaylist
           key={playlist.id}
@@ -90,6 +93,7 @@ function MusicRecommendations({token}) {
           favedSong={favedSong}
         />
       ))}
+      </div>
     </div>
   );
 }

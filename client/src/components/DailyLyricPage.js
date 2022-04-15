@@ -69,9 +69,8 @@ function DailyLyricPage({token}) {
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
-    <Container fluid >
-      <Row>
-      <Col className="daily-lyric-container">
+      <div className="daily-lyric-page-container">
+      <div className="daily-lyric-container">
       <h1>{dailyLyric.lyric}</h1>
         <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} token={token}/>
         <p>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
@@ -89,12 +88,11 @@ function DailyLyricPage({token}) {
                 <button type="submit">Share</button>
               </form>
         : <><p>You posted for the day.</p><button onClick={handleLike}>Like song</button></>}
-      </Col>
-        <Col className="daily-lyric-responses">
+      </div>
+        <div className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response} userID={userID}/>)}
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
   )
 }
 

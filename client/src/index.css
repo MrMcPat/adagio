@@ -12,14 +12,73 @@ code {
     monospace;
 }
 
+.daily-lyric-page-container {
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .daily-lyric-container {
   width: 700px;
-  padding: 40px;
-  margin-left: 100px;
+  margin: 0 100px;
 }
 
 .daily-lyric-responses {
   width: 400px;
-  padding: 40px;
-  margin: 0 100px !important;
+  margin: 50px 100px;
+}
+
+.recommended-track-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recommended-track {
+  width: 600px;
+  font-size: 15px;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.playlists-container{
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.playlist {
+  margin: 20px 0;
+  width: 350px;
+  height: 300px;
+  overflow-y: scroll;
+  text-align: left;
+  padding: 0 50px 20px;
+}
+
+.musicplayer {
+  margin: 0 100px;
+}
+
+.user-profile-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-details {
+  margin-top: 50px;
+  width: 500px;
+}
+
+.user-recent{
+  width: 700px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.follows {
+  height: 300px;
+  overflow-y: scroll;
 }

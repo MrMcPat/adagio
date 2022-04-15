@@ -47,7 +47,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
   }
 
   return (
-    <div >
+    <div className="recommended-track">
       <span onClick={handleClick}>
         {track.track_name} by {track.artist_name} 
       </span>
