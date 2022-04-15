@@ -44,7 +44,7 @@ function MusicRecommendations({token}) {
   }, [])
 
   return (
-    <div className="music-recommendations-container">
+    <div style={{textAlign: "center"}}>
       {userResponse ? (
         <>
           <h1>

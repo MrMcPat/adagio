@@ -22,7 +22,6 @@ function NavBar({ user, setUser }) {
         <NavLink to="/">
           <h1>Adagio</h1>
         </NavLink>
-        {/* <div> */}
           {user ? (
             <>
               <div>
@@ -42,12 +41,11 @@ function NavBar({ user, setUser }) {
               </div>
             </>
           ) : (
-            <>
+            <div>
               <NavLink to="/signup">Sign Up</NavLink>
               <NavLink to="/login">Login</NavLink>
-            </>
+            </div>
           )}
-        {/* </div> */}
         </Container>
       </Navbar>
     </>

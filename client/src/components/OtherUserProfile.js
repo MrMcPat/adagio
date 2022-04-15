@@ -65,7 +65,7 @@ function OtherUserProfile({token}) {
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div>
           )}
-        {userEmotions.map(emotion => <OtherUserPlaylist key={emotion.id} emotion={emotion} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
+        {userProfile.favorite_songs_is_private ? <h3>This user's music playlist is made private.</h3> : userEmotions.map(emotion => <OtherUserPlaylist key={emotion.id} emotion={emotion} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
         <h2>Most Recent Journal Entries</h2>
       <Link to={`/user/${username}/journalentries`}><button>See All Journal Entries</button></Link>
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 

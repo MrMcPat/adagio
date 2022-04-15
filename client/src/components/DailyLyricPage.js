@@ -69,7 +69,7 @@ function DailyLyricPage({token}) {
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
-    <Container fluid className="daily-lyric-page">
+    <Container fluid >
       <Row>
       <Col className="daily-lyric-container">
       <h1>{dailyLyric.lyric}</h1>
@@ -78,7 +78,7 @@ function DailyLyricPage({token}) {
         {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>
                 <input placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
-                {userEmotions.map(emotion => {
+                {userEmotions.length === 0 ? <p>You don't have any colors, please add some.</p> :userEmotions.map(emotion => {
                   return (
                     <div key={emotion.id}>
                       <label  htmlFor={emotion.id} style={{background: `${emotion.color}`}}>{emotion.emotion}</label>

@@ -6,6 +6,7 @@ import UserPostSettings from './UserPostSettings'
 import Modal from "react-bootstrap/Modal"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
+import placeholder from "../placeholder_img.png"
 
 function UserSettings() {
   const [userProfile, setUserProfile] = useState([])
@@ -15,7 +16,7 @@ function UserSettings() {
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
-  const [userEmailAllow, setUserEmailAllow] = useState(null)
+  const [userMusicPrivate, setUserMusicPrivate] = useState(null)
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -43,7 +44,7 @@ function UserSettings() {
       const userData = await axios.get("/me")
       setUserProfile(userData.data)
       setUserJournalPrivate(userData.data.journal_is_private)
-      setUserEmailAllow(userData.data.allow_email)
+      setUserMusicPrivate(userData.data.favorite_songs_is_private)
       const userEmotionData = await axios.get("/emotions")
       setUserColorList(userEmotionData.data.filter(emotion => emotion.user_id === userData.data.id))
       const userTriggerData = await axios.get("/triggers")
@@ -90,10 +91,10 @@ function UserSettings() {
     handleDescriptionClose()
   }
   
-  function handleEmailChecked (e) {
-    setUserEmailAllow(e.target.checked)
+  function handleMusicChecked (e) {
+    setUserMusicPrivate(e.target.checked)
     axios.patch(`/users/${userProfile.id}`, {
-      allow_email: e.target.checked
+      favorite_songs_is_private: e.target.checked
     })
   }
 
@@ -154,14 +155,14 @@ function UserSettings() {
     <span>Username: {userProfile.username}</span>
     <button onClick={handleUsernameShow}>Change Username</button> <br />
     <UserAccountSettings />
-    <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
+    <img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
     <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
     <button onClick={handleToken}>Refresh music player token</button><br />
-    <label> Disable others from contacting you?</label>
-    <input type="checkbox" checked={userEmailAllow || ""} onChange={handleEmailChecked} />
-    <label>Private all journals?</label>
+    <label>Private your music playlists?</label>
+    <input type="checkbox" checked={userMusicPrivate || ""} onChange={handleMusicChecked} />
+    <label>Private all journal entries?</label>
     <input type="checkbox" checked={userJournalPrivate || ""} onChange={handlePrivatedChecked}/>
     <p>Your colors:</p>
     {userColorList.map(emotion => {
