@@ -30,7 +30,7 @@ function FollowedUserJournalEntries() {
 
   return (
     <div style={{textAlign: "center"}}>
-      <h3>Follow journal entries</h3>
+      <h3>Followed journal entries</h3>
       <form onSubmit={handleSearch}>
       <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
       <button type="submit">Search</button>

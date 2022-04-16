@@ -9,6 +9,15 @@ function MusicPlayer({spotifyUri, token}) {
         token={token}
         uris={[spotifyUri]}
         autoPlay={false}
+        styles={{
+          activeColor: '#fff',
+          bgColor: 'transparent',
+          color: '#fff',
+          loaderColor: '#fff',
+          sliderColor: '#1cb954',
+          trackArtistColor: '#ccc',
+          trackNameColor: '#fff',
+        }}
       />
     </div>
   )

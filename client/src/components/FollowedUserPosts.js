@@ -31,7 +31,7 @@ function FollowedUserPosts() {
 
   return (
     <div style={{textAlign: "center"}}>
-        <Link to="/newpost"><button>Create new post</button></Link>
+        <h3>Followed Posts</h3>
         <form onSubmit={handleSearch}>
         <input type="search" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
         <button type="submit">Search</button>

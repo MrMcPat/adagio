@@ -47,6 +47,7 @@ return (
       return <div key={entry.id}>
         <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
         <p>{entry.is_private || userProfile.journal_is_private ? "Marked as private" : "Public"}</p>
+        <p>{`${entry.body.substring(0, 100)}...`}</p>
         <p>{entry.created_at === entry.updated_at ? 
         `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
         `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>

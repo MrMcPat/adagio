@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 function ExploreJournalEntries() {
   const [journalEntries, setJournalEntries] = useState([])
   const [allJournalEntries, setAllJournalEntries] = useState([])
-  const [count, setCount] = useState(2)
+  const [count, setCount] = useState(6)
   const [input, setInput] = useState("")
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function ExploreJournalEntries() {
   }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>Explore journal entries</h3>
       <form onSubmit={handleSearch}>
       <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
@@ -44,10 +44,12 @@ function ExploreJournalEntries() {
       </form>
       <InfiniteScroll
         dataLength={journalEntries.length}
-        next={() => setCount(count + 2)} 
+        next={() => setCount(count + 6)} 
         hasMore={true}
         >
-        {journalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
+          <div className="journal-entries-container">
+          {journalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
+          </div>
         </InfiniteScroll>
     </div>
   )

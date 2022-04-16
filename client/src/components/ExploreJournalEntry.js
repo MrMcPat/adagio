@@ -37,15 +37,18 @@ function ExploreJournalEntry({entry}) {
     }
 
   return (
-    <>
-        <Link to={`/journalentry/${entry.id}`}><span>{entry.title}</span></Link><span> by <Link to={`/user/${entry.user.username}`}>{entry.user.username}</Link></span>
-        <p>{entry.body}</p>
+    <div className="journal-entry">
+        <h5><Link to={`/journalentry/${entry.id}`} style={{textDecoration: "none", color: "white"}}><span>{entry.title}</span></Link></h5>
+        <div className="journal-entry-body">
+        <p>{`${entry.body.substring(0, 100)}...`}</p>
         <p>{entry.is_private || entry.user.journal_is_private ? "Marked as private" : "Public"}</p>
           <p>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-         <p><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
-    </>
+         <p><span><Link to={`/user/${entry.user.username}`} style={{textDecoration: "none", color: "gray"}}>{entry.user.username}   </Link></span><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
+
+        </div>
+    </div>
   )
 }
 
