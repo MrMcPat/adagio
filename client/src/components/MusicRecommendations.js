@@ -53,9 +53,7 @@ function MusicRecommendations({token}) {
           <h1>Today's chosen color&nbsp;
           <OverlayTrigger
           placement="top"
-          overlay={<Tooltip style={{fontSize: "15px"}}>
-          {userResponse.emotion}
-          </Tooltip>}
+          overlay={<Tooltip style={{fontSize: "15px"}}>{userResponse.emotion}</Tooltip>}
           >
           <span style={{background: userResponse.color, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </OverlayTrigger>

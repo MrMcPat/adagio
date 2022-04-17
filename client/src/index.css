@@ -127,6 +127,7 @@ code {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 200vh;
+  height: 100vh;
 }
 
 .recommended-track-container {
@@ -148,6 +149,8 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  height: 48vh;
+  overflow-y: scroll;
 }
 
 .playlist {

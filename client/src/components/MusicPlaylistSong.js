@@ -3,7 +3,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons"
-import { faCircleMinus } from "@fortawesome/free-solid-svg-icons"
+import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
 
 function MusicPlaylistSong({song, setSpotifyUri, setHide, onDelete, play, setPlay}) {
 
@@ -27,7 +27,7 @@ function MusicPlaylistSong({song, setSpotifyUri, setHide, onDelete, play, setPla
       >
         <div>
         <span onClick={handleClick} style={{cursor: "pointer"}}>{song.song_name === play ? <FontAwesomeIcon icon={faVolumeHigh} color="#1cb954"/> : null} {`${song.song_name} by ${song.artist_name}`.length > 20 ? `${song.song_name} by ${song.artist_name}`.substring(0, 20) + "..." : `${song.song_name} by ${song.artist_name}`}</span>
-        <button onClick={handleDelete} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faCircleMinus} color="#B20600"/></button>
+        <button onClick={handleDelete} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
         </div>
       </OverlayTrigger>
     </div>
