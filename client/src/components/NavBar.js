@@ -55,7 +55,7 @@ function NavBar({ user, setUser }) {
         </Container>
       </Navbar>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end" style={{background: "black"}}>
+      <Offcanvas show={show} onHide={handleClose} placement="end" style={{background: "#191919"}}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title><img src={userProfile.profile_picture} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
         </Offcanvas.Header>

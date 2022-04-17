@@ -40,7 +40,9 @@ function FollowedUserJournalEntries() {
         next={() => setCount(count + 2)} 
         hasMore={true}
         >
-        {userJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
+          <div className="journal-entries-container">
+          {userJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
+          </div>
         </InfiniteScroll>
     </div>
   )

@@ -6,7 +6,8 @@ body {
     font-family: 'Gothic A1', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: grey !important;
+  color: white !important;
+  background: black !important;
 }
 
 code {
@@ -15,27 +16,28 @@ code {
 }
 
 .navbar {
-  background: black !important;
+  background: transparent !important;
   height: 80px !important;
 }
 
 .daily-lyric-page-container {
   display: flex;
-  /* margin-top: 50px; */
+  margin-top: -80px;
   justify-content: center;
   flex-wrap: wrap;
   background-image: url(dailylyricpage.png);
   background-position: center;
-  height: 90vh;
+  height: 100vh;
 }
 
 .daily-lyric-container {
-  padding-top: 100px;
+  padding-top: 150px;
   width: 700px;
   margin: 0 100px;
 }
 
 .daily-lyric-responses {
+  padding-top: 100px;
   width: 400px;
   margin: 50px 100px;
 }
@@ -95,41 +97,45 @@ code {
 }
 
 .explore-page-container {
-  /* background-image: url(explorepage.png); */
-  background: white;
+  background-image: url(explorejournalpage.png);
+  background-size: 1500px;
+  /* background: black; */
   background-position: center;
-  height: 91vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-top: -80px;
+  padding-top: 80px;
+  background-position: center;
 }
 
 .journal-entries-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 81vh;
-  overflow-y: scroll;
 }
 
 .journal-entry {
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(10px);
   padding-top: 15px;
   border-radius: 5%;
   margin: 30px;
   width: 400px;
-  box-shadow: 12.5px 12.5px 1px 1px rgb(193, 191, 191);
-  background: rgb(0, 0, 0);
+  box-shadow: 5px 5px 1px 1px rgb(67, 66, 66);
+  /* background: rgb(98, 96, 96); */
 }
 
 .journal-entry-body {
   padding: 10px;
   height: 200px;
-  width: 400px;
+
   border-radius: 0 0 5% 5%;
   background: white;
+  color: grey;
+  opacity: 85%;
 }
 
 .journal-entry h5 {
   font-weight: bolder;
-  color: white;
   font-variant: small-caps;
   letter-spacing: 2px;
 }
