@@ -50,14 +50,14 @@ function MusicRecommendations({token}) {
     <div style={{textAlign: "center"}} className="music-recommendations-page">
       {userResponse ? (
         <div>
-          <h1>
+          <h1>Today's chosen color&nbsp;
           <OverlayTrigger
-        placement="top"
-        overlay={<Tooltip style={{fontSize: "15px"}}>
-        {userResponse.emotion}
-        </Tooltip>}
-        >
-            <span>Today's chosen color <span style={{background: userResponse.color, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          placement="top"
+          overlay={<Tooltip style={{fontSize: "15px"}}>
+          {userResponse.emotion}
+          </Tooltip>}
+          >
+          <span style={{background: userResponse.color, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </OverlayTrigger>
           </h1>
           <h3>Here are your music recommendations for today.</h3>

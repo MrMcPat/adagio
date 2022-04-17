@@ -45,7 +45,7 @@ function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong, play, setPl
         {playlist.emotion}
         </Tooltip>}
         >
-            <span style={{background: `${playlist.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            <span style={{background: `${playlist.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
             </OverlayTrigger>
             </h3>
         <button onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
