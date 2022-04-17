@@ -21,26 +21,32 @@ function Login({setUser}) {
     }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="login-container">
         <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label htmlFor="email">Email</label>
+        <h1>Welcome back!</h1>
+        <div className="login-input">
+        <label htmlFor="email" style={{fontSize: "20px", letterSpacing: "4px"}}>email</label><br />
         <input
           type="text"
           id="email"
           autoComplete="off"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="text-box"
         />
-        <label htmlFor="password">Password</label>
+        </div>
+        <div className="login-input">
+        <label htmlFor="password" style={{fontSize: "20px", letterSpacing: "4px"}}>password</label><br />
         <input
           type="password"
           id="password"
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          className="text-box"
         />
-        <button type="submit">Login</button>
+        </div>
+        <button type="submit" className="login-input" style={{height: "75px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>login</button>
       </form>
     </div>
   )

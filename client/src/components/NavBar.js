@@ -5,14 +5,19 @@ import Container from "react-bootstrap/Container"
 import Offcanvas from "react-bootstrap/Offcanvas"
 import { NavLink, useHistory } from "react-router-dom"
 import rightsidebarbutton from "../rightsidebarbutton.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 
 function NavBar({ user, setUser }) {
   const [show, setShow] = useState(false)
+  const [show2, setShow2] = useState(false)
   const [userProfile, setUserProfile] = useState([])
   let history = useHistory()
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const handleClose2 = () => setShow2(false)
+  const handleShow2 = () => setShow2(true)
 
   useEffect(() => {
     async function handleFetch() {
@@ -27,7 +32,7 @@ function NavBar({ user, setUser }) {
       if (r.ok) {
         setUser(null)
         history.push("/")
-        handleClose()
+        handleClose2()
       }
     })
   }
@@ -36,39 +41,43 @@ function NavBar({ user, setUser }) {
     <>
       <Navbar height="20" className="navbar">
         <Container style={{paddingTop: "20px"}}>
-        <NavLink to="/" style={{textDecoration: "none"}}>
-          <h1>adagio</h1>
-        </NavLink>
+          <div>
+          {user ? <button onClick={handleShow} style={{background: "none", border: "none", color: "white"}}><FontAwesomeIcon icon={faBars} style={{fontSize: "30px"}} /></button> : null}
+        <NavLink to="/" style={{textDecoration: "none"}}><span style={{fontSize: "40px", textShadow: "2px 2px grey", textDecoration: "none", color: "white"}}>adagio</span></NavLink>        
+          </div>
           {user ? (
-            <>
-              <div>
-
-              <button onClick={handleShow} style={{background: "none", border: "none"}}><img src={rightsidebarbutton} style={{width: "35px"}} /></button>
-              </div>
-            </>
+              <button onClick={handleShow2} style={{background: "none", border: "none"}}><img src={rightsidebarbutton} style={{width: "35px"}} /></button>
           ) : (
             <div>
-              <NavLink to="/signup">Sign Up</NavLink>
-              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/signup" style={{fontSize: "20px", textShadow: "1px 1px grey", textDecoration: "none", color: "white", margin: "10px"}}>Sign Up</NavLink>
+              <NavLink to="/login" style={{fontSize: "20px", textShadow: "1px 1px grey", textDecoration: "none", color: "white", margin: "10px"}}>Login</NavLink>
             </div>
           )}
         </Container>
       </Navbar>
 
-      <Offcanvas show={show} onHide={handleClose} placement="end" style={{background: "#191919"}}>
+      <Offcanvas show={show} onHide={handleClose} placement="start" style={{background: "#191919"}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><img src={userProfile.profile_picture} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
+          <Offcanvas.Title><NavLink to="/" style={{textDecoration: "none"}}><span style={{fontSize: "40px"}}>adagio</span></NavLink></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <NavLink to="/dailylyric"><p onClick={handleClose}>Daily Lyric</p></NavLink>
           <NavLink to="/musicrecommendations"><p onClick={handleClose}>Music Recommendations</p></NavLink>
-          <NavLink to="/userprofile"><p onClick={handleClose}>User Profile</p></NavLink>
-          <NavLink to="/usersettings"><p onClick={handleClose}>User Settings</p></NavLink>
           <NavLink to="/forumposts"><p onClick={handleClose}>Forums</p></NavLink>
           <NavLink to="/journalentries"><p onClick={handleClose}>Explore Journal Entries</p></NavLink>
-          <NavLink to="/newjournalentry"><p onClick={handleClose}>+Create journal entry</p></NavLink>
           <NavLink to="/followedjournalentries"><p onClick={handleClose}>Followed Journal Entries</p></NavLink>
           <NavLink to="/followedposts"><p onClick={handleClose}>Followed Posts</p></NavLink>
+        </Offcanvas.Body>
+      </Offcanvas>
+
+      <Offcanvas show={show2} onHide={handleClose2} placement="end" style={{background: "#191919"}}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title><img src={userProfile.profile_picture} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <NavLink to="/userprofile"><p onClick={handleClose2}>User Profile</p></NavLink>
+          <NavLink to="/usersettings"><p onClick={handleClose2}>User Settings</p></NavLink>
+          <NavLink to="/journalentries"><p onClick={handleClose2}>Explore Journal Entries</p></NavLink>
           <button onClick={handleLogoutClick}>Logout</button>
         </Offcanvas.Body>
       </Offcanvas>

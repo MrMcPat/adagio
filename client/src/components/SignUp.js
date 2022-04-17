@@ -114,62 +114,87 @@ function SignUp({setUser}) {
       window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
   }
 
-  return <div style={{textAlign: "center"}}>
+  return <div style={{textAlign: "center"}} className="signup-container">
       {next === 0 ? <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <label htmlFor="username">Username</label>
-        <input type="text" id="username" autoComplete="off" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password"/>
-        <label htmlFor="password">Password Confirmation</label>
-        <input type="password" id="password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} autoComplete="current-password"/>
-        <button type="submit">Sign Up</button>
+        <div className="signup-input">
+        <label htmlFor="email" style={{fontSize: "15px", letterSpacing: "4px"}}>email</label><br />
+        <input type="text" className="text-box" id="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        </div>
+        <div className="signup-input">
+        <label htmlFor="username" style={{fontSize: "15px", letterSpacing: "4px"}}>username</label><br />
+        <input type="text" className="text-box" id="username" autoComplete="off" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        </div>
+        <div className="signup-input">
+        <label htmlFor="password" style={{fontSize: "15px", letterSpacing: "4px"}}>password</label><br />
+        <input type="password" className="text-box" id="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password"/>
+        </div>
+        <div className="signup-input" style={{fontSize: "15px", letterSpacing: "4px"}}>
+        <label htmlFor="password">confirm password</label><br />
+        <input type="password" className="text-box" id="password_confirmation" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} autoComplete="current-password"/>
+        </div>
+        <button type="submit" className="signup-input" style={{height: "50px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>sign up</button>
       </form> : null}
-      {next === 1 ? <form onSubmit={handleSubmitBio}>
-        <h1>Tell us a little about yourself.</h1>
-        <label htmlFor="firstname">First Name</label>
-        <input type="text" id="firstname" autoComplete="off" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
-        <label htmlFor="lastname">Last Name</label>
-        <input type="text" id="lastname" autoComplete="off" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-        <label htmlFor="description">A small bio of yourself</label>
-        <textarea rows="10" cols="100" style={{resize: "none"}} value={description} onChange={e => setDescription(e.target.value)}></textarea><br />
-        <button type="submit">Next</button>
-      </form>: null}
-      {next === 2 ? 
+      {next === 1 ? 
       <>
-        <h1>Choose your emotions...</h1>
+        <form onSubmit={handleSubmitBio}>
+        <h1>Tell us about yourself</h1>
+        <div className="signup-input">
+        <label htmlFor="firstname" style={{fontSize: "15px", letterSpacing: "4px"}}>first name</label><br />
+        <input type="text" className="text-box" id="firstname" autoComplete="off" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+        </div>
+        <div className="signup-input">
+        <label htmlFor="lastname" style={{fontSize: "15px", letterSpacing: "4px"}}>last name</label><br />
+        <input type="text" className="text-box" id="lastname" autoComplete="off" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+        </div>
+        <div className="signup-input" style={{height: "200px"}}>
+        <label htmlFor="description" style={{fontSize: "15px", letterSpacing: "4px"}}>a small bio of yourself</label>
+        <textarea rows="5" cols="50" style={{resize: "none", opacity: "60%"}} value={description} onChange={e => setDescription(e.target.value)}></textarea><br />
+        </div>
+        <button className="signup-input" style={{height: "50px", width:"200px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}} onClick={handleSkip}>Skip</button>
+        <button className="signup-input" style={{height: "50px", width:"200px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}} type="submit">Next</button>
+      </form>
+      </>
+      : null}
+      {next === 2 ? 
+      <div>
+        <h1>Choose your emotions...</h1><br />
+        <div>
         {userColorList.map(emotion => {
             return <div key={emotion.id}>
-              <span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}
+              <span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{emotion.emotion}</span>
               <button value={emotion.id} onClick={handleEmotionDelete}>Delete</button>
               </div>
           })}
+        </div>
           <form onSubmit={handleEmotionSubmit}>
-          <input value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
-          <input type="color" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
-          <button type="submit">Add a color</button>
+          <input className="text-box" value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
+          <input type="color" className="color-picker" value={userColor} onChange={e => setUserColor(e.target.value)}></input><br />
+          <button type="submit" className="signup-input" style={{height: "40px", width:"200px", border: "none", color: "white",fontSize: "15px", letterSpacing: "4px"}}>Add a color</button><br />
+          <button onClick={handleSkip} className="signup-input" style={{height: "50px", width:"150px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>Skip</button>
+          <button onClick={handleNext} className="signup-input" style={{height: "50px", width:"150px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>Next</button>
           </form>
-          <button onClick={handleNext}>Next</button>
-        </>: null}
+        </div>: null}
       {next === 3 ?
-      <>
+      <div>
       <h3>You're almost set! One last thing...do you have any trigger words?(You don't have to list them if you don't want to)</h3>
-    {userTriggerList.map(trigger => {
+      <div>
+      {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
-        <span>{trigger.trigger}</span>
+        <span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{trigger.trigger}</span>
         <button value={trigger.id} onClick={handleTriggerDelete}>Delete</button>
         </div>
     })}
+      </div>
     <form onSubmit={handleTriggerSubmit}>
-      <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
-      <button type="submit">Add a trigger</button>
+      <input className="text-box" value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
+      <button type="submit" className="signup-input" style={{height: "40px", width:"200px", border: "none", color: "white",fontSize: "15px", letterSpacing: "4px"}}>Add a trigger</button><br />
+      <button onClick={handleSkip} className="signup-input" style={{height: "50px", width:"150px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>Done</button>
     </form>
-      </>: null}
-      {next === 3 ? <button onClick={handleSkip}>Done</button> : null}
-  {next === 0 || next === 3 ? null : <button onClick={handleSkip}>Skip</button>
-}  </div>
+      </div>: null}
+      {/* {next === 3 ? <button onClick={handleSkip}>Done</button> : null} */}
+  {/* {next === 0 || next === 3 ? null : <button onClick={handleSkip}>Skip</button>}   */}
+  </div>
 }
 
 export default SignUp

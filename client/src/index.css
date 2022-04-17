@@ -20,6 +20,84 @@ code {
   height: 80px !important;
 }
 
+.text-box {
+  background: transparent;
+  border-width: 0 0 2px;
+  border-color: white;
+  outline: none;
+  color: white;
+  font-size: 20px;
+  text-shadow: 2px 2px grey;
+}
+
+.color-picker {
+  background: transparent;
+  border: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+}
+
+.color-picker::-webkit-color-swatch {
+  border-radius: 50%;
+  border: 3px solid rgba(26, 25, 25, 0.2);
+}
+
+.login-container {
+  margin-top: -80px;
+  padding-top: 180px;
+  background-image: url(loginpage.png);
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.login-container h1{
+  letter-spacing: 5px;
+  font-weight: bolder;
+  text-shadow: 2px 2px grey;
+}
+
+.login-input{
+  background: linear-gradient(rgba(26, 25, 25, 0.2), rgba(26, 25, 25, 0.2));
+  height: 100px;
+  width: 500px;
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  text-shadow: 2px 2px grey;
+  border-radius: 20px;
+}
+
+.signup-container {
+  margin-top: -80px;
+  padding-top: 120px;
+  background-image: url(signuppage.png);
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.signup-container h1{
+  letter-spacing: 5px;
+  font-weight: bolder;
+  text-shadow: 2px 2px grey;
+}
+
+.signup-input{
+  background: linear-gradient(rgba(26, 25, 25, 0.2), rgba(26, 25, 25, 0.2));
+  backdrop-filter: blur(5px);
+  height: 75px;
+  width: 500px;
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  text-shadow: 2px 2px grey;
+  border-radius: 20px;
+}
+
 .daily-lyric-page-container {
   display: flex;
   margin-top: -80px;
@@ -98,40 +176,40 @@ code {
 
 .explore-page-container {
   background-image: url(explorejournalpage.png);
-  background-size: 1500px;
-  /* background: black; */
+  background-size: 200vh;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin-top: -80px;
   padding-top: 80px;
   background-position: center;
+  height: 100vh;
 }
 
 .journal-entries-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 80vh;
 }
 
 .journal-entry {
   backdrop-filter: blur(10px);
   padding-top: 15px;
-  border-radius: 5%;
+  border-radius: 5px;
   margin: 30px;
+  height: 298px;
   width: 400px;
-  box-shadow: 5px 5px 1px 1px rgb(67, 66, 66);
-  /* background: rgb(98, 96, 96); */
+  box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .journal-entry-body {
   padding: 10px;
-  height: 200px;
-
-  border-radius: 0 0 5% 5%;
+  height: 250px;
+  border-radius: 0 0 5px 5px;
   background: white;
   color: grey;
-  opacity: 85%;
+  opacity: 80%;
 }
 
 .journal-entry h5 {
