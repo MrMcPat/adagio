@@ -27,7 +27,6 @@ code {
   outline: none;
   color: white;
   font-size: 20px;
-  text-shadow: 2px 2px grey;
 }
 
 .color-picker {
@@ -120,6 +119,16 @@ code {
   margin: 50px 100px;
 }
 
+.music-recommendations-page {
+  margin-top: -80px;
+  padding-top: 80px;
+  background-image: url(musicrecommendationpage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 200vh;
+}
+
 .recommended-track-container {
   display: flex;
   justify-content: center;
@@ -128,6 +137,7 @@ code {
 
 .recommended-track {
   width: 600px;
+  overflow: hidden;
   font-size: 15px;
   text-align: left;
   padding: 0 20px;

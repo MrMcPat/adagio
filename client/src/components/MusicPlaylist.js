@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import MusicPlaylistSong from './MusicPlaylistSong'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
-function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong}) {
+function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong, play, setPlay}) {
     const [favSongList, setFavSongList] = useState([])
     const [toggle, setToggle] = useState(false)
 
@@ -35,10 +37,11 @@ function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong}) {
   return (
     <div className="playlist">
         <h3><span style={{background: `${playlist.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span> {playlist.emotion}</h3>
-        <button onClick={handleToggle}>Search</button>
-        {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
-        {favSongList.length === 0 ? <p>No songs :(</p>
-        : favSongList.map(song => <MusicPlaylistSong key={song.id} song={song} setSpotifyUri={setSpotifyUri} setHide={setHide} onDelete={handleDelete}/>)}
+        <button onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+        {toggle ? <input placeholder="Search playlist" onChange={handleSearch} style={{fontSize: "15px"}} className="text-box"/> : null}
+        {favSongList.length === 0 ?<p>No songs :(</p>
+        : 
+        favSongList.map(song => <MusicPlaylistSong key={song.id} song={song} setSpotifyUri={setSpotifyUri} setHide={setHide} onDelete={handleDelete} play={play} setPlay={setPlay}/>)}
     </div>
   )
 }

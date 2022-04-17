@@ -77,7 +77,7 @@ function NavBar({ user, setUser }) {
         <Offcanvas.Body>
           <NavLink to="/userprofile"><p onClick={handleClose2}>User Profile</p></NavLink>
           <NavLink to="/usersettings"><p onClick={handleClose2}>User Settings</p></NavLink>
-          <NavLink to="/journalentries"><p onClick={handleClose2}>Explore Journal Entries</p></NavLink>
+          <NavLink to="/newjournalentry"><p onClick={handleClose2}>+Write new journal entry</p></NavLink>
           <button onClick={handleLogoutClick}>Logout</button>
         </Offcanvas.Body>
       </Offcanvas>

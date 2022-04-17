@@ -12,6 +12,7 @@ function MusicRecommendations({token}) {
   const [spotifyUri, setSpotifyUri] = useState("spotify:track:64FzSxCxQ0cBlktqiMQBey")
   const [hide, setHide] = useState(true)
   const [favedSong, setFavedSong] = useState([])
+  const [play, setPlay] = useState("")
 
   useEffect(() => {
     async function handleFetch() {
@@ -44,7 +45,7 @@ function MusicRecommendations({token}) {
   }, [])
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="music-recommendations-page">
       {userResponse ? (
         <div>
           <h1>
@@ -71,6 +72,8 @@ function MusicRecommendations({token}) {
               userID={userID}
               setFavedSong={setFavedSong}
               token={token}
+              play={play}
+              setPlay={setPlay}
             />
           ))}
           </div>
@@ -91,6 +94,8 @@ function MusicRecommendations({token}) {
           setSpotifyUri={setSpotifyUri}
           setHide={setHide}
           favedSong={favedSong}
+          play={play}
+          setPlay={setPlay}
         />
       ))}
       </div>
