@@ -3,6 +3,8 @@ import axios from "axios"
 import RecommendedTrack from "./RecommendedTrack"
 import MusicPlaylist from "./MusicPlaylist"
 import MusicPlayer from "./MusicPlayer"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
 
 function MusicRecommendations({token}) {
   const [userID, setUserID] = useState("")
@@ -49,7 +51,14 @@ function MusicRecommendations({token}) {
       {userResponse ? (
         <div>
           <h1>
-            <span style={{background: userResponse.color}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>You are feeling {userResponse.emotion}
+          <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip style={{fontSize: "15px"}}>
+        {userResponse.emotion}
+        </Tooltip>}
+        >
+            <span>Today's chosen color <span style={{background: userResponse.color, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+          </OverlayTrigger>
           </h1>
           <h3>Here are your music recommendations for today.</h3>
           {hide ? (

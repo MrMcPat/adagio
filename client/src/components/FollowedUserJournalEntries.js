@@ -29,7 +29,7 @@ function FollowedUserJournalEntries() {
   }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>Followed journal entries</h3>
       <form onSubmit={handleSearch}>
       <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>

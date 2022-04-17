@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import MusicPlaylistSong from './MusicPlaylistSong'
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
@@ -36,12 +38,20 @@ function MusicPlaylist({playlist, setSpotifyUri, setHide, favedSong, play, setPl
 
   return (
     <div className="playlist">
-        <h3><span style={{background: `${playlist.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span> {playlist.emotion}</h3>
+        <h3 style={{textAlign: "center"}}>
+        <OverlayTrigger
+        placement="top"
+        overlay={<Tooltip style={{fontSize: "15px"}}>
+        {playlist.emotion}
+        </Tooltip>}
+        >
+            <span style={{background: `${playlist.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+            </OverlayTrigger>
+            </h3>
         <button onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
         {toggle ? <input placeholder="Search playlist" onChange={handleSearch} style={{fontSize: "15px"}} className="text-box"/> : null}
         {favSongList.length === 0 ?<p>No songs :(</p>
-        : 
-        favSongList.map(song => <MusicPlaylistSong key={song.id} song={song} setSpotifyUri={setSpotifyUri} setHide={setHide} onDelete={handleDelete} play={play} setPlay={setPlay}/>)}
+        : favSongList.map(song => <MusicPlaylistSong key={song.id} song={song} setSpotifyUri={setSpotifyUri} setHide={setHide} onDelete={handleDelete} play={play} setPlay={setPlay}/>)}
     </div>
   )
 }
