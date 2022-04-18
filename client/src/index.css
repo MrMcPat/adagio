@@ -113,10 +113,43 @@ code {
   margin: 0 100px;
 }
 
+.color-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radio-toolbar {
+  padding: 5px;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  border: 5px solid rgba(26, 25, 25, 0.2) !important;
+}
+
 .daily-lyric-responses {
   padding-top: 100px;
   width: 400px;
   margin: 50px 100px;
+  overflow-y: scroll;
+}
+
+.responses {
+  font-size: 20px;
+}
+
+.response-input{
+  background: linear-gradient(rgba(26, 25, 25, 0.2), rgba(26, 25, 25, 0.2));
+  backdrop-filter: blur(5px);
+  height: 75px;
+  width: 200px;
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 4px;
 }
 
 .music-recommendations-page {
@@ -148,7 +181,7 @@ code {
   margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   height: 48vh;
   overflow-y: scroll;
 }
@@ -228,10 +261,20 @@ code {
   opacity: 80%;
 }
 
+.journal-entry-body button {
+  border: none;
+  background: transparent;
+}
+
 .journal-entry h5 {
   font-weight: bolder;
   font-variant: small-caps;
   letter-spacing: 2px;
+}
+
+.journal-page button{
+  border: none;
+  background: transparent;
 }
 
 .user-settings-container {
@@ -243,9 +286,11 @@ code {
 }
 
 .user-settings-menu {
-  width: 100px;
+  width: 200px;
+  cursor: pointer;
 }
 
 .user-settings {
-  width: 300px;
+  width: 500px;
+  text-align: left;
 }

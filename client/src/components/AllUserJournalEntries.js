@@ -40,7 +40,7 @@ function AllUserJournalEntries() {
         hasMore={true}
         >
           <div className="journal-entries-container">
-          {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
+        {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id} className="journal-entry">
           <Link to={`/journalentry/${entry.id}`}><h5>{entry.title}</h5></Link>

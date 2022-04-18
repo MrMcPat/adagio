@@ -74,7 +74,7 @@ function handleIsPrivate(e){
 
   if (!journalEntry.user) return null
 
-  return <div style={{textAlign: "center"}}>
+  return <div style={{textAlign: "center"}} className="journal-page">
     {userID === journalEntry.user_id ?
     <>
     <h3>{journalEntry.title}</h3>

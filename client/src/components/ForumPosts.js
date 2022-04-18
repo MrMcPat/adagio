@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Link } from "react-router-dom"
 import ForumPost from './ForumPost'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 function ForumPosts() {
     const [userID, setUserID] = useState([])
@@ -40,8 +42,8 @@ function ForumPosts() {
     <div style={{textAlign: "center"}}>
         <Link to="/newpost"><button>Create new post</button></Link>
         <form onSubmit={handleSearch}>
-        <input type="search" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
-        <button type="submit">Search</button>
+        <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
+        <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
         </form>
         <InfiniteScroll
         dataLength={forumPosts.length}

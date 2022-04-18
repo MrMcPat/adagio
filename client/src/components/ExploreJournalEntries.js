@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import ExploreJournalEntry from './ExploreJournalEntry'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 function ExploreJournalEntries() {
   const [journalEntries, setJournalEntries] = useState([])
@@ -39,8 +41,8 @@ function ExploreJournalEntries() {
     <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>Explore journal entries</h3>
       <form onSubmit={handleSearch}>
-      <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
-      <button type="submit">Search</button>
+      <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
+      <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
       </form>
       <InfiniteScroll
         dataLength={journalEntries.length}
@@ -48,7 +50,7 @@ function ExploreJournalEntries() {
         hasMore={true}
         >
           <div className="journal-entries-container">
-          {allJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
+          {journalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}
           </div>
         </InfiniteScroll>
     </div>

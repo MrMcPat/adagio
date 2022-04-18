@@ -58,15 +58,15 @@ function NavBar({ user, setUser }) {
 
       <Offcanvas show={show} onHide={handleClose} placement="start" style={{background: "#191919"}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><NavLink to="/" style={{textDecoration: "none"}}><span style={{fontSize: "40px"}}>adagio</span></NavLink></Offcanvas.Title>
+          <Offcanvas.Title><NavLink to="/" style={{textDecoration: "none", color: "white", textDecoration: "none"}}><span style={{fontSize: "40px"}}>adagio</span></NavLink></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <NavLink to="/dailylyric"><p onClick={handleClose}>Daily Lyric</p></NavLink>
-          <NavLink to="/musicrecommendations"><p onClick={handleClose}>Music Recommendations</p></NavLink>
-          <NavLink to="/forumposts"><p onClick={handleClose}>Forums</p></NavLink>
-          <NavLink to="/journalentries"><p onClick={handleClose}>Explore Journal Entries</p></NavLink>
-          <NavLink to="/followedjournalentries"><p onClick={handleClose}>Followed Journal Entries</p></NavLink>
-          <NavLink to="/followedposts"><p onClick={handleClose}>Followed Posts</p></NavLink>
+          <NavLink to="/dailylyric" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Daily Lyric</p></NavLink>
+          <NavLink to="/musicrecommendations" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Music Recommendations</p></NavLink>
+          <NavLink to="/forumposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Forums</p></NavLink>
+          <NavLink to="/followedposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Followed Posts</p></NavLink>
+          <NavLink to="/journalentries" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Explore Journal Entries</p></NavLink>
+          <NavLink to="/followedjournalentries" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Followed Journal Entries</p></NavLink>
         </Offcanvas.Body>
       </Offcanvas>
 
@@ -75,9 +75,10 @@ function NavBar({ user, setUser }) {
           <Offcanvas.Title><img src={userProfile.profile_picture} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <NavLink to="/userprofile"><p onClick={handleClose2}>User Profile</p></NavLink>
-          <NavLink to="/usersettings"><p onClick={handleClose2}>User Settings</p></NavLink>
-          <NavLink to="/newjournalentry"><p onClick={handleClose2}>+Write new journal entry</p></NavLink>
+        <NavLink to="/newjournalentry" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>+Write new journal entry</p></NavLink>
+          <NavLink to="newpost" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>+Write new forum post</p></NavLink>
+          <NavLink to="/userprofile" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Profile</p></NavLink>
+          <NavLink to="/usersettings" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Settings</p></NavLink>
           <button onClick={handleLogoutClick}>Logout</button>
         </Offcanvas.Body>
       </Offcanvas>

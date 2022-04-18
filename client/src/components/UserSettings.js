@@ -155,18 +155,17 @@ function UserSettings() {
   const handleSetting3 = () => setSetting(3)
   const handleSetting4 = () => setSetting(4)
   const handleSetting5 = () => setSetting(5)
-  const handleSetting6 = () => setSetting(6)
 
   return (
     <div style={{textAlign: "center"}} className="user-settings-container">
     <div className="user-settings-menu">
-      <h5 onClick={handleSetting0}>Profile Settings</h5><br />
-      <h5 onClick={handleSetting1}>Account Settings</h5><br />
-      <h5 onClick={handleSetting2}>Privacy Settings</h5><br />
-      <h5 onClick={handleSetting3}>Color Settings</h5><br />
-      <h5 onClick={handleSetting4}>Journal Settings</h5><br />
-      <h5 onClick={handleSetting5}>Posts Settings</h5><br />
-      <h5 onClick={handleToken}>Refresh music player token</h5><br />
+      <h5 onClick={handleSetting0} style={{color: `${setting === 0 ? "white" : "grey"}`}}>Profile Settings</h5><br />
+      <h5 onClick={handleSetting1} style={{color: `${setting === 1 ? "white" : "grey"}`}}>Account Settings</h5><br />
+      <h5 onClick={handleSetting2} style={{color: `${setting === 2 ? "white" : "grey"}`}}>Privacy Settings</h5><br />
+      <h5 onClick={handleSetting3} style={{color: `${setting === 3 ? "white" : "grey"}`}}>Color Settings</h5><br />
+      <h5 onClick={handleSetting4} style={{color: `${setting === 4 ? "white" : "grey"}`}}>Journal Settings</h5><br />
+      <h5 onClick={handleSetting5} style={{color: `${setting === 5 ? "white" : "grey"}`}}>Posts Settings</h5><br />
+      <h5 onClick={handleToken} style={{color: "#1cb954"}}>Refresh music player token</h5><br />
     </div>
 
     {setting === 0 ? <div className="user-settings">

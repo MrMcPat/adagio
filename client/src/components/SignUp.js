@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
+
 
 function SignUp({setUser}) {
   const [userID, setUserID] = useState(null)
@@ -162,8 +165,8 @@ function SignUp({setUser}) {
         <div>
         {userColorList.map(emotion => {
             return <div key={emotion.id}>
-              <span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{emotion.emotion}</span>
-              <button value={emotion.id} onClick={handleEmotionDelete}>Delete</button>
+              <span style={{background: `${emotion.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{emotion.emotion}</span>
+              <button value={emotion.id} style={{background: "transparent", border: "none"}} onClick={handleEmotionDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
               </div>
           })}
         </div>
@@ -182,7 +185,7 @@ function SignUp({setUser}) {
       {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
         <span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{trigger.trigger}</span>
-        <button value={trigger.id} onClick={handleTriggerDelete}>Delete</button>
+        <button value={trigger.id} style={{background: "transparent", border: "none"}} onClick={handleTriggerDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
         </div>
     })}
       </div>
