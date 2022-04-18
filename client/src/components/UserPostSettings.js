@@ -35,7 +35,7 @@ function UserPostSettings() {
     }
 
   return (
-    <div>
+    <div className="user-settings">
         <h2>Your Posts</h2>
         <button onClick={handleToggle}>Search</button>
         {toggle ? <input placeholder="Filter your posts." onChange={handleSearch}/> : null}

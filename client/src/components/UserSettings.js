@@ -17,6 +17,7 @@ function UserSettings() {
   const [userTrigger, setUserTrigger] = useState("")
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
   const [userMusicPrivate, setUserMusicPrivate] = useState(null)
+  const [setting, setSetting] = useState(0)
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -148,22 +149,49 @@ function UserSettings() {
     window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
   }
 
+  const handleSetting0 = () => setSetting(0)
+  const handleSetting1 = () => setSetting(1)
+  const handleSetting2 = () => setSetting(2)
+  const handleSetting3 = () => setSetting(3)
+  const handleSetting4 = () => setSetting(4)
+  const handleSetting5 = () => setSetting(5)
+  const handleSetting6 = () => setSetting(6)
+
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="user-settings-container">
+    <div className="user-settings-menu">
+      <h5 onClick={handleSetting0}>Profile Settings</h5><br />
+      <h5 onClick={handleSetting1}>Account Settings</h5><br />
+      <h5 onClick={handleSetting2}>Privacy Settings</h5><br />
+      <h5 onClick={handleSetting3}>Color Settings</h5><br />
+      <h5 onClick={handleSetting4}>Journal Settings</h5><br />
+      <h5 onClick={handleSetting5}>Posts Settings</h5><br />
+      <h5 onClick={handleToken}>Refresh music player token</h5><br />
+    </div>
+
+    {setting === 0 ? <div className="user-settings">
     <span>{userProfile.first_name} {userProfile.last_name}</span>
     <button onClick={handleNameShow}>Change Name</button><br />
-    <span>Username: {userProfile.username}</span>
-    <button onClick={handleUsernameShow}>Change Username</button> <br />
-    <UserAccountSettings />
     <img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
     <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
     <button onClick={handleDescriptionShow}>Change your description</button><br />
-    <button onClick={handleToken}>Refresh music player token</button><br />
+    </div> : null}
+
+    {setting === 1 ? <div className="user-settings">
+    <span>Username: {userProfile.username}</span>
+    <button onClick={handleUsernameShow}>Change Username</button> <br />
+    <UserAccountSettings />
+    </div> : null}
+
+    {setting === 2 ? <div className="user-settings">
     <label>Private your music playlists?</label>
     <input type="checkbox" checked={userMusicPrivate || ""} onChange={handleMusicChecked} />
     <label>Private all journal entries?</label>
     <input type="checkbox" checked={userJournalPrivate || ""} onChange={handlePrivatedChecked}/>
+    </div> : null}
+
+    {setting === 3 ? <div className="user-settings">
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>
@@ -176,7 +204,6 @@ function UserSettings() {
     <input type="color" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
     <button type="submit">Add a color</button>
     </form>
-
     <p>Your triggers:</p>
     {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
@@ -188,8 +215,11 @@ function UserSettings() {
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
       <button type="submit">Add a trigger</button>
     </form>
-    <UserJournalSettings />
-    <UserPostSettings />
+    </div> : null}
+
+    {setting === 4 ? <UserJournalSettings /> : null}
+    
+    {setting === 5 ? <UserPostSettings /> : null}
 
     <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>

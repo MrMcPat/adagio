@@ -37,7 +37,7 @@ function UserJournalSettings() {
       }
 
   return (
-    <div>
+    <div className="user-settings">
     <h2>Your Journal Entries</h2>
     <button onClick={handleToggle}>Search</button>
       {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}

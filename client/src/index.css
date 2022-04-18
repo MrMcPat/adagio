@@ -233,3 +233,19 @@ code {
   font-variant: small-caps;
   letter-spacing: 2px;
 }
+
+.user-settings-container {
+  margin-top: -80px;
+  padding-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.user-settings-menu {
+  width: 100px;
+}
+
+.user-settings {
+  width: 300px;
+}
