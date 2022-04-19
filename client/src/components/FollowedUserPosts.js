@@ -19,7 +19,7 @@ function FollowedUserPosts() {
           const followedUsers = followData.data.filter(follow => follow.user_id === userData.data.id)
           const userPostData = await axios.get("/posts")
           const filteredPosts = userPostData.data.filter(post => followedUsers.filter(follow => follow.followed_user_id === post.user_id).length !== 0)
-          setUserPosts(filteredPosts.slice(0, count))
+          setUserPosts(filteredPosts)
           setAllUserPosts(filteredPosts)
         }
         handleFetch()

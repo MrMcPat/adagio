@@ -14,7 +14,7 @@ class User < ApplicationRecord
     attr_accessor :old_password
   
     validates :email, presence: true, uniqueness: true
-    validates :username, presence: true, uniqueness: true
+    validates :username, presence: true, uniqueness: true, length: {maximum: 20}
     validates :description, length: {maximum: 100}
     
 end

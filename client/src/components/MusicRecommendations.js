@@ -62,7 +62,7 @@ function MusicRecommendations({token}) {
           placement="top"
           overlay={<Tooltip style={{fontSize: "15px"}}>{userResponse.emotion}</Tooltip>}
           >
-          <span style={{background: userResponse.color, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span style={{background: userResponse.color, borderRadius: "30px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </OverlayTrigger>
           </h1>
           <h3>Here are your music recommendations for today <FontAwesomeIcon icon={faRotateBack} style={{fontSize: "25px"}} onClick={handleRandom}/></h3>
@@ -96,6 +96,15 @@ function MusicRecommendations({token}) {
         <div>
           <h1>You did not choose a color today.</h1>
           <h3>Tell me how you feel today, I'll fetch some music for you.</h3>
+          {hide ? (
+            <div style={{ display: "none" }} className="musicplayer">
+              <MusicPlayer spotifyUri={spotifyUri} token={token}/>
+            </div>
+          ) : (
+            <div className="musicplayer">
+              <MusicPlayer spotifyUri={spotifyUri} token={token}/>
+            </div>
+          )}
         </div>
       )}
       <br />

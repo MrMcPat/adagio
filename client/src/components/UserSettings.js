@@ -162,7 +162,7 @@ function UserSettings() {
       <h5 onClick={handleSetting0} style={{color: `${setting === 0 ? "white" : "grey"}`}}>Profile Settings</h5><br />
       <h5 onClick={handleSetting1} style={{color: `${setting === 1 ? "white" : "grey"}`}}>Account Settings</h5><br />
       <h5 onClick={handleSetting2} style={{color: `${setting === 2 ? "white" : "grey"}`}}>Privacy Settings</h5><br />
-      <h5 onClick={handleSetting3} style={{color: `${setting === 3 ? "white" : "grey"}`}}>Color Settings</h5><br />
+      <h5 onClick={handleSetting3} style={{color: `${setting === 3 ? "white" : "grey"}`}}>Color/Trigger Settings</h5><br />
       <h5 onClick={handleSetting4} style={{color: `${setting === 4 ? "white" : "grey"}`}}>Journal Settings</h5><br />
       <h5 onClick={handleSetting5} style={{color: `${setting === 5 ? "white" : "grey"}`}}>Posts Settings</h5><br />
       <h5 onClick={handleToken} style={{color: "#1cb954"}}>Refresh music player token</h5><br />

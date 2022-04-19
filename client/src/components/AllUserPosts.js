@@ -13,7 +13,7 @@ function AllUserPosts() {
         async function handleFetch() {
           const userData = await axios.get("/me")
           const userPostData = await axios.get("/posts")
-          setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id).slice(0, count))
+          setUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id))
           setAllUserPosts(userPostData.data.filter(post => post.user_id === userData.data.id))
         }
         handleFetch()

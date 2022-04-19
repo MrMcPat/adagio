@@ -16,7 +16,7 @@ function OtherUserPosts() {
         const userData = await axios.get("/users")
         const user = userData.data.find(user => user.username === username)
         const userPostData = await axios.get("/posts")
-        setUserPosts(userPostData.data.filter(post => post.user_id === user.id).slice(0, count))
+        setUserPosts(userPostData.data.filter(post => post.user_id === user.id))
         setAllUserPosts(userPostData.data.filter(post => post.user_id === user.id))
       }
       handleFetch()

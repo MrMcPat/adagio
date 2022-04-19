@@ -43,7 +43,7 @@ function NavBar({ user, setUser }) {
         <Container style={{paddingTop: "20px"}}>
           <div>
           {user ? <button onClick={handleShow} style={{background: "none", border: "none", color: "white"}}><FontAwesomeIcon icon={faBars} style={{fontSize: "30px"}} /></button> : null}
-        <NavLink to="/" style={{textDecoration: "none"}}><span style={{fontSize: "40px", textShadow: "2px 2px grey", textDecoration: "none", color: "white"}}>adagio</span></NavLink>        
+        <NavLink to="/" style={{textDecoration: "none"}}><span style={{fontSize: "40px", textDecoration: "none", color: "white"}}>adagio</span></NavLink>        
           </div>
           {user ? (
               <button onClick={handleShow2} style={{background: "none", border: "none"}}><img src={rightsidebarbutton} style={{width: "35px"}} /></button>
@@ -63,10 +63,10 @@ function NavBar({ user, setUser }) {
         <Offcanvas.Body>
           <NavLink to="/dailylyric" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Daily Lyric</p></NavLink>
           <NavLink to="/musicrecommendations" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Music Recommendations</p></NavLink>
-          <NavLink to="/forumposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Forums</p></NavLink>
-          <NavLink to="/followedposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Followed Posts</p></NavLink>
           <NavLink to="/journalentries" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Explore Journal Entries</p></NavLink>
           <NavLink to="/followedjournalentries" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Followed Journal Entries</p></NavLink>
+          <NavLink to="/forumposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Forums</p></NavLink>
+          <NavLink to="/followedposts" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose}>Followed Posts</p></NavLink>
         </Offcanvas.Body>
       </Offcanvas>
 

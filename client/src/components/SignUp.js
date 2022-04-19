@@ -71,10 +71,9 @@ function SignUp({setUser}) {
 
   function handleEmotionSubmit(e) {
     e.preventDefault()
-    if (userEmotion.length === 0) {
+    if (userEmotion.length === 0 && userColorList.length === 0) {
       alert("Please include an emotion.")
     } else {
-      console.log(userColor)
       axios.post("/emotions", {
         user_id: userID,
         color: userColor,
@@ -86,14 +85,14 @@ function SignUp({setUser}) {
   }
 
   function handleEmotionDelete(e) {
-    axios.delete(`/emotions/${e.target.value}`)
-    setUserColorList(userColorList.filter(emotion => emotion.id !== parseInt(e.target.value)))
+    axios.delete(`/emotions/${e.currentTarget.value}`)
+    setUserColorList(userColorList.filter(emotion => emotion.id !== parseInt(e.currentTarget.value)))
   }
 
   function handleTriggerSubmit(e) {
     e.preventDefault()
-    if (userTrigger.length === 0) {
-      alert("Please include a trigger")
+    if (userTrigger.length === 0 && userTriggerList.length === 0) {
+      alert("Please include an emotion.")
     } else {
       axios.post("/triggers", {
         user_id: userID,
@@ -105,8 +104,8 @@ function SignUp({setUser}) {
   }
 
   function handleTriggerDelete(e) {
-    axios.delete(`/triggers/${e.target.value}`)
-    setUserTriggerList(userTriggerList.filter(trigger => trigger.id !== parseInt(e.target.value)))
+    axios.delete(`/triggers/${e.currentTarget.value}`)
+    setUserTriggerList(userTriggerList.filter(trigger => trigger.id !== parseInt(e.currentTarget.value)))
   }
 
   function handleNext() {

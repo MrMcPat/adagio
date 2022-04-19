@@ -225,7 +225,6 @@ code {
 
 .explore-page-container {
   background-image: url(explorejournalpage.png);
-  background-size: 200vh;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -238,18 +237,24 @@ code {
 .journal-entries-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  height: 80vh;
+  justify-content: flex-start;
+  height: 79vh;
+  margin-left: 50px;
 }
 
 .journal-entry {
-  backdrop-filter: blur(10px);
-  padding-top: 15px;
+  background-image: url(grid.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 110vh;
+  background-position: 70% 20%;
+  background: linear-gradient(rgba(26, 25, 25, ), rgba(26, 25, 25, 0.3));
+  padding-top: 10px;
   border-radius: 5px;
   margin: 30px;
   height: 298px;
   width: 400px;
-  box-shadow: 5px 5px 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 1px 1px rgba(115, 121, 113, 0.9);
 }
 
 .journal-entry-body {
@@ -258,7 +263,6 @@ code {
   border-radius: 0 0 5px 5px;
   background: white;
   color: grey;
-  opacity: 80%;
 }
 
 .journal-entry-body button {
@@ -269,12 +273,84 @@ code {
 .journal-entry h5 {
   font-weight: bolder;
   font-variant: small-caps;
-  letter-spacing: 2px;
+  letter-spacing: 6px;
+  font-size: 25px;
+  text-shadow: 2px 2px rgba(133, 140, 131, 0.9);
+}
+
+.journal-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-image: url(explorejournalpage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin-top: -80px;
+  padding-top: 80px;
+  background-position: center;
+}
+
+.profile-section {
+  background-image: url(grid.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 110vh;
+  margin: 60px;
+  padding-top: 10px;
+  width: 350px;
+  height: 500px;
+  border: 1px solid white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 1px 1px rgba(115, 121, 113, 0.9);
+}
+
+.profile-body {
+  background: white;
+  height: 408px;
+  margin-top: -50px;
+  padding-top: 60px;
+  border-radius: 0 0 20px 20px;
+  color: grey;
+}
+
+.profile-section img {
+  position: relative;
+  top: 10px;
+  background: white;
+  border: 3px solid rgba(190, 204, 186, 0.9);
+}
+
+.journal-page h3{
+  font-weight: bolder;
+  font-variant: small-caps;
+}
+
+.journal-page {
+  background-image: url(grid.png);
+  background-position: center;
+  background-repeat: repeat;
+  padding-top: 50px;
+  width: 60%;
+  margin: 60px auto;
+  text-align: left;
+  border: 1px solid white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 1px 1px rgba(115, 121, 113, 0.9);
 }
 
 .journal-page button{
   border: none;
   background: transparent;
+  width: 60%;
+}
+
+.journal-body {
+  background: white;
+  color: grey;
+  padding: 50px;
+  height: 500px;
+  border-radius: 0 0 20px 20px;
 }
 
 .user-settings-container {

@@ -78,7 +78,7 @@ function DailyLyricPage({token}) {
         <p style={{fontSize: "20px", letterSpacing: "2px"}}>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
         {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>
-                <input className="text-box" placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
+                <input className="text-box" style={{textShadow: "1px 1px white"}} placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
                 {userEmotions.length === 0 ? <p>You don't have any colors, please add some.</p> :
                 <div className="color-container">
                 {userEmotions.map(emotion => {
@@ -91,7 +91,7 @@ function DailyLyricPage({token}) {
                     {emotion.emotion}
                     </Tooltip>}
                     >
-                      <label  htmlFor={emotion.emotion} style={{background: `${emotion.color}`, borderRadius: "20px", border:`3px solid rgba(26, 25, 25, 0.2)`, cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <label  htmlFor={emotion.emotion} style={{background: `${emotion.color}`, borderRadius: "20px", border:`3px solid rgba(26, 25, 25, 0.2)`, cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                     </OverlayTrigger>
                     </div>
                   )

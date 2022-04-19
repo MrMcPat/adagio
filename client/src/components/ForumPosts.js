@@ -27,7 +27,7 @@ function ForumPosts() {
                     return false
                 }
             })
-            setForumPosts(filteredPosts.slice(0, count))
+            setForumPosts(filteredPosts)
             setAllForumPosts(filteredPosts)
         }
         handleFetch()

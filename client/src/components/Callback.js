@@ -20,7 +20,7 @@ function Callback({getToken}) {
 
   return (
     <div style={{textAlign: "center"}}>
-      <h1 style={{fontSize: "75px"}}>Welcome back, {userProfile.username}!</h1>
+      <h1 style={{fontSize: "75px"}}>Hello, {userProfile.username}!</h1>
       <br />
       {hasResponse ? 
       <>
