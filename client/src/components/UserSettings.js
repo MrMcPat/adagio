@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 import placeholder from "../placeholder_img.png"
+import { ToastContainer, toast } from 'react-toastify'
 
 function UserSettings() {
   const [userProfile, setUserProfile] = useState([])
@@ -109,7 +110,15 @@ function UserSettings() {
   function handleEmotionSubmit(e) {
     e.preventDefault()
     if (userEmotion.length === 0) {
-      alert("Please include an emotion.")
+      toast.error("Please include an emotion", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.post("/emotions", {
         user_id: userProfile.id,
@@ -117,6 +126,16 @@ function UserSettings() {
         emotion: userEmotion
       })
       .then(resp => setUserColorList([...userColorList, resp.data]))
+      .catch(err => 
+        toast.error(err.response.data.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       setUserEmotion("")
     }
   }
@@ -129,13 +148,31 @@ function UserSettings() {
   function handleTriggerSubmit(e) {
     e.preventDefault()
     if (userTrigger.length === 0) {
-      alert("Please include a trigger")
+      toast.error("Please include a trigger word.", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.post("/triggers", {
         user_id: userProfile.id,
         trigger: userTrigger
       })
       .then(resp => setUserTriggerList([...userTriggerList, resp.data]))
+      .catch(err =>
+        toast.error(err.response.data.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       setUserTrigger("")
     }
   }
@@ -290,6 +327,18 @@ function UserSettings() {
         </form>
       </Modal>
 
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
   </div>
   )
 }

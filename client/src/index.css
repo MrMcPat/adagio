@@ -102,9 +102,36 @@ code {
   margin-top: -80px;
   justify-content: center;
   flex-wrap: wrap;
-  background-image: url(dailylyricpage.png);
   background-position: center;
   height: 100vh;
+}
+
+.random-background-1 {
+  background-image: url(dailylyricpage1.png);
+}
+.random-background-2 {
+  background-image: url(dailylyricpage2.png);
+}
+.random-background-3 {
+  background-image: url(dailylyricpage3.png);
+}
+.random-background-4 {
+  background-image: url(dailylyricpage4.png);
+}
+.random-background-5 {
+  background-image: url(dailylyricpage5.png);
+}
+.random-background-6 {
+  background-image: url(dailylyricpage6.png);
+}
+.random-background-7 {
+  background-image: url(dailylyricpage7.png);
+}
+.random-background-8 {
+  background-image: url(dailylyricpage8.png);
+}
+.random-background-9 {
+  background-image: url(dailylyricpage9.png);
 }
 
 .daily-lyric-container {
@@ -263,6 +290,7 @@ code {
   border-radius: 0 0 5px 5px;
   background: white;
   color: grey;
+  overflow-wrap: break-word;
 }
 
 .journal-entry-body button {
@@ -303,15 +331,17 @@ code {
   border: 1px solid white;
   border-radius: 20px;
   box-shadow: 5px 5px 1px 1px rgba(115, 121, 113, 0.9);
+  overflow-wrap: break-word;
 }
 
 .profile-body {
   background: white;
   height: 408px;
   margin-top: -50px;
-  padding-top: 60px;
+  padding: 60px 10px 10px 10px;
   border-radius: 0 0 20px 20px;
   color: grey;
+  overflow-wrap: break-word;
 }
 
 .profile-section img {
@@ -319,6 +349,30 @@ code {
   top: 10px;
   background: white;
   border: 3px solid rgba(190, 204, 186, 0.9);
+}
+
+.scotch-tape {
+  transform: rotate(1.5deg);
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  background-image: url(scotchtape.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  color: rgb(106, 90, 67);
+}
+
+.scotch-tape2 {
+  transform: rotate(-1.5deg);
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  background-image: url(scotchtape.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  color: rgb(106, 90, 67);
 }
 
 .journal-page h3{
@@ -339,7 +393,7 @@ code {
   box-shadow: 5px 5px 1px 1px rgba(115, 121, 113, 0.9);
 }
 
-.journal-page button{
+.emoji-button{
   border: none;
   background: transparent;
   width: 60%;
@@ -351,6 +405,24 @@ code {
   padding: 50px;
   height: 500px;
   border-radius: 0 0 20px 20px;
+  overflow-wrap: break-word;
+}
+
+.new-journal-entry {
+  background-image: url(newjournalpage.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200vh;
+  margin-top: -80px;
+  padding-top: 80px;
+  height: 100vh;
+  text-shadow: 1px 1px grey;
+}
+
+.textarea-box {
+  background: linear-gradient(rgba(26, 25, 25, 0.2), rgba(26, 25, 25, 0.2));
+  backdrop-filter: blur(2.5px);
+  color: white;
 }
 
 .user-settings-container {

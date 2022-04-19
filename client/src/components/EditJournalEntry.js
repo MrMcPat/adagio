@@ -39,19 +39,19 @@ function EditJournalEntry() {
     }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="new-journal-entry">
       {userID === journalEntry.user_id ?
       <>
       {isEdited ? <p>Your journal entry has been edited.</p> :
     <>
-    <h1>Edit your journal entry</h1>
+    <h2>Edit your journal entry</h2>
     <form onSubmit={handleSubmit}>
       <label>Journal Entry Title</label><br />
-      <input value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br />
-      <label>Private this journal entry</label>
-      <input type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/><br />
+      <input className="text-box" value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br />
       <label>Journal Entry Body</label><br/>
-      <textarea rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
+      <textarea className="textarea-box" rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
+      <label>Private this journal entry</label>
+      <input  type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/>
       <button type="submit">Edit Entry</button>
     </form>
     </>

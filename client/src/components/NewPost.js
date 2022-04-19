@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify'
 
 function NewPost() {
     const [userID, setUserID] = useState([])
@@ -19,7 +20,15 @@ function NewPost() {
       function handleSubmit(e) {
         e.preventDefault()
         if (inputTitle.length === 0 || inputBody.length === 0) {
-            alert("Please write something...")
+          toast.error("Please write something...", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
         } else {
             axios.post("/posts", {
                 user_id: userID,
@@ -46,6 +55,18 @@ function NewPost() {
         </>       
         }
 
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

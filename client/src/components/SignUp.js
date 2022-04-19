@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
+import { ToastContainer, toast } from 'react-toastify'
 
 
 function SignUp({setUser}) {
@@ -51,6 +52,18 @@ function SignUp({setUser}) {
       if (r.ok) {
         r.json().then((user) => setUser(user))
         setNext(next + 1)
+      } else {
+        r.json().then(
+          (err) => 
+          toast.error(err.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       }
     })
   }
@@ -58,7 +71,15 @@ function SignUp({setUser}) {
   function handleSubmitBio(e) {
     e.preventDefault()
     if (firstName.length === 0 || lastName.length === 0) {
-      alert("Please enter your name.")
+      toast.error("Please enter your name.", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.patch(`users/${userID}`, {
         first_name: firstName,
@@ -72,7 +93,15 @@ function SignUp({setUser}) {
   function handleEmotionSubmit(e) {
     e.preventDefault()
     if (userEmotion.length === 0 && userColorList.length === 0) {
-      alert("Please include an emotion.")
+      toast.error("Please include an emotion.", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.post("/emotions", {
         user_id: userID,
@@ -80,6 +109,16 @@ function SignUp({setUser}) {
         emotion: userEmotion
       })
       .then(resp => setUserColorList([...userColorList, resp.data]))
+      .catch(err => 
+        toast.error(err.response.data.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       setUserEmotion("")
     }
   }
@@ -91,14 +130,32 @@ function SignUp({setUser}) {
 
   function handleTriggerSubmit(e) {
     e.preventDefault()
-    if (userTrigger.length === 0 && userTriggerList.length === 0) {
-      alert("Please include an emotion.")
+    if (userTrigger.length === 0) {
+      toast.error("Please include a trigger word.", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.post("/triggers", {
         user_id: userID,
         trigger: userTrigger
       })
       .then(resp => setUserTriggerList([...userTriggerList, resp.data]))
+      .catch(err =>
+        toast.error(err.response.data.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       setUserTrigger("")
     }
   }
@@ -194,8 +251,18 @@ function SignUp({setUser}) {
       <button onClick={handleSkip} className="signup-input" style={{height: "50px", width:"150px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>Done</button>
     </form>
       </div>: null}
-      {/* {next === 3 ? <button onClick={handleSkip}>Done</button> : null} */}
-  {/* {next === 0 || next === 3 ? null : <button onClick={handleSkip}>Skip</button>}   */}
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
   </div>
 }
 

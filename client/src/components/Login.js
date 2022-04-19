@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 
 function Login({setUser}) {
     const [email, setEmail] = useState("")
@@ -16,6 +17,19 @@ function Login({setUser}) {
         if (r.ok) {
           r.json().then((user) => setUser(user))
           window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+        } else {
+          r.json().then(
+            (err) => 
+            toast.error(err.errors[0], {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
+            )
         }
       })
     }
@@ -48,6 +62,19 @@ function Login({setUser}) {
         </div>
         <button type="submit" className="login-input" style={{height: "75px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>login</button>
       </form>
+
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

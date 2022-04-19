@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
 
 function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     const [toggle, setToggle] = useState(false)
@@ -43,6 +44,19 @@ function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     : null}
     </> 
     : null}
+
+    <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

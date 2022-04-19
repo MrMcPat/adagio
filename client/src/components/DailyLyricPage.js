@@ -7,6 +7,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import { ToastContainer, toast } from 'react-toastify'
 
 function DailyLyricPage({token}) {
     const [userID, setUserID] = useState("")
@@ -44,7 +45,15 @@ function DailyLyricPage({token}) {
     function handleSubmit (e) {
       e.preventDefault()
       if (!inputColor) {
-        alert("Please pick a color.")
+        toast.error("Please pick a color.", {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          })
       } else {
         axios.post("/responses", {
         user_id: userID,
@@ -71,7 +80,7 @@ function DailyLyricPage({token}) {
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
-      <div className="daily-lyric-page-container">
+      <div className={`daily-lyric-page-container random-background-${Math.floor(Math.random() * 9) + 1}`}>
       <div className="daily-lyric-container">
       <h1>{dailyLyric.lyric}</h1>
         <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} token={token}/>
@@ -108,6 +117,19 @@ function DailyLyricPage({token}) {
         <div className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response} userID={userID}/>)}
         </div>
+
+        <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       </div>
   )
 }

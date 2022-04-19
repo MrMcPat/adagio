@@ -1,6 +1,11 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import { faHandsPraying } from "@fortawesome/free-solid-svg-icons"
+import { faFaceSurprise } from "@fortawesome/free-solid-svg-icons"
+import { faFaceFrown } from "@fortawesome/free-solid-svg-icons"
 
 function ExploreJournalEntry({entry}) {
     const [heartCount, setHeartCount] = useState(entry.heart_count)
@@ -40,13 +45,17 @@ function ExploreJournalEntry({entry}) {
     <div className="journal-entry">
         <h5><Link to={`/journalentry/${entry.id}`} style={{textDecoration: "none", color: "white"}}><span>{entry.title}</span></Link></h5>
         <div className="journal-entry-body">
-        <p>{`${entry.body.substring(0, 100)}...`}</p>
+        {entry.body.length > 60 ? <p>{`${entry.body.substring(0, 60)}...`}</p> : <p>{entry.body}</p>}
         <p>{entry.is_private || entry.user.journal_is_private ? "Marked as private" : "Public"}</p>
           <p>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-         <p><span><Link to={`/user/${entry.user.username}`} style={{textDecoration: "none", color: "gray"}}>by {entry.user.username} </Link></span><br /><br /><button onClick={handleHeart}>❤️</button>{heartCount} <button onClick={handlePraying}>🙏</button>{prayingCount} <button onClick={handleShocked}>😮</button>{shockedCount} <button onClick={handleSad}>😞</button>{sadCount}</p>
-
+         <p><span><Link to={`/user/${entry.user.username}`} style={{textDecoration: "none", color: "gray"}}>by {entry.user.username} </Link></span><br /><br />
+         <button onClick={handleHeart}><FontAwesomeIcon icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/></button>{heartCount}
+         <button onClick={handlePraying}><FontAwesomeIcon icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/></button>{prayingCount}
+         <button onClick={handleShocked}><FontAwesomeIcon icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/></button>{shockedCount}
+         <button onClick={handleSad}><FontAwesomeIcon icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/></button>{sadCount}
+         </p>
         </div>
     </div>
   )

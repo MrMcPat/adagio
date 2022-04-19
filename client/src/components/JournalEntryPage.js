@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
+import { faHandsPraying } from "@fortawesome/free-solid-svg-icons"
+import { faFaceSurprise } from "@fortawesome/free-solid-svg-icons"
+import { faFaceFrown } from "@fortawesome/free-solid-svg-icons"
 
 function JournalEntryPage() {
   const [userID, setUserID] = useState([])
@@ -84,8 +89,8 @@ function handleIsPrivate(e){
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-      <Link to={`/editentry/${id}`}><button style={{background: "white", width: "150px"}}>Edit Entry</button></Link>
-      <Link to="/userprofile"><button style={{background: "white", width: "150px"}} onClick={handleDelete}>Delete Entry</button></Link>
+      <Link to={`/editentry/${id}`}><button className="scotch-tape2" style={{width: "150px"}}>Edit Entry</button></Link>
+      <Link to="/userprofile"><button className="scotch-tape2" style={{width: "150px"}} onClick={handleDelete}>Delete Entry</button></Link>
       <label>Private this journal entry</label>
       <input type="checkbox" checked={journalIsPrivate} onClick={handleIsPrivate}/>
     </div>
@@ -100,8 +105,8 @@ function handleIsPrivate(e){
       <div className="profile-body">
       <span><Link to={`/user/${journalEntry.user.username}`} style={{fontSize: "30px", color: "grey", textDecoration: "none"}}>{journalEntry.user.username}</Link></span><br />
       <span>{journalEntry.user.description}</span><br />
-      <Link to={`/user/${journalEntry.user.username}/journalentries`}><button>See All Journal Entries</button></Link><br />
-      <Link to={`/user/${journalEntry.user.username}/posts`}><button>See All Posts</button></Link>
+      <Link to={`/user/${journalEntry.user.username}/journalentries`}><button className="scotch-tape">See All Journal Entries</button></Link><br />
+      <Link to={`/user/${journalEntry.user.username}/posts`}><button className="scotch-tape2">See All Posts</button></Link>
       </div>
     </div>
       <div className="journal-page">
@@ -111,7 +116,10 @@ function handleIsPrivate(e){
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-      <button onClick={handleHeart} style={{width: "50px"}}>❤️ {heartCount}</button><button onClick={handlePraying} style={{width: "50px"}}>🙏 {prayingCount}</button><button onClick={handleShocked} style={{width: "50px"}}>😮 {shockedCount}</button><button onClick={handleSad} style={{width: "50px"}}>😞 {sadCount}</button>
+      <button className="emoji-button" onClick={handleHeart} style={{width: "50px"}}><FontAwesomeIcon icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/> </button>{heartCount}
+      <button className="emoji-button" onClick={handlePraying} style={{width: "50px"}}><FontAwesomeIcon icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/> </button>{prayingCount}
+      <button className="emoji-button" onClick={handleShocked} style={{width: "50px"}}><FontAwesomeIcon icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/> </button>{shockedCount}
+      <button className="emoji-button" onClick={handleSad} style={{width: "50px"}}><FontAwesomeIcon icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/> </button>{sadCount}
       </div>
       </div>
     </>

@@ -24,6 +24,7 @@ import OtherUserJournalEntries from "./OtherUserJournalEntries"
 import OtherUserPosts from "./OtherUserPosts"
 import FollowedUserJournalEntries from "./FollowedUserJournalEntries"
 import FollowedUserPosts from "./FollowedUserPosts"
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [user, setUser] = useState("")
