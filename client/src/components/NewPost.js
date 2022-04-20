@@ -42,7 +42,7 @@ function NewPost() {
   return (
     <div style={{textAlign: "center"}} className="new-journal-entry">
         {isSubmitted ? 
-        <><h1>You have submitted your post.</h1><Link to="/forumposts"><button className="signup-input">Go to forums</button></Link></> :
+        <><h1>You have submitted your post.</h1><Link to="/forumposts"><button style={{border: "none", color: "white"}} className="signup-input">Go to forums</button></Link></> :
         <>
         <h1>New Post</h1>
         <form onSubmit={handleSubmit}>

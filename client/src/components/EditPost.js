@@ -40,15 +40,13 @@ function EditPost() {
     <div style={{textAlign: "center"}} className="new-journal-entry">
     {userID === post.user_id ?
       <>
-      {isEdited ? <p>Your journal entry has been edited.<Link to="/forumposts"><button>Go to forums</button></Link></p> :
+      {isEdited ? <h5>Your journal entry has been edited.<Link to="/forumposts"><button className="scotch-tape">Go to forums</button></Link></h5> :
     <>
     <h1>Edit your post</h1>
     <form onSubmit={handleSubmit}>
-      <label>Title</label><br />
-      <input className="text-box" value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br />
-      <label>Body</label><br/>
+      <input className="text-box" value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br /><br />
       <textarea className="textarea-box" rows="10" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
-      <button type="submit">Edit Post</button>
+      <button className="default-button" type="submit">Edit Post</button>
     </form>
     </>
         }  

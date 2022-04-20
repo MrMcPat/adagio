@@ -727,7 +727,7 @@ code {
 .forum-profile {
   width: 200px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));
+  background: linear-gradient(rgba(173, 171, 171, 0.7), rgba(164, 162, 162, 0.7));
   border: 1px solid white;
   border-radius: 20px;
   margin: 10px 20px;
@@ -751,7 +751,7 @@ code {
   width: 600px;
   height: 200px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));
+  background: linear-gradient(rgba(173, 171, 171, 0.7), rgba(164, 162, 162, 0.7));
   border-radius: 20px;
   border: 1px solid white;
   margin: 10px;
@@ -783,12 +783,12 @@ code {
 .post-container {
   margin-top: -80px;
   padding-top: 80px;
+  text-shadow: 1px 1px grey;
   background-image: url(forumposts.png);
   background-position: center;
   background-repeat: repeat;
   background-size: 100rem;
   background-attachment: fixed;
-  height: 130vh;
 }
 
 .posts-overflow {
@@ -801,7 +801,6 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 
 .posts-page {
@@ -811,7 +810,8 @@ code {
   height: 350px;
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  background: linear-gradient(rgba(173, 171, 171, 0.8), rgba(164, 162, 162, 0.8));
+  border-radius: 20px;
   border: 1px solid white;
   box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
@@ -839,7 +839,8 @@ code {
   height: 350px;
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  background: linear-gradient(rgba(173, 171, 171, 0.8), rgba(164, 162, 162, 0.8));
+  border-radius: 20px;
   border: 1px solid white;
   box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
@@ -906,7 +907,7 @@ code {
   padding: 25px;
   border-radius: 20px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  
+  background: linear-gradient(rgba(173, 171, 171, 0.8), rgba(164, 162, 162, 0.8));
   border: 1px solid white;
   box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }

@@ -31,7 +31,7 @@ function FollowedUserPosts() {
     }
 
   return (
-    <div style={{textAlign: "center"}} className="posts-container">
+    <div style={{textAlign: "center", background: "transparent"}} className="posts-container">
         <h3>Followed Posts</h3>
         <form onSubmit={handleSearch}>
         <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
@@ -46,6 +46,18 @@ function FollowedUserPosts() {
         {userPosts.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No posts :(</h4> : userPosts.map(post => <ForumPost key={post.id} post={post} userID={userID}/>)}
         </div>
         </InfiniteScroll>
+      <div class="bubbles">
+      <div class="bubble" style={{background: "#FFA1A1"}}></div>
+      <div class="bubble" style={{background: "#92BA92"}}></div>
+      <div class="bubble" style={{background: "#9ADCFF"}}></div>
+      <div class="bubble" style={{background: "#FFF89A"}}></div>
+      <div class="bubble" style={{background: "#EEC373"}}></div>
+      <div class="bubble" style={{background: "#E7FBBE"}}></div>
+      <div class="bubble" style={{background: "#92A9BD"}}></div>
+      <div class="bubble" style={{background: "#B983FF"}}></div>
+      <div class="bubble" style={{background: "#949CDF"}}></div>
+      <div class="bubble" style={{background: "#A0FFE6"}}></div>
+      </div>
     </div>
   )
 }

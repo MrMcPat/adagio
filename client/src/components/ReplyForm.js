@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import axios from "axios"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faReply } from "@fortawesome/free-solid-svg-icons"
 import { ToastContainer, toast } from 'react-toastify'
 
 function ReplyForm({userID, postID, onReply}) {
@@ -31,8 +33,8 @@ function ReplyForm({userID, postID, onReply}) {
   return (
     <div style={{padding: "30px"}}>
         <form onSubmit={handleSubmit}>
-            <input value={input} onChange={e => setInput(e.target.value)}></input>
-            <button type="submit">Reply</button>
+            <input className="text-box" value={input} onChange={e => setInput(e.target.value)}></input>
+            <button style={{background: "transparent", border: "none"}}type="submit"><FontAwesomeIcon icon={faReply} color="white"/></button>
         </form>
 
     <ToastContainer

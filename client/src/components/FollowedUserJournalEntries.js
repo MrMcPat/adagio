@@ -31,7 +31,7 @@ function FollowedUserJournalEntries() {
   }
 
   return (
-    <div style={{textAlign: "center"}} className="explore-page-container">
+    <div style={{textAlign: "center", background: "transparent"}} className="explore-page-container">
       <h3>Followed journal entries</h3>
       <form onSubmit={handleSearch} style={{padding: "20px"}}>
       <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
@@ -46,6 +46,18 @@ function FollowedUserJournalEntries() {
           {userJournalEntries.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No journal entries :(</h4> : <>{userJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}</>}
           </div>
         </InfiniteScroll>
+      <div class="bubbles">
+      <div class="bubble" style={{background: "#FFA1A1"}}></div>
+      <div class="bubble" style={{background: "#92BA92"}}></div>
+      <div class="bubble" style={{background: "#9ADCFF"}}></div>
+      <div class="bubble" style={{background: "#FFF89A"}}></div>
+      <div class="bubble" style={{background: "#EEC373"}}></div>
+      <div class="bubble" style={{background: "#E7FBBE"}}></div>
+      <div class="bubble" style={{background: "#92A9BD"}}></div>
+      <div class="bubble" style={{background: "#B983FF"}}></div>
+      <div class="bubble" style={{background: "#949CDF"}}></div>
+      <div class="bubble" style={{background: "#A0FFE6"}}></div>
+      </div>
     </div>
   )
 }

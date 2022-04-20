@@ -35,7 +35,7 @@ function ForumPost({post, userID}) {
       <div className="forum-title">
       <h4 style={{position: "relative", top: "5px"}}><Link to={`/post/${post.id}`} style={{textDecoration: "none", color: "white"}}>{post.title}</Link></h4>
       </div>
-    <p>{post.body.length === 20 ? `${post.body.substring(0, 20)}...` : post.body}</p>
+    <p style={{marginTop: "15px"}}>{post.body.length === 20 ? `${post.body.substring(0, 20)}...` : post.body}</p>
     <p>{replyCount} comment(s)</p>
     <p>{post.created_at === post.updated_at ? 
     `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :

@@ -62,8 +62,8 @@ function UserProfile() {
     })}
       </div>
     <div className="follows">
-    <h4>Following</h4>
-      <span>{userFollow.length} follow(s)</span>
+    <h5>Following</h5>
+      <span>{userFollow.length} follow(s)</span><br />
       {userFollow.map(follow => <UserFollow key={follow.id} follow={follow} onUnfollow={handleUnfollow}/>)}
     </div>
       </div>

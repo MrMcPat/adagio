@@ -52,14 +52,12 @@ function EditJournalEntry() {
     <>
     <h2>Edit your journal entry</h2>
     <form onSubmit={handleSubmit}>
-      <label>Journal Entry Title</label><br />
-      <input className="text-box" value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br />
-      <label>Journal Entry Body</label><br/>
+      <input className="text-box" placeholder="Title goes here" value={editTitle} onChange={e => setEditTitle(e.target.value)}></input><br /><br />
       <textarea className="textarea-box" rows="20" cols="100" style={{resize: "none"}} value={editBody} onChange={e => setEditBody(e.target.value)}></textarea><br />
       <label>Private this journal entry</label>
       <input  type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/>
-      <button type="submit">Edit Entry</button>
-      <Link to="/userprofile"><button style={{width: "150px"}} onClick={handleDelete}>Delete Entry</button></Link>
+      <button className="default-button" type="submit">Edit Entry</button>
+      <Link to="/userprofile"><button className="default-button" style={{width: "150px"}} onClick={handleDelete}>Delete Entry</button></Link>
     </form>
     </>
         }  

@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { faMinus } from "@fortawesome/free-solid-svg-icons"
 
 function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     const [toggle, setToggle] = useState(false)
@@ -12,11 +16,23 @@ function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
 
     function handleEdit(e) {
         e.preventDefault()
-        axios.patch(`/replies/${reply.id}`, {
+        if (input.length === 0) {
+          toast.error("Please write something...", {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            })
+        } else {
+          axios.patch(`/replies/${reply.id}`, {
             comment: input
         })
         onReplyEdit(input)
         setToggle(false)
+        }
     }
 
     function handleDelete() {
@@ -42,21 +58,33 @@ function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     <>
     {toggle ? <>
     <form onSubmit={handleEdit}>
-    <input value={input} onChange={e => setInput(e.target.value)}></input>
-    <button type="submit">Edit Comment</button>
+    <input className="text-box" value={input} onChange={e => setInput(e.target.value)}></input>
+    <button style={{display: "none"}} type="submit">Edit Comment</button>
     </form>
     </> 
     : null}
-    <button onClick={handleToggle}>Edit</button>
-    <button onClick={handleDelete}>Delete</button><br/>
+    <button style={{background: "transparent", border: "none"}} onClick={handleToggle}><FontAwesomeIcon icon={faPenToSquare} color="white"/></button>
+    <button style={{background: "transparent", border: "none"}} onClick={handleDelete}><FontAwesomeIcon icon={faMinus} color="white"/></button><br/>
     
     </> 
     : null}
     <span>{reply.created_at === reply.updated_at ? 
         `-Commented on ${reply.created_at.slice(0, 16).split("T")[0]}, ${reply.created_at.slice(0, 16).split("T")[1]}` :
         `-Updated comment on ${reply.updated_at.slice(0, 16).split("T")[0]}, ${reply.updated_at.slice(0, 16).split("T")[1]}`}</span>
-
       </div>
+
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

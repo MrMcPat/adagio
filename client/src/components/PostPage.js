@@ -56,7 +56,7 @@ function PostPage() {
           </div>
           <div className="posts-profile-body">
           <span><Link to={`/userprofile`} style={{fontSize: "20px", color: "white", textDecoration: "none"}}>{post.user.username}(You)</Link></span><br />
-          <span>{post.user.description}</span><br />
+          <span>{post.user.description.length > 80 ? `${post.user.description.substring(0, 80)}...` : post.user.description}</span><br />
           <Link to={`/userjournalentries`}><button className="scotch-tape">See All Journal Entries</button></Link><br />
           <Link to={`/userposts`}><button className="scotch-tape2">See All Posts</button></Link>
           </div>
@@ -73,12 +73,12 @@ function PostPage() {
         `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
         </div>
         </div>
-        <Link to={`/editpost/${id}`}><button>Edit Post</button></Link>
-        <Link to="/forumposts"><button onClick={handleDelete}>Delete Post</button></Link>
+        <Link to={`/editpost/${id}`}><button className="scotch-tape">Edit Post</button></Link>
+        <Link to="/forumposts"><button onClick={handleDelete} className="scotch-tape">Delete Post</button></Link>
+        <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
         <h4 style={{textShadow: "1px 1px grey"}}>Comments</h4>
         <div className="comment-container">
-        {replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
-        <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
+        {replies.length === 0 ? <h5>No comments yet.</h5> : replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
         </div>
         </> : 
         <>
@@ -108,10 +108,10 @@ function PostPage() {
           </div>
         </div>
         </div>
-        <h4 style={{textShadow: "1px 1px grey"}}>Comments</h4>
-        <div className="comment-container">
-        {replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
         <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
+        <h4 style={{color: "white", fontWeight: "bolder", textShadow: "1px 1px grey"}}>Comments</h4>
+        <div className="comment-container">
+        {replies.length === 0 ? <h5>No comments yet.</h5> : replies.length === 0 ? <p>No comments yet.</p>:replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
         </div>
         </>}
 
