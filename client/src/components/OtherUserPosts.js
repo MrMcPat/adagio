@@ -32,7 +32,7 @@ function OtherUserPosts() {
 
 return (
   <div style={{textAlign: "center"}} className="posts-container">
-      <h3>Posts</h3>
+      <h3>{username}'s posts</h3>
       <form onSubmit={handleSearch}>
     <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search posts"></input>
     <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
