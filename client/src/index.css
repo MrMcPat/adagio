@@ -20,6 +20,31 @@ code {
   height: 80px !important;
 }
 
+.homepage-container {
+  margin-top: -80px;
+  padding-top: 80px;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  background: rgb(30, 30, 30);
+  color: rgb(178, 176, 176);
+}
+
+.homepage-top {
+  width: 100%;
+  height: 80vh;
+  margin: 40px 70px;
+}
+
+.homepage-top img {
+  float: left;
+  padding-right: 40px;
+}
+
+.homepage-text {
+  margin: 40px;
+}
+
 .text-box {
   background: transparent;
   border-width: 0 0 2px;
@@ -236,6 +261,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   background-image: url(profilepage.png);
+  background-attachment: fixed;
   color: black;
 }
 

@@ -7,6 +7,7 @@ import { NavLink, useHistory } from "react-router-dom"
 import rightsidebarbutton from "../rightsidebarbutton.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from "@fortawesome/free-solid-svg-icons"
+import placeholder from "../placeholder_img.png"
 
 function NavBar({ user, setUser }) {
   const [show, setShow] = useState(false)
@@ -72,7 +73,7 @@ function NavBar({ user, setUser }) {
 
       <Offcanvas show={show2} onHide={handleClose2} placement="end" style={{background: "#191919"}}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><img src={userProfile.profile_picture} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
+          <Offcanvas.Title><img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} style={{width: "100px", height: "100px", borderRadius: "50%"}}/><span>Signed in as: {userProfile.username}</span></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         <NavLink to="/newjournalentry" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>+Write new journal entry</p></NavLink>

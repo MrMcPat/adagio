@@ -40,16 +40,16 @@ function NewPost() {
       }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="new-journal-entry">
         {isSubmitted ? 
         <><h1>You have submitted your post.</h1><Link to="/forumposts"><button>Go to forums</button></Link></> :
         <>
         <h1>New Post</h1>
         <form onSubmit={handleSubmit}>
             <label>Title</label><br />
-            <input value={inputTitle} onChange={e => setInputTitle(e.target.value)}></input><br />
+            <input className="text-box" value={inputTitle} onChange={e => setInputTitle(e.target.value)}></input><br />
             <label>Body</label><br />
-            <textarea rows="10" cols="100" style={{resize: "none"}} value={inputBody} onChange={e => setInputBody(e.target.value)}></textarea><br />
+            <textarea className="textarea-box" rows="10" cols="100" style={{resize: "none"}} value={inputBody} onChange={e => setInputBody(e.target.value)}></textarea><br />
             <button type="submit">Submit Post</button>
         </form>
         </>       
