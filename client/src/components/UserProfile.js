@@ -70,7 +70,7 @@ function UserProfile() {
       <div>
       <div className="user-recent">
         <div className="user-recent-header">
-        <h4>Most Recent Journal Entries</h4>
+        <h4>Your Recent Journal Entries</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
         <Link to="/userjournalentries"><button className="default-button">See All Journal Entries</button></Link>
@@ -89,7 +89,7 @@ function UserProfile() {
       </div>
       <div className="user-recent">
         <div className="user-recent-header">
-        <h4>Most Recent Posts</h4>
+        <h4>Your Recent Posts</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
         <Link to="/userposts"><button className="default-button">See All Posts</button></Link>

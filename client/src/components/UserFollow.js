@@ -26,7 +26,7 @@ function UserFollow({follow, onUnfollow}) {
 
   return (
     <>
-    <p><Link to={`/user/${followedUser.username}`} style={{textDecoration: "none", color: "white"}}>{followedUser.username}</Link> <button onClick={handleDelete} style={{textDecoration: "none", background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMinus} style={{fontSize: "15px"}} color="red"/></button></p>
+    <span><Link to={`/user/${followedUser.username}`} style={{textDecoration: "none", color: "white"}}>{followedUser.username}</Link> <button onClick={handleDelete} style={{textDecoration: "none", background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMinus} style={{fontSize: "15px"}} color="red"/></button></span><br />
     </>
   )
 }
