@@ -31,7 +31,7 @@ function FollowedUserPosts() {
     }
 
   return (
-    <div style={{textAlign: "center", background: "transparent"}} className="posts-container">
+    <div style={{textAlign: "center"}} className="posts-container">
         <h3>Followed Posts</h3>
         <form onSubmit={handleSearch}>
         <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>

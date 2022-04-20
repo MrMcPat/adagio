@@ -111,7 +111,7 @@ function DailyLyricPage({token}) {
                 })}
                 </div>
                 }
-                <button className="response-input" type="submit">Share</button>
+                <button className="login-input" type="submit">Share</button>
               </form>
         : <>
         <span>You posted for the day. Like this song?</span><button onClick={handleLike} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} style={{fontSize: "25px"}} color="#DB7093"/></button>
