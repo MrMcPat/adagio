@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { Link } from 'react-router-dom'
 import OtherUserPlaylist from "./OtherUserPlaylist"
 import MusicPlayer from "./MusicPlayer"
+import placeholder from "../placeholder_img.png"
 
 function OtherUserProfile({token}) {
     const [userID, setUserID] = useState([])
@@ -15,6 +16,7 @@ function OtherUserProfile({token}) {
     const [hide, setHide] = useState(true)
     const [followed, setFollowed] = useState(null)
     const [toggle, setToggle] = useState(false)
+    const [play, setPlay] = useState("")
     const { username } = useParams()
 
     useEffect(() => {
@@ -50,47 +52,78 @@ function OtherUserProfile({token}) {
     }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center" }} className="user-profile-container">
+      <div className="other-details">
+      <div className="other-details-header"></div>
+      <img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%", background: "grey"}}/>
         <p>{userProfile.first_name} {userProfile.last_name}</p>
         <p>Username: {userProfile.username}</p>
-        <img src={userProfile.profile_picture} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
+        <div className="other-description">
         <p>{userProfile.description}</p>
-        {followed ? <button onClick={handleUnfollow}>Unfollow</button>:<button onClick={handleFollow}>Follow</button>}
-        {hide ? (
-            <div style={{ display: "none" }}>
-              <MusicPlayer spotifyUri={spotifyUri} token={token}/>
-            </div>
-          ) : (
+        </div>
+        <div style={{margin: "20px"}}>
+        {followed ? <button className="default-button" onClick={handleUnfollow}>Unfollow</button>:<button className="default-button" onClick={handleFollow}>Follow</button>}
+        </div>
+      </div>
+      <div className="other-music-container">
+        <div className="other-music-header">
+          <h3>{userProfile.username}'s playlists</h3>
             <div>
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
-            </div>
-          )}
-        {userProfile.favorite_songs_is_private ? <h3>This user's music playlist is made private.</h3> : userEmotions.map(emotion => <OtherUserPlaylist key={emotion.id} emotion={emotion} setSpotifyUri={setSpotifyUri} setHide={setHide}/>)}
-        <h2>Most Recent Journal Entries</h2>
-      <Link to={`/user/${username}/journalentries`}><button>See All Journal Entries</button></Link>
+            </div> 
+        </div>
+      <div className="other-music-body">
+      {userProfile.favorite_songs_is_private ? <h3>This user's music playlist is made private.</h3> : userEmotions.map(emotion => <OtherUserPlaylist key={emotion.id} emotion={emotion} setSpotifyUri={setSpotifyUri} setHide={setHide} play={play} setPlay={setPlay}/>)}
+      </div>
+      </div>
+      <div className="user-recent" style={{width: "580px"}}>
+      <div className="user-recent-header">
+        <h4>Most Recent Journal Entries</h4>
+        </div>
+        <div className="user-recent-body" style={{margin: "10px"}}>
+      <Link to={`/user/${username}/journalentries`}><button className="default-button">See All Journal Entries</button></Link>
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
-          <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
-          <p>{entry.is_private || userProfile.journal_is_private ? "Marked as private" : "Public"}</p>
-          <p>{entry.created_at === entry.updated_at ? 
+          <Link to={`/journalentry/${entry.id}`} style={{textDecoration: "none", color: "white"}}><strong>{entry.title}</strong></Link><br />
+          <span>{entry.is_private || userProfile.journal_is_private ? "Marked as private" : "Public"}</span><br />
+          <span>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-          <span>❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
+          `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</span>
+          <span> ❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
         </div>
       })}
-      <h2>Most Recent Posts</h2>
-      <Link to={`/user/${username}/posts`}><button>See All Posts</button></Link>
+      </div>
+      </div>
+      <div className="user-recent" style={{width: "580px"}}>
+      <div className="user-recent-header">
+        <h4>Most Recent Posts</h4>
+        </div>
+        <div className="user-recent-body" style={{margin: "10px"}}>
+      <Link to={`/user/${username}/posts`} style={{textDecoration: "none", color: "white"}}><button className="default-button">See All Posts</button></Link>
       {userPosts.length === 0 ? <p>No posts :</p>
       : userPosts.map(post => {
         return <div key={post.id}>
-          <Link to={`/post/${post.id}`}><h3>{post.title}</h3></Link>
-          <p>{post.body}</p>
-          <p>{post.created_at === post.updated_at ? 
+          <Link to={`/post/${post.id}`} style={{textDecoration: "none", color: "white"}}><strong>{post.title}</strong></Link><br />
+          <span>{post.created_at === post.updated_at ? 
           `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
+          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span>
         </div>
       })}
+      </div>
+      </div>
+      <div class="bubbles" style={{height: "130%"}}>
+      <div class="bubble" style={{background: "#FFA1A1"}}></div>
+      <div class="bubble" style={{background: "#92BA92"}}></div>
+      <div class="bubble" style={{background: "#9ADCFF"}}></div>
+      <div class="bubble" style={{background: "#FFF89A"}}></div>
+      <div class="bubble" style={{background: "#EEC373"}}></div>
+      <div class="bubble" style={{background: "#E7FBBE"}}></div>
+      <div class="bubble" style={{background: "#92A9BD"}}></div>
+      <div class="bubble" style={{background: "#B983FF"}}></div>
+      <div class="bubble" style={{background: "#949CDF"}}></div>
+      <div class="bubble" style={{background: "#A0FFE6"}}></div>
+      </div>
     </div>
   )
 }

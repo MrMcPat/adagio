@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 function UserJournalSettings() {
     const [userJournalEntries, setUserJournalEntries] = useState([])
@@ -39,18 +41,18 @@ function UserJournalSettings() {
   return (
     <div className="user-settings">
     <h2>Your Journal Entries</h2>
-    <button onClick={handleToggle}>Search</button>
-      {toggle ? <input placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
+    <button className="default-button" onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+      {toggle ? <input className="text-box" placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
-        return <div key={entry.id}>
-          <Link to={`/journalentry/${entry.id}`}><h3>{entry.title}</h3></Link>
-          <p>{entry.is_private || userJournalPrivate ? "Marked as private" : "Public"}</p>
-          <p>{entry.created_at === entry.updated_at ? 
+        return <div key={entry.id} style={{margin: "10px"}}>
+          <Link to={`/journalentry/${entry.id}`} style={{textDecoration: "none", color: "white"}}><strong>{entry.title}</strong></Link><br />
+          <span>{entry.is_private || userJournalPrivate ? "Marked as private" : "Public"}</span><br />
+          <span>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-          <Link to={`/editentry/${entry.id}`}><button value={entry.id}>Edit</button></Link>
-          <button value={entry.id} onClick={handleDelete}>Delete</button>
+          `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</span><br />
+          <Link to={`/editentry/${entry.id}`}><button className="default-button" value={entry.id}>Edit</button></Link>
+          <button className="default-button" value={entry.id} onClick={handleDelete}>Delete</button>
         </div>
       })}
     </div>

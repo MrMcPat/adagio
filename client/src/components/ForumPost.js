@@ -20,13 +20,13 @@ function ForumPost({post, userID}) {
     <>
     <div className="profile-header">
     </div>
-    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}} /><br />
+    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white", border: "1x solid white"}} /><br />
     <span style={{position: "relative", top: "-10px"}}><Link to="/userprofile" style={{textDecoration: "none", color: "white"}}>{post.user.username}(You)</Link></span>
     </>:
     <>
     <div className="profile-header">
     </div>
-    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}} /><br />
+    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white", border: "1x solid white"}} /><br />
       <span style={{position: "relative", top: "-10px"}}><Link to={`/user/${post.user.username}`} style={{textDecoration: "none", color: "white"}}>{post.user.username}</Link></span>
     </>
     }

@@ -43,7 +43,7 @@ function FollowedUserPosts() {
         hasMore={true}
         >
         <div className="posts-overflow">
-        {userPosts.length === 0 ? <p>No posts :(</p> : userPosts.map(post => <ForumPost key={post.id} post={post} userID={userID}/>)}
+        {userPosts.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No posts :(</h4> : userPosts.map(post => <ForumPost key={post.id} post={post} userID={userID}/>)}
         </div>
         </InfiniteScroll>
     </div>

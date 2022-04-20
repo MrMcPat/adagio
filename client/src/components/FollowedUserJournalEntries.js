@@ -43,7 +43,7 @@ function FollowedUserJournalEntries() {
         hasMore={true}
         >
           <div className="journal-entries-container">
-          {userJournalEntries.length === 0 ? <p>No journal entries :(</p> : <>{userJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}</>}
+          {userJournalEntries.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No journal entries :(</h4> : <>{userJournalEntries.map(entry => <ExploreJournalEntry key={entry.id} entry={entry}/>)}</>}
           </div>
         </InfiniteScroll>
     </div>

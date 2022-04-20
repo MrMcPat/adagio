@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 function UserPostSettings() {
     const [userPosts, setUserPosts] = useState([])
@@ -37,17 +39,17 @@ function UserPostSettings() {
   return (
     <div className="user-settings">
         <h2>Your Posts</h2>
-        <button onClick={handleToggle}>Search</button>
-        {toggle ? <input placeholder="Filter your posts." onChange={handleSearch}/> : null}
+        <button onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+        {toggle ? <input className="text-box" placeholder="Filter your posts." onChange={handleSearch}/> : null}
         {userPosts.length === 0 ? <p>No journal entries :(</p> 
       : userPosts.map(post => {
-        return <div key={post.id}>
-          <Link to={`/post/${post.id}`}><h3>{post.title}</h3></Link>
-          <p>{post.created_at === post.updated_at ? 
+        return <div key={post.id} style={{margin: "10px"}}>
+          <Link to={`/post/${post.id}`} style={{textDecoration: "none", color: "white"}}><strong>{post.title}</strong></Link><br />
+          <span>{post.created_at === post.updated_at ? 
           `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
-          <Link to={`/post/${post.id}`}><button value={post.id}>Edit</button></Link>
-          <button value={post.id} onClick={handleDelete}>Delete</button>
+          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span><br />
+          <Link to={`/post/${post.id}`}><button className="default-button" value={post.id}>Edit</button></Link>
+          <button className="default-button" value={post.id} onClick={handleDelete}>Delete</button>
         </div>
       })}
     </div>

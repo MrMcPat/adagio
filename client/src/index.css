@@ -15,6 +15,20 @@ code {
     monospace;
 }
 
+.default-button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  margin: 5px;
+  text-shadow: 1px 1px grey;
+  box-shadow: 1px 1px grey;
+}
+
+::placeholder {
+  color: white;
+}
+
 .navbar {
   background: transparent !important;
   height: 80px !important;
@@ -26,14 +40,128 @@ code {
   display: flex;
   justify-content: left;
   flex-wrap: wrap;
-  background: rgb(30, 30, 30);
-  color: rgb(178, 176, 176);
+  background: transparent;
 }
 
 .homepage-top {
   width: 100%;
   height: 80vh;
   margin: 40px 70px;
+}
+
+.homepage-boxes {
+  width: 50%;
+  padding: 25% 0;
+  text-align: center;
+  background: rgb(30, 30, 30);
+}
+
+.footer {
+  margin: auto;
+  text-align: center;
+  font-size: 10px;
+}
+
+.bubbles{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow:hidden;
+  top:0;
+  left:0;
+}
+.bubble{
+  position: absolute;
+  bottom:-100px;
+  width:40px;
+  height: 40px;
+  background:#f1f1f1;
+  border-radius:50%;
+  opacity:0.5;
+  animation: rise 10s infinite ease-in;
+}
+.bubble:nth-child(1){
+  width:40px;
+  height:40px;
+  left:10%;
+  animation-duration:8s;
+}
+.bubble:nth-child(2){
+  width:20px;
+  height:20px;
+  left:20%;
+  animation-duration:5s;
+  animation-delay:1s;
+}
+.bubble:nth-child(3){
+  width:50px;
+  height:50px;
+  left:35%;
+  animation-duration:7s;
+  animation-delay:2s;
+}
+.bubble:nth-child(4){
+  width:80px;
+  height:80px;
+  left:50%;
+  animation-duration:11s;
+  animation-delay:0s;
+}
+.bubble:nth-child(5){
+  width:35px;
+  height:35px;
+  left:55%;
+  animation-duration:6s;
+  animation-delay:1s;
+}
+.bubble:nth-child(6){
+  width:45px;
+  height:45px;
+  left:65%;
+  animation-duration:8s;
+  animation-delay:3s;
+}
+.bubble:nth-child(7){
+  width:90px;
+  height:90px;
+  left:70%;
+  animation-duration:12s;
+  animation-delay:2s;
+}
+.bubble:nth-child(8){
+  width:25px;
+  height:25px;
+  left:80%;
+  animation-duration:6s;
+  animation-delay:2s;
+}
+.bubble:nth-child(9){
+  width:15px;
+  height:15px;
+  left:70%;
+  animation-duration:5s;
+  animation-delay:1s;
+}
+.bubble:nth-child(10){
+  width:90px;
+  height:90px;
+  left:25%;
+  animation-duration:10s;
+  animation-delay:4s;
+}
+@keyframes rise{
+  0%{
+    bottom:-100px;
+    transform:translateX(0);
+  }
+  50%{
+    transform:translate(100px);
+  }
+  100%{
+    bottom:1080px;
+    transform:translateX(-200px);
+  }
 }
 
 .homepage-top img {
@@ -79,7 +207,7 @@ code {
 
 .login-container h1{
   letter-spacing: 5px;
-  font-weight: bolder;
+  font-weight: bold;
   text-shadow: 2px 2px grey;
 }
 
@@ -106,7 +234,7 @@ code {
 
 .signup-container h1{
   letter-spacing: 5px;
-  font-weight: bolder;
+  font-weight: bold;
   text-shadow: 2px 2px grey;
 }
 
@@ -132,6 +260,35 @@ code {
   text-shadow: 1px 1px grey;
 }
 
+.daily-lyric {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-fill-mode: forwards;
+}
+
+.daily-lyric-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+}
+
+.daily-lyric-delay-2 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .random-background-1 {
   background-image: url(dailylyricpage1.png);
 }
@@ -143,21 +300,6 @@ code {
 }
 .random-background-4 {
   background-image: url(dailylyricpage4.png);
-}
-.random-background-5 {
-  background-image: url(dailylyricpage5.png);
-}
-.random-background-6 {
-  background-image: url(dailylyricpage6.png);
-}
-.random-background-7 {
-  background-image: url(dailylyricpage7.png);
-}
-.random-background-8 {
-  background-image: url(dailylyricpage8.png);
-}
-.random-background-9 {
-  background-image: url(dailylyricpage9.png);
 }
 
 .daily-lyric-container {
@@ -184,6 +326,10 @@ code {
   width: 400px;
   margin: 50px 100px;
   overflow-y: scroll;
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
 }
 
 .responses {
@@ -223,6 +369,9 @@ code {
 }
 
 .recommended-track {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-fill-mode: forwards;
   width: 600px;
   overflow: hidden;
   font-size: 15px;
@@ -230,13 +379,24 @@ code {
   padding: 0 20px;
 }
 
-.playlists-container{
+.playlists-title {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+}
+
+.playlists-container {
   margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   height: 48vh;
   overflow-y: scroll;
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
 }
 
 .playlist {
@@ -249,6 +409,7 @@ code {
   background: rgba(77, 76, 76, 0.3);
   backdrop-filter: blur(2.5px);
   border-radius: 20px;
+  border: 3px solid rgb(94, 65, 86);
 }
 
 .musicplayer {
@@ -260,24 +421,137 @@ code {
   padding-top: 80px;
   display: flex;
   flex-wrap: wrap;
-  background-image: url(profilepage.png);
-  background-attachment: fixed;
-  color: black;
+  justify-content: center;
 }
 
 .user-details {
-  margin-top: 50px;
+  margin: 20px 0 50px 50px;
   width: 500px;
+  height: 600px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: rgba(55, 54, 54, 0.9);
+  border: 1px solid rgb(187, 177, 177);
+}
+
+.user-details img {
+  margin-top: -50px;
+  border: 1px solid rgb(187, 177, 177);
+}
+
+.user-details-header {
+  height: 100px;
+  background: rgb(40, 40, 39);
+  border-bottom: 1px solid rgb(187, 177, 177);
+  border-radius: 20px 20px 0 0;
+}
+
+.profile-description {
+  height: 100px;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.profile-colors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+  height: 50px;
 }
 
 .user-recent{
   width: 700px;
-  height: 300px;
+  height: 290px;
+  margin: 20px;
+ border-radius: 20px;
+ backdrop-filter: blur(5px);
+ background: rgba(55, 54, 54, 0.9);
+ border: 1px solid rgb(187, 177, 177);
+}
+
+.user-recent-header {
+  height: 40px;
+  padding: 5px;
+  background: rgba(40, 40, 39);
+  border-bottom: 1px solid rgb(187, 177, 177);
+  border-radius: 20px 20px 0 0;
+}
+
+.user-recent-body {
+  height: 240px;
   overflow-y: scroll;
 }
 
 .follows {
-  height: 300px;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.other-details {
+  margin: 20px 0 50px 50px;
+  width: 350px;
+  height: 500px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: rgba(55, 54, 54, 0.9);
+  border: 1px solid rgb(187, 177, 177);
+}
+
+.other-details img {
+  margin-top: -50px;
+  border: 1px solid rgb(187, 177, 177);
+}
+
+.other-details-header {
+  height: 100px;
+  background: rgb(40, 40, 39);
+  border-bottom: 1px solid rgb(187, 177, 177);
+  border-radius: 20px 20px 0 0;
+}
+
+.other-description {
+  height: 130px;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.other-music-container {
+  margin: 20px 0 50px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 800px;
+  height: 500px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: rgba(55, 54, 54, 0.9);
+  border: 1px solid rgb(187, 177, 177);
+
+}
+
+.other-music-header {
+  width: 800px;
+  height: 120px;
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid rgb(187, 177, 177);
+  background: rgba(40, 40, 39);
+}
+
+.other-music-body {
+  width: 800px;
+  height: 365px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  border-radius: 0 0 20px 20px;
+}
+
+.other-playlist {
+  width: 350px;
+  height: 180px;
   overflow-y: scroll;
 }
 
@@ -458,6 +732,7 @@ code {
   border-radius: 20px;
   margin: 10px 20px;
   text-shadow: 1px 1px grey;
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .forum-profile img{
@@ -466,7 +741,7 @@ code {
 }
 
 .profile-header {
-  background-image: url(grid.png);
+  background-image: url(grid2.png);
   height: 80px;
   border-radius: 20px 20px 0 0;
   border: 1px solid white;
@@ -476,16 +751,18 @@ code {
   width: 600px;
   height: 200px;
   backdrop-filter: blur(5px);
-  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));
+  border-radius: 20px;
   border: 1px solid white;
   margin: 10px;
   border-radius: 20px;
   text-shadow: 1px 1px grey;
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .forum-title {
   width: 598px;
-  background-image: url(grid.png);
+  background-image: url(grid2.png);
   padding: 5px;
   border-radius: 20px 20px 0 0;
   border: 1px solid white;
@@ -495,11 +772,23 @@ code {
 .posts-container {
   margin-top: -80px;
   padding-top: 80px;
-  background-image: url(forum.png);
+  background-image: url(forumposts.png);
   background-position: center;
   background-repeat: repeat;
+  background-size: 100rem;
   background-attachment: fixed;
   height: 100vh;
+}
+
+.post-container {
+  margin-top: -80px;
+  padding-top: 80px;
+  background-image: url(forumposts.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 100rem;
+  background-attachment: fixed;
+  height: 130vh;
 }
 
 .posts-overflow {
@@ -524,6 +813,7 @@ code {
   backdrop-filter: blur(5px);
   background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
   border: 1px solid white;
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .posts-title {
@@ -531,7 +821,7 @@ code {
   padding: 20px;
   height: 80px;
   border-radius: 20px 20px 0 0;
-  background-image: url(grid.png);
+  background-image: url(grid2.png);
   border: 1px solid white;
   text-shadow: 1px 1px grey;
 }
@@ -551,6 +841,7 @@ code {
   backdrop-filter: blur(5px);
   background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
   border: 1px solid white;
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .posts-profile-section img {
@@ -563,13 +854,18 @@ code {
   width: 298px;
   height: 80px;
   border-radius: 20px 20px 0 0;
-  background-image: url(grid.png);
+  background-image: url(grid2.png);
   border: 1px solid white;
 }
 
 .posts-profile-body {
   overflow-wrap: break-word;
   padding-top: 50px;
+}
+
+.comment-container {
+  height: 55vh;
+  overflow-y: scroll;
 }
 
 .reply-container {
@@ -589,11 +885,12 @@ code {
   border-radius: 20px;
   backdrop-filter: blur(5px);
   background: linear-gradient(rgba(201, 195, 195, 0.7), rgba(196, 192, 192, 0.7));  
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .reply-profile-header {
   height: 89px;
-  background-image: url(grid.png);
+  background-image: url(grid2.png);
   border-radius: 20px 20px 0 0;
 }
 
@@ -611,6 +908,7 @@ code {
   backdrop-filter: blur(5px);
   background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  
   border: 1px solid white;
+  box-shadow: 5px 5px 1px 1px rgba(75, 100, 68, 0.9);
 }
 
 .comment-section {
@@ -653,4 +951,8 @@ code {
 .user-settings {
   width: 500px;
   text-align: left;
+}
+
+a:hover {
+  color: rgb(199, 191, 161) !important;
 }

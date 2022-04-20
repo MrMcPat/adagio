@@ -38,7 +38,7 @@ function AllUserPosts() {
         hasMore={true}
         >
         <div className="posts-overflow">
-        {userPosts.length === 0 ? <p>No posts :</p>
+        {userPosts.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No posts :(</h4>
       : userPosts.map(post => {
         return <div key={post.id} style={{margin: "20px auto"}}  className="forum-post">
           <div className="forum-title">

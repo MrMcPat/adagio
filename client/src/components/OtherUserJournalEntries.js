@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Link } from "react-router-dom"
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useParams } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 function OtherUserJournalEntries() {
   const [userProfile, setUserProfile] = useState([])
@@ -34,8 +36,8 @@ return (
   <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>{username}'s Journal Entries</h3>
       <form onSubmit={handleSearch} style={{padding: "20px"}}>
-    <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
-    <button type="submit">Search</button>
+    <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
+    <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
     </form>
       <InfiniteScroll
       dataLength={userJournalEntries.length}
@@ -43,7 +45,7 @@ return (
       hasMore={true}
       >
       <div className="journal-entries-container">
-      {userJournalEntries.length === 0 ? <p>No journal entries from {username}:(</p> 
+      {userJournalEntries.length === 0 ? <h4 style={{textShadow: "2px 2px grey"}}>No journal entries from {username}:(</h4> 
     : userJournalEntries.map(entry => {
       return <div key={entry.id} className="journal-entry">
         <Link to={`/journalentry/${entry.id}`} style={{textDecoration: "none", color: "white"}}><h5>{entry.title}</h5></Link>

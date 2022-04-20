@@ -50,8 +50,8 @@ function UserAccountSettings() {
   return (
     <div>
       <span>{userProfile.email}</span>
-      <button onClick={handleEmailShow}>Change Email</button>
-      <button onClick={handlePasswordShow}>Change Password</button>
+      <button className="default-button" onClick={handleEmailShow}>Change Email</button>
+      <button className="default-button" onClick={handlePasswordShow}>Change Password</button>
       <Modal show={emailShow} onHide={handleEmailClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
           <Modal.Title>Change Email</Modal.Title>

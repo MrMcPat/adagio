@@ -108,7 +108,7 @@ function MusicRecommendations({token}) {
         </div>
       )}
       <br />
-      <h2>Your Playlists</h2>
+      <h2 className="playlists-title">Your Playlists</h2>
       <div className="playlists-container">
       {userEmotions.map((playlist) => (
         <MusicPlaylist

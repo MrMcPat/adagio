@@ -17,6 +17,7 @@ function DailyLyricPage({token}) {
     const [inputResponse, setInputResponse] = useState("")
     const [inputColor, setInputColor] = useState("")
     const [inputEmotion, setInputEmotion] = useState("")
+    const [random, setRandom] = useState(Math.floor(Math.random() * 4) + 1)
 
     useEffect(() => {
     async function handleFetch() {
@@ -80,14 +81,17 @@ function DailyLyricPage({token}) {
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
 
   return (
-      <div className={`daily-lyric-page-container random-background-${Math.floor(Math.random() * 9) + 1}`}>
+      <div className={`daily-lyric-page-container random-background-${random}`}>
       <div className="daily-lyric-container">
-      <h1>{dailyLyric.lyric}</h1>
-        <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} token={token}/>
+      <h1 className="daily-lyric">{dailyLyric.lyric}</h1>
+      <div className="daily-lyric-delay">
+      <MusicPlayer spotifyUri={dailyLyric.length === 0 ? "spotify:track:64FzSxCxQ0cBlktqiMQBey" : dailyLyric.spotify_uri} token={token}/>
         <p style={{fontSize: "20px", letterSpacing: "2px"}}>{dailyLyric.song_name} by {dailyLyric.artist_name}</p>
-        {hasUserResponse.length === 0 ? 
+      </div>
+      <div className="daily-lyric-delay-2">
+      {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>
-                <input className="text-box" style={{textShadow: "1px 1px white"}} placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
+                <input className="text-box" placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
                 {userEmotions.length === 0 ? <p>You don't have any colors, please add some.</p> :
                 <div className="color-container">
                 {userEmotions.map(emotion => {
@@ -113,6 +117,7 @@ function DailyLyricPage({token}) {
         <span>You posted for the day. Like this song?</span><button onClick={handleLike} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} style={{fontSize: "25px"}} color="#DB7093"/></button>
         <Link to="/musicrecommendations"><button className="response-input" style={{width: "500px"}}>See your music recommendations</button></Link>
         </>}
+      </div>
       </div>
         <div className="daily-lyric-responses">
           {userResponses.map(response => <DailyLyricResponses key={response.id} response={response} userID={userID}/>)}

@@ -80,7 +80,7 @@ function NavBar({ user, setUser }) {
           <NavLink to="newpost" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>+Write new forum post</p></NavLink>
           <NavLink to="/userprofile" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Profile</p></NavLink>
           <NavLink to="/usersettings" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Settings</p></NavLink>
-          <button onClick={handleLogoutClick}>Logout</button>
+          <button className="default-button" onClick={handleLogoutClick}>Logout</button>
         </Offcanvas.Body>
       </Offcanvas>
     </>

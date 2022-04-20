@@ -55,19 +55,17 @@ function NewJournalEntry() {
     <div style={{textAlign: "center"}} className="new-journal-entry">
       {isSubmitted ? 
       <><h1>You have submitted your journal entry.</h1>
-      <button onClick={handleIsSubmitted}>Enter new journal Entry</button>
-      <Link to="/journalentries"><button>Explore journal entries</button></Link>
+      <button className="signup-input" onClick={handleIsSubmitted}>Enter new journal Entry</button>
+      <Link to="/journalentries"><button className="signup-input">Explore journal entries</button></Link>
       </> :
       <>
       <h1>What are your thoughts...</h1>
       <form onSubmit={handleSubmit}>
-        <label>Journal Entry Title</label><br />
-        <input className="text-box" value={inputTitle} onChange={e => setInputTitle(e.target.value)}></input><br />
-        <label>Journal Entry Body</label><br/>
-        <textarea className="textarea-box" rows="20" cols="100" style={{resize: "none"}} value={inputBody} onChange={e => setInputBody(e.target.value)}></textarea><br />
+        <input className="text-box" value={inputTitle} placeholder="Title goes here" onChange={e => setInputTitle(e.target.value)}></input><br /><br/>
+        <textarea className="textarea-box" rows="15" cols="100" placeholder="Type your entry" style={{resize: "none"}} value={inputBody} onChange={e => setInputBody(e.target.value)}></textarea><br />
         <label>Private this journal entry</label>
         <input type="checkbox" onChange={e => setInputPrivate(e.target.checked)}/>
-        <button type="submit">Submit Entry</button>
+        <button className="signup-input" style={{color: "white", border: "none", width: "200px", height: "50px"}} type="submit">Submit Entry</button>
       </form>
       </>
     }

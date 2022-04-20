@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Modal from "react-bootstrap/Modal"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 
-function OtherUserPlaylistSong({song, setSpotifyUri, setHide}) {
+function OtherUserPlaylistSong({song, setSpotifyUri, setHide, play, setPlay}) {
   const [userEmotions, setUserEmotions] = useState([])
   const [inputEmotion, setInputEmotion] = useState("")
   const [show, setShow] = useState(false)
@@ -22,6 +27,7 @@ function OtherUserPlaylistSong({song, setSpotifyUri, setHide}) {
     function handleClick() {
         setSpotifyUri(song.spotify_uri)
         setHide(false)
+        setPlay(song.song_name)
     }
 
     function handleChange(e) {
@@ -40,26 +46,33 @@ function OtherUserPlaylistSong({song, setSpotifyUri, setHide}) {
 
   return (
     <>
-    <span onClick={handleClick}>{song.song_name} by {song.artist_name}</span>
-    <button onClick={handleShow}>Like</button>
+    <span onClick={handleClick} style={{cursor: "pointer"}}>{song.song_name === play ? <FontAwesomeIcon icon={faVolumeHigh} color="#1cb954"/> : null} {`${song.song_name} by ${song.artist_name}`.length > 20 ? `${song.song_name} by ${song.artist_name}`.substring(0, 20) + "..." : `${song.song_name} by ${song.artist_name}`}</span>
+    <button onClick={handleShow} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} color="#FF6363"/></button>
     <br />
 
     <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton style={{background: "rgb(40, 40, 39)"}}>
           <Modal.Title>Choose a color for the liked song!</Modal.Title>
         
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="profile-colors" style={{background: "rgba(55, 54, 54, 0.9)", margin: "0", height: "80px"}}>
           {userEmotions.map(emotion => {
             return (
-              <div key={emotion.id} style={{textAlign: "center"}}>
-                <label  htmlFor={emotion.id} style={{background: `${emotion.color}`}}>{emotion.emotion}</label>
-                <input type="radio" id={emotion.emotion} name="colors" value={emotion.color} onChange={handleChange}/>
+              <div key={emotion.id} style={{textAlign: "center"}} className="radio-toolbar">
+                <input type="radio" style={{display: "none"}} id={emotion.emotion} name="colors" value={emotion.color} onChange={handleChange}></input>
+                <OverlayTrigger
+                  placement="top"
+                  overlay={<Tooltip style={{fontSize: "15px"}}>
+                  {emotion.emotion}
+                  </Tooltip>}
+                >
+                  <label  htmlFor={emotion.emotion} style={{background: `${emotion.color}`, borderRadius: "20px", border:`3px solid rgba(26, 25, 25, 0.2)`, cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </OverlayTrigger>
               </div>
                   )
                 })}
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{background: "rgb(40, 40, 39)"}}>
           <button onClick={handleLike}>Like</button>
         </Modal.Footer>
       </Modal>

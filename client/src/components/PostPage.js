@@ -46,7 +46,7 @@ function PostPage() {
     if (!post.created_at || !post.updated_at) return null
 
   return (
-    <div style={{textAlign: "center"}} className="posts-container">
+    <div style={{textAlign: "center"}} className="post-container">
         {userID === post.user_id ? 
         <>
         <div className="posts-page-container">
@@ -75,9 +75,11 @@ function PostPage() {
         </div>
         <Link to={`/editpost/${id}`}><button>Edit Post</button></Link>
         <Link to="/forumposts"><button onClick={handleDelete}>Delete Post</button></Link>
-        <h4>Comments</h4>
+        <h4 style={{textShadow: "1px 1px grey"}}>Comments</h4>
+        <div className="comment-container">
         {replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
         <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
+        </div>
         </> : 
         <>
         <div className="posts-page-container">
@@ -87,7 +89,7 @@ function PostPage() {
           </div>
           <div className="posts-profile-body">
           <span><Link to={`/user/${post.user.username}`} style={{fontSize: "20px", color: "white", textDecoration: "none"}}>{post.user.username}</Link></span><br />
-          <span>{post.user.description}</span><br />
+          <span>{post.user.description.length > 80 ? `${post.user.description.substring(0, 80)}...` : post.user.description}</span><br />
           <Link to={`/user/${post.user.username}/journalentries`}><button className="scotch-tape">See All Journal Entries</button></Link><br />
           <Link to={`/user/${post.user.username}/posts`}><button className="scotch-tape2">See All Posts</button></Link>
           </div>
@@ -95,7 +97,7 @@ function PostPage() {
         <div>
           <div className="posts-page">
           <div className="posts-title">
-          <h3>{post.title} by <Link to={`/user/${post.user.username}`} style={{textDecoration: "none", color: "white"}}>{post.user.username}</Link></h3>
+          <h3>{post.title}</h3>
           </div>
           <div className="posts-page-body">
           <p>{post.body}</p>
@@ -106,9 +108,11 @@ function PostPage() {
           </div>
         </div>
         </div>
-        <h4 style={{margin: "20px"}}>Comments</h4>
+        <h4 style={{textShadow: "1px 1px grey"}}>Comments</h4>
+        <div className="comment-container">
         {replies.map(reply => <Replies key={reply.id} reply={reply} userID={userID} onReplyEdit={handleReplyEdit} onReplyDelete={handleReplyDelete}/>)}
         <ReplyForm userID={userID} postID={id} onReply={handleReply}/>
+        </div>
         </>}
 
 

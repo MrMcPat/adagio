@@ -33,6 +33,8 @@ function ExploreJournalEntries() {
     handleFetch()
   }, [count])
 
+  console.log(journalEntries)
+
   async function handleSearch(e) {
     e.preventDefault()
     setJournalEntries(allJournalEntries.filter(entry => entry.title.toLowerCase().includes(input.toLowerCase()) || entry.body.toLowerCase().includes(input.toLowerCase()) || entry.user.username.toLowerCase().includes(input.toLowerCase())))

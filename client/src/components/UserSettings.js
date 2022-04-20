@@ -6,7 +6,11 @@ import UserPostSettings from './UserPostSettings'
 import Modal from "react-bootstrap/Modal"
 import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
+import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Tooltip from "react-bootstrap/Tooltip"
 import placeholder from "../placeholder_img.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
 import { ToastContainer, toast } from 'react-toastify'
 
 function UserSettings() {
@@ -207,22 +211,22 @@ function UserSettings() {
 
     {setting === 0 ? <div className="user-settings">
     <span>{userProfile.first_name} {userProfile.last_name}</span>
-    <button onClick={handleNameShow}>Change Name</button><br />
+    <button className="default-button" onClick={handleNameShow}>Change Name</button><br />
     <img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
-    <button onClick={handleImageShow}>Add/Edit Profile Picture</button>
+    <button className="default-button" onClick={handleImageShow}>Add/Edit Profile Picture</button>
     <p>{userProfile.description}</p>
-    <button onClick={handleDescriptionShow}>Change your description</button><br />
+    <button className="default-button" onClick={handleDescriptionShow}>Change your description</button><br />
     </div> : null}
 
     {setting === 1 ? <div className="user-settings">
     <span>Username: {userProfile.username}</span>
-    <button onClick={handleUsernameShow}>Change Username</button> <br />
+    <button className="default-button" onClick={handleUsernameShow}>Change Username</button> <br />
     <UserAccountSettings />
     </div> : null}
 
     {setting === 2 ? <div className="user-settings">
     <label>Private your music playlists?</label>
-    <input type="checkbox" checked={userMusicPrivate || ""} onChange={handleMusicChecked} />
+    <input type="checkbox" checked={userMusicPrivate || ""} onChange={handleMusicChecked} /><br />
     <label>Private all journal entries?</label>
     <input type="checkbox" checked={userJournalPrivate || ""} onChange={handlePrivatedChecked}/>
     </div> : null}
@@ -231,25 +235,32 @@ function UserSettings() {
     <p>Your colors:</p>
     {userColorList.map(emotion => {
       return <div key={emotion.id}>
-        <span style={{background: `${emotion.color}`}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>{emotion.emotion}
-        <button value={emotion.id} onClick={handleEmotionDelete}>Delete</button>
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip style={{fontSize: "15px"}}>
+          {emotion.emotion}
+          </Tooltip>}
+        >
+        <span style={{background: `${emotion.color}`, borderRadius: "20px", border:`3px solid rgba(26, 25, 25, 0.2)`, margin: "5px"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </OverlayTrigger>
+        <button style={{background: "transparent", border: "none"}} value={emotion.id} onClick={handleEmotionDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
         </div>
     })}
     <form onSubmit={handleEmotionSubmit}>
     <input value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
     <input type="color" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
-    <button type="submit">Add a color</button>
+    <button className="default-button" type="submit">Add a color</button>
     </form>
     <p>Your triggers:</p>
     {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
         <span>{trigger.trigger}</span>
-        <button value={trigger.id} onClick={handleTriggerDelete}>Delete</button>
+        <button style={{background: "transparent", border: "none"}} value={trigger.id} onClick={handleTriggerDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
         </div>
     })}
     <form onSubmit={handleTriggerSubmit}>
       <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
-      <button type="submit">Add a trigger</button>
+      <button className="default-button" type="submit">Add a trigger</button>
     </form>
     </div> : null}
 
