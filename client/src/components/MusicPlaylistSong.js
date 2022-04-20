@@ -26,8 +26,8 @@ function MusicPlaylistSong({song, setSpotifyUri, setHide, onDelete, play, setPla
     </Tooltip>}
       >
         <div>
-        <span onClick={handleClick} style={{cursor: "pointer"}}>{song.song_name === play ? <FontAwesomeIcon icon={faVolumeHigh} color="#1cb954"/> : null} {`${song.song_name} by ${song.artist_name}`.length > 20 ? `${song.song_name} by ${song.artist_name}`.substring(0, 20) + "..." : `${song.song_name} by ${song.artist_name}`}</span>
-        <button onClick={handleDelete} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
+        <span onClick={handleClick} style={{cursor: "pointer"}}>{song.song_name === play ? <FontAwesomeIcon className="icon" icon={faVolumeHigh} color="#1cb954"/> : null} {`${song.song_name} by ${song.artist_name}`.length > 20 ? `${song.song_name} by ${song.artist_name}`.substring(0, 20) + "..." : `${song.song_name} by ${song.artist_name}`}</span>
+        <button onClick={handleDelete} style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faXmarkCircle} color="#B20600"/></button>
         </div>
       </OverlayTrigger>
     </div>

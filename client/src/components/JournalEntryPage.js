@@ -115,10 +115,10 @@ function handleIsPrivate(e){
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
-      <button className="emoji-button" onClick={handleHeart} style={{width: "50px"}}><FontAwesomeIcon icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/> </button>{heartCount}
-      <button className="emoji-button" onClick={handlePraying} style={{width: "50px"}}><FontAwesomeIcon icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/> </button>{prayingCount}
-      <button className="emoji-button" onClick={handleShocked} style={{width: "50px"}}><FontAwesomeIcon icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/> </button>{shockedCount}
-      <button className="emoji-button" onClick={handleSad} style={{width: "50px"}}><FontAwesomeIcon icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/> </button>{sadCount}
+      <button className="emoji-button" onClick={handleHeart} style={{width: "50px"}}><FontAwesomeIcon className="icon" icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/> </button>{heartCount}
+      <button className="emoji-button" onClick={handlePraying} style={{width: "50px"}}><FontAwesomeIcon className="icon" icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/> </button>{prayingCount}
+      <button className="emoji-button" onClick={handleShocked} style={{width: "50px"}}><FontAwesomeIcon className="icon" icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/> </button>{shockedCount}
+      <button className="emoji-button" onClick={handleSad} style={{width: "50px"}}><FontAwesomeIcon className="icon" icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/> </button>{sadCount}
       </div>
       </div>
     </>

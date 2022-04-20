@@ -225,9 +225,9 @@ function UserSettings() {
     </div> : null}
 
     {setting === 2 ? <div className="user-settings">
-    <label>Private your music playlists?</label>
+    <label style={{margin: "10px"}}>Private your music playlists?</label>
     <input type="checkbox" checked={userMusicPrivate || ""} onChange={handleMusicChecked} /><br />
-    <label>Private all journal entries?</label>
+    <label style={{margin: "10px"}}>Private all journal entries?</label>
     <input type="checkbox" checked={userJournalPrivate || ""} onChange={handlePrivatedChecked}/>
     </div> : null}
 
@@ -243,23 +243,23 @@ function UserSettings() {
         >
         <span style={{background: `${emotion.color}`, borderRadius: "20px", border:`3px solid rgba(26, 25, 25, 0.2)`, margin: "5px"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
         </OverlayTrigger>
-        <button style={{background: "transparent", border: "none"}} value={emotion.id} onClick={handleEmotionDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
+        <button style={{background: "transparent", border: "none"}} value={emotion.id} onClick={handleEmotionDelete}><FontAwesomeIcon className="icon" icon={faXmarkCircle} color="#B20600"/></button>
         </div>
     })}
     <form onSubmit={handleEmotionSubmit}>
-    <input value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
-    <input type="color" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
+    <input className="text-box" value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
+    <input type="color" className="color-picker" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
     <button className="default-button" type="submit">Add a color</button>
     </form>
     <p>Your triggers:</p>
     {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
         <span>{trigger.trigger}</span>
-        <button style={{background: "transparent", border: "none"}} value={trigger.id} onClick={handleTriggerDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
+        <button style={{background: "transparent", border: "none"}} value={trigger.id} onClick={handleTriggerDelete}><FontAwesomeIcon className="icon" icon={faXmarkCircle} color="#B20600"/></button>
         </div>
     })}
     <form onSubmit={handleTriggerSubmit}>
-      <input value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
+      <input className="text-box" value={userTrigger} onChange={e => setUserTrigger(e.target.value)}></input>
       <button className="default-button" type="submit">Add a trigger</button>
     </form>
     </div> : null}

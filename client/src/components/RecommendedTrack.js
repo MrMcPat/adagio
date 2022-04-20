@@ -64,7 +64,7 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
       <span onClick={handleClick} style={{cursor: "pointer"}}>
         {track.track_name === play ? <FontAwesomeIcon icon={faVolumeHigh} color="#1cb954"/> : null} {`${track.track_name} by ${track.artist_name}`.length > 60 ? `${track.track_name} by ${track.artist_name}`.substring(0, 60) + "..." : `${track.track_name} by ${track.artist_name}`}
       </span>
-      <button onClick={handleFavSong} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} color="#DB7093"/></button>
+      <button className="icon" onClick={handleFavSong} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} color="#DB7093"/></button>
       </div>
       </OverlayTrigger>
 

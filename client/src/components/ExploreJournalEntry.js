@@ -51,10 +51,10 @@ function ExploreJournalEntry({entry}) {
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</p>
          <p><span>by <Link to={`/user/${entry.user.username}`} style={{textDecoration: "none", color: "gray"}}>{entry.user.username} </Link></span><br /><br />
-         <button onClick={handleHeart}><FontAwesomeIcon icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/></button>{heartCount}
-         <button onClick={handlePraying}><FontAwesomeIcon icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/></button>{prayingCount}
-         <button onClick={handleShocked}><FontAwesomeIcon icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/></button>{shockedCount}
-         <button onClick={handleSad}><FontAwesomeIcon icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/></button>{sadCount}
+         <button onClick={handleHeart}><FontAwesomeIcon className="icon" icon={faHeart} color="#F24A72" style={{fontSize: "25px"}}/></button>{heartCount}
+         <button onClick={handlePraying}><FontAwesomeIcon className="icon" icon={faHandsPraying} color="#FFD124" style={{fontSize: "25px"}}/></button>{prayingCount}
+         <button onClick={handleShocked}><FontAwesomeIcon className="icon" icon={faFaceSurprise} color="#FFD124" style={{fontSize: "25px"}}/></button>{shockedCount}
+         <button onClick={handleSad}><FontAwesomeIcon className="icon" icon={faFaceFrown} color="#FFD124" style={{fontSize: "25px"}}/></button>{sadCount}
          </p>
         </div>
     </div>

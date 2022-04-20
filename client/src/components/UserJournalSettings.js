@@ -41,8 +41,8 @@ function UserJournalSettings() {
   return (
     <div className="user-settings">
     <h2>Your Journal Entries</h2>
-    <button className="default-button" onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
-      {toggle ? <input className="text-box" placeholder="Filter your journal entries." onChange={handleSearch}/> : null}
+    <button onClick={handleToggle} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+      {toggle ? <input className="text-box" placeholder="Search" onChange={handleSearch}/> : null}
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id} style={{margin: "10px"}}>

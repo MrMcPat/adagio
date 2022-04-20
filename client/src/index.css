@@ -952,8 +952,22 @@ code {
 .user-settings {
   width: 500px;
   text-align: left;
+  height: 70vh;
+  overflow-y: scroll;
 }
 
 a:hover {
-  color: rgb(255, 237, 171) !important;
+  color: rgb(229, 206, 123) !important;
+}
+
+.icon {
+  transition: transform 0.2s;
+}
+
+.icon:hover {
+ transform: scale(1.2);
+}
+
+.icon:active {
+  opacity: 50%;
 }
