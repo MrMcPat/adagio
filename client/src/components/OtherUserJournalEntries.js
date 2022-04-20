@@ -9,7 +9,7 @@ function OtherUserJournalEntries() {
   const [userJournalEntries, setUserJournalEntries] = useState([])
   const [allUserJournalEntries, setAllUserJournalEntries] = useState([])
   const [input, setInput] = useState("")
-  const [count, setCount] = useState(7)
+  const [count, setCount] = useState(6)
   const { username } = useParams()
 
   useEffect(() => {
@@ -33,13 +33,13 @@ function OtherUserJournalEntries() {
 return (
   <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>{username}'s Journal Entries</h3>
-      <form onSubmit={handleSearch}>
+      <form onSubmit={handleSearch} style={{padding: "20px"}}>
     <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
     <button type="submit">Search</button>
     </form>
       <InfiniteScroll
       dataLength={userJournalEntries.length}
-      next={() => setCount(count + 7)} 
+      next={() => setCount(count + 6)} 
       hasMore={true}
       >
       <div className="journal-entries-container">

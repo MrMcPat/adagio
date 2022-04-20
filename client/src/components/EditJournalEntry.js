@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function EditJournalEntry() {
     const [userID, setUserID] = useState([])
@@ -38,6 +39,11 @@ function EditJournalEntry() {
         setIsEdited(true)
     }
 
+    function handleDelete() {
+      axios.delete(`/journal_entries/${id}`)
+      alert("Your journal entry has been deleted.")
+    }
+
   return (
     <div style={{textAlign: "center"}} className="new-journal-entry">
       {userID === journalEntry.user_id ?
@@ -53,6 +59,7 @@ function EditJournalEntry() {
       <label>Private this journal entry</label>
       <input  type="checkbox" checked={editPrivate || ""} onChange={e => setEditPrivate(e.target.checked)}/>
       <button type="submit">Edit Entry</button>
+      <Link to="/userprofile"><button style={{width: "150px"}} onClick={handleDelete}>Delete Entry</button></Link>
     </form>
     </>
         }  

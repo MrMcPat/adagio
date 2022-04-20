@@ -8,14 +8,14 @@ function AllUserJournalEntries() {
     const [userJournalEntries, setUserJournalEntries] = useState([])
     const [allUserJournalEntries, setAllUserJournalEntries] = useState([])
     const [input, setInput] = useState("")
-    const [count, setCount] = useState(4)
+    const [count, setCount] = useState(6)
 
     useEffect(() => {
         async function handleFetch() {
           const userData = await axios.get("/me")
           setUserProfile(userData.data)
           const userJournalEntryData = await axios.get("/journal_entries")
-          setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id).slice(0, count))
+          setUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
           setAllUserJournalEntries(userJournalEntryData.data.filter(entry => entry.user_id === userData.data.id))
         }
         handleFetch()
@@ -30,13 +30,13 @@ function AllUserJournalEntries() {
   return (
     <div style={{textAlign: "center"}} className="explore-page-container">
         <h3>Your Journal Entries</h3>
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} style={{padding: "20px"}}>
       <input type="search" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
       <button type="submit">Search</button>
       </form>
         <InfiniteScroll
         dataLength={userJournalEntries.length}
-        next={() => setCount(count + 4)} 
+        next={() => setCount(count + 6)} 
         hasMore={true}
         >
           <div className="journal-entries-container">

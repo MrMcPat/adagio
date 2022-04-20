@@ -14,15 +14,34 @@ function ForumPost({post, userID}) {
   }, [])
 
   return (
+    <div className="forum-post-container">
+    <div className="forum-profile">
+    {post.user_id === userID ? 
     <>
-    <p><Link to={`/post/${post.id}`}>{post.title}</Link> 
-    {post.user_id === userID ? <span> by {post.user.username}(You)</span> : <span> by <Link to={`/user/${post.user.username}`}>{post.user.username}</Link></span>}</p>
-    <p>{post.body}</p>
+    <div className="profile-header">
+    </div>
+    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}} /><br />
+    <span style={{position: "relative", top: "-10px"}}><Link to="/userprofile" style={{textDecoration: "none", color: "white"}}>{post.user.username}(You)</Link></span>
+    </>:
+    <>
+    <div className="profile-header">
+    </div>
+    <img src={post.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}} /><br />
+      <span style={{position: "relative", top: "-10px"}}><Link to={`/user/${post.user.username}`} style={{textDecoration: "none", color: "white"}}>{post.user.username}</Link></span>
+    </>
+    }
+    </div>
+    <div className="forum-post">
+      <div className="forum-title">
+      <h4 style={{position: "relative", top: "5px"}}><Link to={`/post/${post.id}`} style={{textDecoration: "none", color: "white"}}>{post.title}</Link></h4>
+      </div>
+    <p>{post.body.length === 20 ? `${post.body.substring(0, 20)}...` : post.body}</p>
     <p>{replyCount} comment(s)</p>
     <p>{post.created_at === post.updated_at ? 
     `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
     `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</p>
-    </>
+    </div>
+    </div>
   )
 }
 

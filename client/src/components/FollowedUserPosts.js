@@ -31,7 +31,7 @@ function FollowedUserPosts() {
     }
 
   return (
-    <div style={{textAlign: "center"}}>
+    <div style={{textAlign: "center"}} className="posts-container">
         <h3>Followed Posts</h3>
         <form onSubmit={handleSearch}>
         <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
@@ -42,7 +42,9 @@ function FollowedUserPosts() {
         next={() => setCount(count + 6)} 
         hasMore={true}
         >
+        <div className="posts-overflow">
         {userPosts.length === 0 ? <p>No posts :(</p> : userPosts.map(post => <ForumPost key={post.id} post={post} userID={userID}/>)}
+        </div>
         </InfiniteScroll>
     </div>
   )

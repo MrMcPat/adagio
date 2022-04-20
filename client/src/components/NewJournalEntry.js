@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import { Link } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify'
 
 function NewJournalEntry() {
@@ -53,7 +54,10 @@ function NewJournalEntry() {
   return (
     <div style={{textAlign: "center"}} className="new-journal-entry">
       {isSubmitted ? 
-      <><h1>You have submitted your journal entry.</h1><button onClick={handleIsSubmitted}>Enter new journal Entry</button></> :
+      <><h1>You have submitted your journal entry.</h1>
+      <button onClick={handleIsSubmitted}>Enter new journal Entry</button>
+      <Link to="/journalentries"><button>Explore journal entries</button></Link>
+      </> :
       <>
       <h1>What are your thoughts...</h1>
       <form onSubmit={handleSubmit}>

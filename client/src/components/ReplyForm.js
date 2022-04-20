@@ -29,7 +29,7 @@ function ReplyForm({userID, postID, onReply}) {
     }
 
   return (
-    <div>
+    <div style={{padding: "30px"}}>
         <form onSubmit={handleSubmit}>
             <input value={input} onChange={e => setInput(e.target.value)}></input>
             <button type="submit">Reply</button>

@@ -104,6 +104,7 @@ code {
   flex-wrap: wrap;
   background-position: center;
   height: 100vh;
+  text-shadow: 1px 1px grey;
 }
 
 .random-background-1 {
@@ -167,7 +168,7 @@ code {
 .response-input{
   background: linear-gradient(rgba(26, 25, 25, 0.2), rgba(26, 25, 25, 0.2));
   backdrop-filter: blur(5px);
-  height: 75px;
+  height: 50px;
   width: 200px;
   margin: 20px;
   padding: 10px;
@@ -230,8 +231,12 @@ code {
 }
 
 .user-profile-container {
+  margin-top: -80px;
+  padding-top: 80px;
   display: flex;
   flex-wrap: wrap;
+  background-image: url(profilepage.png);
+  color: black;
 }
 
 .user-details {
@@ -264,9 +269,9 @@ code {
 .journal-entries-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  height: 79vh;
-  margin-left: 50px;
+  justify-content: center;
+  height: 73vh;
+  overflow-y: scroll;
 }
 
 .journal-entry {
@@ -285,7 +290,7 @@ code {
 }
 
 .journal-entry-body {
-  padding: 10px;
+  padding: 15px;
   height: 250px;
   border-radius: 0 0 5px 5px;
   background: white;
@@ -356,6 +361,8 @@ code {
   margin: 5px;
   padding: 5px;
   border: none;
+  width: 170px;
+  background: transparent;
   background-image: url(scotchtape.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -368,6 +375,8 @@ code {
   margin: 5px;
   padding: 5px;
   border: none;
+  width: 170px;
+  background: transparent;
   background-image: url(scotchtape.png);
   background-position: center;
   background-repeat: no-repeat;
@@ -406,6 +415,183 @@ code {
   height: 500px;
   border-radius: 0 0 20px 20px;
   overflow-wrap: break-word;
+}
+
+.forum-post-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.forum-profile {
+  width: 200px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 10px 20px;
+  text-shadow: 1px 1px grey;
+}
+
+.forum-profile img{
+  position: relative;
+  top: -35px;
+}
+
+.profile-header {
+  background-image: url(grid.png);
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid white;
+}
+
+.forum-post {
+  width: 600px;
+  height: 200px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  border: 1px solid white;
+  margin: 10px;
+  border-radius: 20px;
+  text-shadow: 1px 1px grey;
+}
+
+.forum-title {
+  width: 598px;
+  background-image: url(grid.png);
+  padding: 5px;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid white;
+  text-shadow: 2px 2px grey;
+}
+
+.posts-container {
+  margin-top: -80px;
+  padding-top: 80px;
+  background-image: url(forum.png);
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.posts-overflow {
+  margin-top: 20px;
+  height: 76vh;
+  overflow-y: scroll;
+}
+
+.posts-page-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.posts-page {
+  margin: 30px;
+  text-align: left;
+  width: 700px;
+  height: 350px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  border: 1px solid white;
+}
+
+.posts-title {
+  width: 698px;
+  padding: 20px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+  background-image: url(grid.png);
+  border: 1px solid white;
+  text-shadow: 1px 1px grey;
+}
+
+.posts-page-body {
+  height: 230px;
+  padding: 20px;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+}
+
+.posts-profile-section {
+  margin: 30px;
+  width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  border-radius: 20px;
+  border: 1px solid white;
+}
+
+.posts-profile-section img {
+  position: relative;
+  top: 40px;
+  border: 1px solid white;
+}
+
+.posts-profile-header {
+  width: 298px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+  background-image: url(grid.png);
+  border: 1px solid white;
+}
+
+.posts-profile-body {
+  overflow-wrap: break-word;
+  padding-top: 50px;
+}
+
+.reply-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 200px;
+  width: 750px;
+  border-radius: 20px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+.reply-profile-section {
+  width: 135px;
+  border: 1px solid white;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.7), rgba(196, 192, 192, 0.7));  
+}
+
+.reply-profile-header {
+  height: 89px;
+  background-image: url(grid.png);
+  border-radius: 20px 20px 0 0;
+}
+
+.reply-container img {
+  position: relative;
+  border: 1px solid white;
+  top: 50px;
+}
+
+.reply-section {
+  width: 555px;
+  height: 200px;
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  background: linear-gradient(rgba(201, 195, 195, 0.8), rgba(196, 192, 192, 0.8));  
+  border: 1px solid white;
+}
+
+.comment-section {
+  padding: 20px;
+  height: 80px;
+  text-align: left;
+  overflow-y: scroll;
 }
 
 .new-journal-entry {
