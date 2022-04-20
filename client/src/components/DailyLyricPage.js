@@ -79,7 +79,7 @@ function DailyLyricPage({token}) {
 
     const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
-
+    console.log(userResponses)
   return (
       <div className={`daily-lyric-page-container random-background-${random}`}>
       <div className="daily-lyric-container">
@@ -111,7 +111,7 @@ function DailyLyricPage({token}) {
                 })}
                 </div>
                 }
-                <button className="login-input" type="submit">Share</button>
+                <button className="login-input" type="submit" style={{color: "white", border: "none", width: "250px", height: "60px"}}>Share</button>
               </form>
         : <>
         <span>You posted for the day. Like this song?</span><button onClick={handleLike} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} style={{fontSize: "25px"}} color="#DB7093"/></button>

@@ -29,11 +29,11 @@ function ExploreJournalEntries() {
       })
       setJournalEntries(filteredJournals)
       setAllJournalEntries(filteredJournals)
+      console.log(otherJournalEntries)
     }
     handleFetch()
   }, [count])
 
-  console.log(journalEntries)
 
   async function handleSearch(e) {
     e.preventDefault()

@@ -1,11 +1,11 @@
 class User < ApplicationRecord
-    has_many :emotions
-    has_many :triggers
-    has_many :responses
-    has_many :journal_entries
-    has_many :posts
-    has_many :replies
-    has_many :follows
+    has_many :emotions, dependent: :destroy
+    has_many :triggers, dependent: :destroy
+    has_many :responses, dependent: :destroy
+    has_many :journal_entries, dependent: :destroy
+    has_many :posts, dependent: :destroy
+    has_many :replies, dependent: :destroy
+    has_many :follows, dependent: :destroy
     has_many :posts, through: :replies
     has_many :lyrics, through: :responses
 

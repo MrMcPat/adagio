@@ -55,8 +55,8 @@ function NewJournalEntry() {
     <div style={{textAlign: "center"}} className="new-journal-entry">
       {isSubmitted ? 
       <><h1>You have submitted your journal entry.</h1>
-      <button className="signup-input" onClick={handleIsSubmitted}>Enter new journal Entry</button>
-      <Link to="/journalentries"><button className="signup-input">Explore journal entries</button></Link>
+      <button className="signup-input" style={{color: "white", border: "none"}} onClick={handleIsSubmitted}>Enter new journal Entry</button>
+      <Link to="/journalentries"><button style={{color: "white", border: "none"}} className="signup-input">Explore journal entries</button></Link>
       </> :
       <>
       <h1>What are your thoughts...</h1>
