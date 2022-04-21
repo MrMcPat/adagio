@@ -432,9 +432,9 @@ code {
 }
 
 .user-details {
-  margin: 20px 0 50px 50px;
+  margin: 15px;
   width: 500px;
-  height: 600px;
+  height: 595px;
   border-radius: 20px;
   backdrop-filter: blur(5px);
   background: rgba(133, 132, 132, 0.5);
@@ -470,7 +470,7 @@ code {
 .user-recent{
   width: 700px;
   height: 290px;
-  margin: 20px;
+  margin: 15px;
  border-radius: 20px;
  backdrop-filter: blur(5px);
  background: rgba(133, 132, 132, 0.5);
@@ -549,17 +549,22 @@ code {
 .other-music-body {
   width: 800px;
   height: 365px;
+  padding-left: 30px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-y: scroll;
   border-radius: 0 0 20px 20px;
+
 }
 
 .other-playlist {
   width: 350px;
   height: 180px;
   overflow-y: scroll;
+  border: 1px solid rgb(77, 77, 77);
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .explore-page-container {
@@ -577,8 +582,11 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 73vh;
+  height: 74vh;
   overflow-y: scroll;
+  border-top: 1px solid white;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 .journal-entry {
@@ -801,8 +809,11 @@ code {
 
 .posts-overflow {
   margin-top: 20px;
-  height: 76vh;
+  margin-left: 300px;
+  margin-right: 300px;
+  height: 76.7vh;
   overflow-y: scroll;
+  border-top: 1px solid white;
 }
 
 .posts-page-container {
@@ -874,6 +885,9 @@ code {
 
 .comment-container {
   height: 55vh;
+  margin-left: 300px;
+  margin-right: 300px;
+  border-top: 1px solid white;
   overflow-y: scroll;
 }
 
@@ -983,4 +997,41 @@ a:hover {
 
 .icon:active {
   opacity: 50%;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: white;  
+  border-radius: 20px;
+}
+
+.playlist::-webkit-scrollbar {
+  width: 5px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background-color: rgb(165, 119, 151);  
+  border-radius: 20px;
+}
+
+.journal::-webkit-scrollbar {
+  width: 5px;
+}
+
+.journal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.journal::-webkit-scrollbar-thumb {
+  background-color: grey;  
+  border-radius: 20px;
 }

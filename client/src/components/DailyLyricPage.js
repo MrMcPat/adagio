@@ -79,7 +79,7 @@ function DailyLyricPage({token}) {
 
     const currentDate = String(new Date().getFullYear()).padStart(2, "0") + "-" + String(new Date().getMonth()+1).padStart(2, "0") + "-" + String(new Date().getDate()).padStart(2, "0")
     const hasUserResponse = userResponses.filter(response => response.user_id === userID && response.created_at.slice(0, 10) ===  currentDate)
-    console.log(userResponses)
+
   return (
       <div className={`daily-lyric-page-container random-background-${random}`}>
       <div className="daily-lyric-container">

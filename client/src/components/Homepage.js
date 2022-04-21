@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import logo from "../logo.png"
 import { Link } from "react-router-dom"
 import homepage1 from "../homepage1.png"
@@ -7,6 +8,15 @@ import homepage3 from "../homepage3.png"
 import homepage4 from "../homepage4.png"
 
 function Homepage() {
+  const [user, setUser] = useState(0)
+
+  useEffect(() => {
+    async function handleFetch() {
+      const userData = await axios.get("/me")
+      setUser(userData.data.id)
+    }
+    handleFetch()
+  }, [])
 
   return (
     <div className="homepage-container">
@@ -17,10 +27,10 @@ function Homepage() {
         <h3 style={{fontSize: "40px"}}>Manage your mental health at your own pace.</h3><br />
         <h5>At Adagio, we believe that managing your mental health should be personalized and done at your own pace. Our emotions are as copious as there are varying shades of pinks, blues, and yellows. One is not simply just upset. We can be irritated, enraged, and regretful—and Adagio recognizes that. Don’t just accept whatever category that you have been check-boxed into. Tell the world of your feelings. Be <strong>fierce</strong>. Be <strong>unapologetic</strong>. Be <strong>you</strong>.</h5>
         </div>
-        <div>
+        {user !== 0 ? null : <>
         <Link to="/signup"><button className="default-button">Get started</button></Link>
         <Link to="/login"><button className="default-button">Returning user?</button></Link>
-        </div>
+        </>}
         </div>
       <div style={{width: "50%"}}><img src={homepage4} style={{width: "100%"}}/></div>
       <div className="homepage-boxes">

@@ -111,7 +111,7 @@ function handleIsPrivate(e){
       <div className="journal-page">
       <h3 style={{textAlign: "center", marginTop: "-35px", textShadow: "2px 2px grey", letterSpacing: "4px"}}>{journalEntry.title}</h3>
       <div className="journal-body">
-      <div style={{height: "330px", overflowY: "scroll", margin: "10px"}}><p>{journalEntry.body}</p></div>
+      <div className="journal" style={{height: "330px", overflowY: "scroll", margin: "10px"}}><p>{journalEntry.body}</p></div>
       <p>{journalEntry.created_at === journalEntry.updated_at ? 
           `-Created on ${journalEntry.created_at.slice(0, 16).split("T")[0]}, ${journalEntry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${journalEntry.updated_at.slice(0, 16).split("T")[0]}, ${journalEntry.updated_at.slice(0, 16).split("T")[1]}`}</p>
