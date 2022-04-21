@@ -73,7 +73,7 @@ function UserProfile() {
         <h4>Your Recent Journal Entries</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
-        <Link to="/userjournalentries"><button className="default-button">See All Journal Entries</button></Link>
+        <Link to="/userjournalentries"><button className="default-button">See All Journal Entries</button></Link><hr />
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id} style={{margin: "10px"}}>
@@ -82,7 +82,7 @@ function UserProfile() {
           <span>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</span><br />
-          <span>❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
+          <span>❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span><hr />
         </div>
       })}
         </div>
@@ -92,7 +92,7 @@ function UserProfile() {
         <h4>Your Recent Posts</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
-        <Link to="/userposts"><button className="default-button">See All Posts</button></Link>
+        <Link to="/userposts"><button className="default-button">See All Posts</button></Link><hr />
       {userPosts.length === 0 ? <p>No posts :(</p>
       : userPosts.map(post => {
         return <div key={post.id} style={{margin: "10px"}}>
@@ -100,7 +100,7 @@ function UserProfile() {
           <span>{post.body}</span><br />
           <span>{post.created_at === post.updated_at ? 
           `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span>
+          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span><hr />
         </div>
       })}
         </div>

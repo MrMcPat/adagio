@@ -67,7 +67,7 @@ function OtherUserProfile({token}) {
       </div>
       <div className="other-music-container">
         <div className="other-music-header">
-          <h3>{userProfile.username}'s colors</h3>
+          <h3>{userProfile.username}'s colors/playlists</h3>
             <div>
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div> 
@@ -81,7 +81,7 @@ function OtherUserProfile({token}) {
         <h4>Most Recent Journal Entries</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
-      <Link to={`/user/${username}/journalentries`}><button className="default-button">See All Journal Entries</button></Link>
+      <Link to={`/user/${username}/journalentries`}><button className="default-button">See All Journal Entries</button></Link><hr />
       {userJournalEntries.length === 0 ? <p>No journal entries :(</p> 
       : userJournalEntries.map(entry => {
         return <div key={entry.id}>
@@ -90,7 +90,7 @@ function OtherUserProfile({token}) {
           <span>{entry.created_at === entry.updated_at ? 
           `-Created on ${entry.created_at.slice(0, 16).split("T")[0]}, ${entry.created_at.slice(0, 16).split("T")[1]}` :
           `-Updated on ${entry.updated_at.slice(0, 16).split("T")[0]}, ${entry.updated_at.slice(0, 16).split("T")[1]}`}</span>
-          <span> ❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span>
+          <span> ❤️{entry.heart_count} 🙏{entry.praying_count} 😮{entry.shocked_count} 😞{entry.sad_count}</span><hr />
         </div>
       })}
       </div>
@@ -100,14 +100,14 @@ function OtherUserProfile({token}) {
         <h4>Most Recent Posts</h4>
         </div>
         <div className="user-recent-body" style={{margin: "10px"}}>
-      <Link to={`/user/${username}/posts`} style={{textDecoration: "none", color: "white"}}><button className="default-button">See All Posts</button></Link>
+      <Link to={`/user/${username}/posts`} style={{textDecoration: "none", color: "white"}}><button className="default-button">See All Posts</button></Link><hr />
       {userPosts.length === 0 ? <p>No posts :</p>
       : userPosts.map(post => {
         return <div key={post.id}>
           <Link to={`/post/${post.id}`} style={{textDecoration: "none", color: "white"}}><strong>{post.title}</strong></Link><br />
           <span>{post.created_at === post.updated_at ? 
           `-Created on ${post.created_at.slice(0, 16).split("T")[0]}, ${post.created_at.slice(0, 16).split("T")[1]}` :
-          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span>
+          `-Updated on ${post.updated_at.slice(0, 16).split("T")[0]}, ${post.updated_at.slice(0, 16).split("T")[1]}`}</span><hr />
         </div>
       })}
       </div>
