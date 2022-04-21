@@ -46,7 +46,7 @@ function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     <div className="reply-container">
       <div className="reply-profile-section">
         <div className="reply-profile-header">
-        <img src={reply.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}}/>
+        {userID === reply.user_id ? <Link to="/userprofile"><img src={reply.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}}/></Link> : <Link to={`/user/${reply.user.username}`}><img src={reply.user.profile_picture} style={{width: "75px", height: "75px", borderRadius: "50%", background: "white"}}/></Link>}
         </div>
       {userID === reply.user_id ? <Link to="/userprofile" style={{textDecoration: "none", color: "white"}}><p style={{position: "relative", top: "50px"}}>{reply.user.username}(You)</p></Link> : <Link to={`/user/${reply.user.username}`} style={{position: "relative", top: "50px", textDecoration: "none", color: "white"}}><p>{reply.user.username}</p></Link>}
       </div>

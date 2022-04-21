@@ -52,7 +52,7 @@ function PostPage() {
         <div className="posts-page-container">
         <div className="posts-profile-section">
         <div className="posts-profile-header">
-        <img src={post.user.profile_picture} style={{width: "80px", height: "80px", borderRadius: "50%", background: "white"}} />
+        <Link to={`/userprofile`}><img src={post.user.profile_picture} style={{width: "80px", height: "80px", borderRadius: "50%", background: "white"}} /></Link>
           </div>
           <div className="posts-profile-body">
           <span><Link to={`/userprofile`} style={{fontSize: "20px", color: "white", textDecoration: "none"}}>{post.user.username}(You)</Link></span><br />
@@ -85,7 +85,7 @@ function PostPage() {
         <div className="posts-page-container">
         <div className="posts-profile-section">
           <div className="posts-profile-header">
-          <img src={post.user.profile_picture} style={{width: "80px", height: "80px", borderRadius: "50%", background: "white"}} />
+          <Link to={`/user/${post.user.username}`}><img src={post.user.profile_picture} style={{width: "80px", height: "80px", borderRadius: "50%", background: "white"}} /></Link>
           </div>
           <div className="posts-profile-body">
           <span><Link to={`/user/${post.user.username}`} style={{fontSize: "20px", color: "white", textDecoration: "none"}}>{post.user.username}</Link></span><br />

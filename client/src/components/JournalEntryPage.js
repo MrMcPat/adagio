@@ -100,7 +100,7 @@ function handleIsPrivate(e){
     :
     <>
     <div className="profile-section">
-    <img src={journalEntry.user.profile_picture} style={{width: "130px", height: "130px", borderRadius: "50%"}} />
+    <Link to={`/user/${journalEntry.user.username}`}><img src={journalEntry.user.profile_picture} style={{width: "130px", height: "130px", borderRadius: "50%"}} /></Link>
       <div className="profile-body">
       <span><Link to={`/user/${journalEntry.user.username}`} style={{fontSize: "30px", color: "grey", textDecoration: "none"}}>{journalEntry.user.username}</Link></span><br />
       <span>{journalEntry.user.description}</span><br />

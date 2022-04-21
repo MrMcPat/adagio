@@ -11,9 +11,9 @@ function Homepage() {
   return (
     <div className="homepage-container">
       <div className="homepage-top">
-        <img src={logo} style={{width: "40%"}}/>
+        <img src={logo} style={{width: "35%"}}/>
         <div className="homepage-text" style={{margin: "20px"}}>
-        <h2 style={{fontSize: "60px"}}>We will be with you every step of the way.</h2>
+        <h2 style={{fontSize: "60px"}}>We will be with you every step of the way.</h2><br />
         <h3 style={{fontSize: "40px"}}>Manage your mental health at your own pace.</h3><br />
         <h5>At Adagio, we believe that managing your mental health should be personalized and done at your own pace. Our emotions are as copious as there are varying shades of pinks, blues, and yellows. One is not simply just upset. We can be irritated, enraged, and regretful—and Adagio recognizes that. Don’t just accept whatever category that you have been check-boxed into. Tell the world of your feelings. Be <strong>fierce</strong>. Be <strong>unapologetic</strong>. Be <strong>you</strong>.</h5>
         </div>
