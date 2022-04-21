@@ -17,7 +17,7 @@ function Homepage() {
         <h3 style={{fontSize: "40px"}}>Manage your mental health at your own pace.</h3><br />
         <h5>At Adagio, we believe that managing your mental health should be personalized and done at your own pace. Our emotions are as copious as there are varying shades of pinks, blues, and yellows. One is not simply just upset. We can be irritated, enraged, and regretful—and Adagio recognizes that. Don’t just accept whatever category that you have been check-boxed into. Tell the world of your feelings. Be <strong>fierce</strong>. Be <strong>unapologetic</strong>. Be <strong>you</strong>.</h5>
         </div>
-        <div style={{textAlign: "center"}}>
+        <div>
         <Link to="/signup"><button className="default-button">Get started</button></Link>
         <Link to="/login"><button className="default-button">Returning user?</button></Link>
         </div>
