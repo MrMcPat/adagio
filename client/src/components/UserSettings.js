@@ -145,8 +145,8 @@ function UserSettings() {
   }
 
   function handleEmotionDelete(e) {
-    axios.delete(`/emotions/${e.target.value}`)
-    setUserColorList(userColorList.filter(emotion => emotion.id !== parseInt(e.target.value)))
+    axios.delete(`/emotions/${e.currentTarget.value}`)
+    setUserColorList(userColorList.filter(emotion => emotion.id !== parseInt(e.currentTarget.value)))
   }
 
   function handleTriggerSubmit(e) {
@@ -182,8 +182,8 @@ function UserSettings() {
   }
 
   function handleTriggerDelete(e) {
-    axios.delete(`/triggers/${e.target.value}`)
-    setUserTriggerList(userTriggerList.filter(trigger => trigger.id !== parseInt(e.target.value)))
+    axios.delete(`/triggers/${e.currentTarget.value}`)
+    setUserTriggerList(userTriggerList.filter(trigger => trigger.id !== parseInt(e.currentTarget.value)))
   }
 
   function handleToken() {

@@ -48,7 +48,7 @@ function Homepage() {
       <div style={{width: "50%"}}><img src={homepage2} style={{width: "100%"}}/></div>
       <div className="footer">
         <img src={logo} style={{height: "70px"}}/>
-        <p>Designed and developed by Vivian Li and Patrick Liang</p>
+        <p>Designed by Vivian Li and developed by Patrick Liang</p>
       </div>
       <div className="bubbles">
       <div className="bubble" style={{background: "#FFA1A1"}}></div>
