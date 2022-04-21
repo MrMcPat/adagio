@@ -37,7 +37,7 @@ return (
       <h3>{username}'s journal entries</h3>
       <form onSubmit={handleSearch} style={{padding: "20px"}}>
     <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
-    <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+    <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faMagnifyingGlass} color="white"/></button>
     </form>
       <InfiniteScroll
       dataLength={userJournalEntries.length}

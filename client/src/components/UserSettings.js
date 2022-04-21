@@ -213,8 +213,8 @@ function UserSettings() {
     <span>{userProfile.first_name} {userProfile.last_name}</span>
     <button className="default-button" onClick={handleNameShow}>Change Name</button><br />
     <img src={userProfile.profile_picture ? userProfile.profile_picture : placeholder} alt="profile picture" style={{width: "100px", height: "100px", borderRadius: "50%"}}/>
-    <button className="default-button" onClick={handleImageShow}>Add/Edit Profile Picture</button>
-    <p>{userProfile.description}</p>
+    <button className="default-button" onClick={handleImageShow}>Add/Edit Profile Picture</button><br />
+    <span>{userProfile.description}</span><br />
     <button className="default-button" onClick={handleDescriptionShow}>Change your description</button><br />
     </div> : null}
 
@@ -270,7 +270,7 @@ function UserSettings() {
 
     <Modal show={nameShow} onHide={handleNameClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Change your name</Modal.Title>
+          <Modal.Title style={{color: "grey"}}>Change your name</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleNameChange}>
           <Modal.Body>
@@ -289,7 +289,7 @@ function UserSettings() {
 
     <Modal show={usernameShow} onHide={handleUsernameClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Username</Modal.Title>
+          <Modal.Title style={{color: "grey"}}>Change Username</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleUsernameChange}>
           <Modal.Body>
@@ -306,7 +306,7 @@ function UserSettings() {
 
     <Modal show={imageShow} onHide={handleImageClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Profile Picture</Modal.Title>
+          <Modal.Title style={{color: "grey"}}>Change Profile Picture</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleImageChange}>
           <Modal.Body>
@@ -323,7 +323,7 @@ function UserSettings() {
 
       <Modal show={descriptionShow} onHide={handleDescriptionClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Description</Modal.Title>
+          <Modal.Title style={{color: "grey"}}>Change Description</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleDescriptionChange}>
           <Modal.Body>

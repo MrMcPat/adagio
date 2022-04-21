@@ -29,11 +29,9 @@ function ExploreJournalEntries() {
       })
       setJournalEntries(filteredJournals)
       setAllJournalEntries(filteredJournals)
-      console.log(otherJournalEntries)
     }
     handleFetch()
   }, [count])
-
 
   async function handleSearch(e) {
     e.preventDefault()
@@ -45,9 +43,9 @@ function ExploreJournalEntries() {
     <div style={{textAlign: "center"}} className="explore-page-container">
       <h3>Explore journal entries</h3>
       <form onSubmit={handleSearch} style={{padding: "20px"}}>
-      <Link to="/newjournalentry"><button style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faPlus} color="white" style={{fontSize: "25px"}}/></button></Link>
+      <Link to="/newjournalentry"><button style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faPlus} color="white" style={{fontSize: "25px"}}/></button></Link>
       <input type="search" className="text-box" onChange={e => setInput(e.target.value)} placeholder="Search journals"></input>
-      <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+      <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faMagnifyingGlass} color="white"/></button>
       </form>
       <InfiniteScroll
         dataLength={journalEntries.length}

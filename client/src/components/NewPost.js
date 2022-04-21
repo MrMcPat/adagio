@@ -56,7 +56,7 @@ function NewPost() {
         }
 
       <ToastContainer
-        theme="dark"
+        theme="light"
         position="bottom-center"
         autoClose={5000}
         hideProgressBar={false}

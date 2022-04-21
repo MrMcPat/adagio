@@ -19,8 +19,8 @@ function Callback({getToken}) {
     }, [])
 
   return (
-    <div style={{textAlign: "center"}}>
-      <h1 style={{fontSize: "75px"}}>Hello, {userProfile.username}!</h1>
+    <div style={{textAlign: "center"}} className="callback-container">
+      <h1 style={{fontSize: "65px"}}><strong>Hello, {userProfile.username}!</strong></h1>
       <br />
       {hasResponse ? 
       <>
@@ -38,7 +38,7 @@ function Callback({getToken}) {
       <Link to="/journalentries" style={{color: "white", textDecoration: "none"}}><h1>Explore other journal entries</h1></Link>
       <Link to="/forumposts" style={{color: "white", textDecoration: "none"}}><h1>Explore the forums</h1></Link>
 
-      <div class="bubbles">
+      {/* <div class="bubbles">
       <div class="bubble" style={{background: "#FFA1A1"}}></div>
       <div class="bubble" style={{background: "#92BA92"}}></div>
       <div class="bubble" style={{background: "#9ADCFF"}}></div>
@@ -49,7 +49,7 @@ function Callback({getToken}) {
       <div class="bubble" style={{background: "#B983FF"}}></div>
       <div class="bubble" style={{background: "#949CDF"}}></div>
       <div class="bubble" style={{background: "#A0FFE6"}}></div>
-      </div>
+      </div> */}
     </div>
   )
 }

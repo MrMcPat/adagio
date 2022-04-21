@@ -54,7 +54,7 @@ function UserAccountSettings() {
       <button className="default-button" onClick={handlePasswordShow}>Change Password</button>
       <Modal show={emailShow} onHide={handleEmailClose} style={{ textAlign: "center" }} centered={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Change Email</Modal.Title>
+          <Modal.Title style={{color: "grey"}}>Change Email</Modal.Title>
         </Modal.Header>
         <form onSubmit={handleEmailChange}>
           <Modal.Body>
@@ -71,7 +71,7 @@ function UserAccountSettings() {
 
       <Modal show={passwordShow} onHide={handlePasswordClose} style={{ textAlign: "center" }} centered={true}>
           <Modal.Header closeButton>
-            <Modal.Title>Change password</Modal.Title>
+            <Modal.Title style={{color: "grey"}}>Change password</Modal.Title>
           </Modal.Header>
           <form onSubmit={handlePasswordChange}>
             <Modal.Body>

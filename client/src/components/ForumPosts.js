@@ -43,9 +43,9 @@ function ForumPosts() {
     <div style={{textAlign: "center"}} className="posts-container">
         <h3>Forums</h3>
         <form onSubmit={handleSearch}>
-        <Link to="/newpost"><button style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faPlus} color="white" style={{fontSize: "25px"}}/></button></Link>
+        <Link to="/newpost"><button style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faPlus} color="white" style={{fontSize: "25px"}}/></button></Link>
         <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
-        <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+        <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faMagnifyingGlass} color="white"/></button>
         </form>
         <InfiniteScroll
         dataLength={forumPosts.length}

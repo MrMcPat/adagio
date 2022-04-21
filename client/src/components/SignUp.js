@@ -252,7 +252,7 @@ function SignUp({setUser}) {
     </form>
       </div>: null}
       <ToastContainer
-        theme="dark"
+        theme="light"
         position="bottom-center"
         autoClose={5000}
         hideProgressBar={false}

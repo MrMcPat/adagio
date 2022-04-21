@@ -35,7 +35,7 @@ function FollowedUserPosts() {
         <h3>Followed Posts</h3>
         <form onSubmit={handleSearch}>
         <input type="search" className="text-box" placeholder="Search posts" onChange={e => setInput(e.target.value)}></input>
-        <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faMagnifyingGlass} color="white"/></button>
+        <button type="submit" style={{background: "transparent", border: "none"}}><FontAwesomeIcon className="icon" icon={faMagnifyingGlass} color="white"/></button>
         </form>
         <InfiniteScroll
         dataLength={userPosts.length}

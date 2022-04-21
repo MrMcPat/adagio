@@ -67,7 +67,7 @@ function OtherUserProfile({token}) {
       </div>
       <div className="other-music-container">
         <div className="other-music-header">
-          <h3>{userProfile.username}'s playlists</h3>
+          <h3>{userProfile.username}'s colors</h3>
             <div>
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
             </div> 

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import { Link } from "react-router-dom"
 
 function Login({setUser}) {
     const [email, setEmail] = useState("")
@@ -60,11 +61,12 @@ function Login({setUser}) {
           className="text-box"
         />
         </div>
+        <p style={{textShadow: "1px 1px grey"}}>New user? <Link to="/signup" style={{color: "white"}}>Sign up here!</Link></p>
         <button type="submit" className="login-input" style={{height: "75px", border: "none", color: "white",fontSize: "20px", letterSpacing: "4px"}}>login</button>
       </form>
 
       <ToastContainer
-        theme="dark"
+        theme="light"
         position="bottom-center"
         autoClose={5000}
         hideProgressBar={false}

@@ -65,7 +65,7 @@ function MusicRecommendations({token}) {
           <span style={{background: userResponse.color, borderRadius: "30px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           </OverlayTrigger>
           </h1>
-          <h3>Here are your music recommendations for today <FontAwesomeIcon icon={faRotateBack} style={{fontSize: "25px"}} onClick={handleRandom}/></h3>
+          <h3>Here are your music recommendations for today <FontAwesomeIcon className="icon" icon={faRotateBack} style={{fontSize: "25px"}} onClick={handleRandom}/></h3>
           {hide ? (
             <div style={{ display: "none" }} className="musicplayer">
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>
