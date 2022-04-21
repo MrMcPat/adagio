@@ -11,14 +11,16 @@ function Homepage() {
   return (
     <div className="homepage-container">
       <div className="homepage-top">
-        <img src={logo} style={{width: "35%"}}/>
+        <img src={logo} style={{width: "40%"}}/>
         <div className="homepage-text" style={{margin: "20px"}}>
-        <h1 style={{fontSize: "60px"}}>We will be with you every step of the way.</h1><br />
-        <h2 style={{fontSize: "40px"}}>Manage your mental health at your own pace.</h2><br />
+        <h2 style={{fontSize: "60px"}}>We will be with you every step of the way.</h2>
+        <h3 style={{fontSize: "40px"}}>Manage your mental health at your own pace.</h3><br />
         <h5>At Adagio, we believe that managing your mental health should be personalized and done at your own pace. Our emotions are as copious as there are varying shades of pinks, blues, and yellows. One is not simply just upset. We can be irritated, enraged, and regretful—and Adagio recognizes that. Don’t just accept whatever category that you have been check-boxed into. Tell the world of your feelings. Be <strong>fierce</strong>. Be <strong>unapologetic</strong>. Be <strong>you</strong>.</h5>
         </div>
+        <div style={{textAlign: "center"}}>
         <Link to="/signup"><button className="default-button">Get started</button></Link>
         <Link to="/login"><button className="default-button">Returning user?</button></Link>
+        </div>
         </div>
       <div style={{width: "50%"}}><img src={homepage4} style={{width: "100%"}}/></div>
       <div className="homepage-boxes">
