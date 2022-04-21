@@ -250,7 +250,7 @@ function UserSettings() {
     <input className="text-box" value={userEmotion} onChange={e => setUserEmotion(e.target.value)}></input>
     <input type="color" className="color-picker" value={userColor} onChange={e => setUserColor(e.target.value)}></input>
     <button className="default-button" type="submit">Add a color</button>
-    </form>
+    </form><br />
     <p>Your triggers:</p>
     {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
