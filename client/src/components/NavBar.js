@@ -7,6 +7,7 @@ import { NavLink, useHistory } from "react-router-dom"
 import rightsidebarbutton from "../rightsidebarbutton.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 import placeholder from "../placeholder_img.png"
 
 function NavBar({ user, setUser }) {
@@ -80,7 +81,7 @@ function NavBar({ user, setUser }) {
           <NavLink to="newpost" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>+Write new forum post</p></NavLink>
           <NavLink to="/userprofile" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Profile</p></NavLink>
           <NavLink to="/usersettings" style={{color: "white", textDecoration: "none"}}><p onClick={handleClose2}>User Settings</p></NavLink>
-          <button className="default-button" onClick={handleLogoutClick}>Logout</button>
+          <button className="default-button" onClick={handleLogoutClick}><FontAwesomeIcon icon={faArrowRightFromBracket} />Logout</button>
         </Offcanvas.Body>
       </Offcanvas>
     </>

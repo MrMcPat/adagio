@@ -221,7 +221,7 @@ function SignUp({setUser}) {
         <div>
         {userColorList.map(emotion => {
             return <div key={emotion.id}>
-              <span style={{background: `${emotion.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{emotion.emotion}</span>
+              <span style={{background: `${emotion.color}`, borderRadius: "20px", border:"3px solid rgba(26, 25, 25, 0.2)", cursor: "default"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style={{textShadow: "2px 2px grey", fontSize: "20px"}}>{emotion.emotion}</span>
               <button value={emotion.id} style={{background: "transparent", border: "none"}} onClick={handleEmotionDelete}><FontAwesomeIcon icon={faXmarkCircle} color="#B20600"/></button>
               </div>
           })}
@@ -236,7 +236,8 @@ function SignUp({setUser}) {
         </div>: null}
       {next === 3 ?
       <div>
-      <h3>You're almost set! One last thing...do you have any trigger words?(You don't have to list them if you don't want to)</h3>
+      <h2 style={{width: "1000px"}}>You're almost set! One last thing...do you have any trigger words?<br />We won't let you see them in the website.</h2>
+      <h5>You don't have to list them if you don't want to.</h5>
       <div>
       {userTriggerList.map(trigger => {
       return <div key={trigger.id}>
