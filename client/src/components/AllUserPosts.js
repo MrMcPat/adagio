@@ -56,17 +56,17 @@ function AllUserPosts() {
       })}
         </div>
         </InfiniteScroll>
-      <div class="bubbles">
-      <div class="bubble" style={{background: "#FFA1A1"}}></div>
-      <div class="bubble" style={{background: "#92BA92"}}></div>
-      <div class="bubble" style={{background: "#9ADCFF"}}></div>
-      <div class="bubble" style={{background: "#FFF89A"}}></div>
-      <div class="bubble" style={{background: "#EEC373"}}></div>
-      <div class="bubble" style={{background: "#E7FBBE"}}></div>
-      <div class="bubble" style={{background: "#92A9BD"}}></div>
-      <div class="bubble" style={{background: "#B983FF"}}></div>
-      <div class="bubble" style={{background: "#949CDF"}}></div>
-      <div class="bubble" style={{background: "#A0FFE6"}}></div>
+      <div className="bubbles">
+      <div className="bubble" style={{background: "#FFA1A1"}}></div>
+      <div className="bubble" style={{background: "#92BA92"}}></div>
+      <div className="bubble" style={{background: "#9ADCFF"}}></div>
+      <div className="bubble" style={{background: "#FFF89A"}}></div>
+      <div className="bubble" style={{background: "#EEC373"}}></div>
+      <div className="bubble" style={{background: "#E7FBBE"}}></div>
+      <div className="bubble" style={{background: "#92A9BD"}}></div>
+      <div className="bubble" style={{background: "#B983FF"}}></div>
+      <div className="bubble" style={{background: "#949CDF"}}></div>
+      <div className="bubble" style={{background: "#A0FFE6"}}></div>
       </div>
     </div>
   )
