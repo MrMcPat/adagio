@@ -326,9 +326,9 @@ code {
 }
 
 .daily-lyric-responses {
-  padding-top: 100px;
+  padding-top: 80px;
   width: 400px;
-  margin: 50px 100px;
+  margin: 80px 100px;
   overflow-y: scroll;
   opacity: 0;
   animation: fadeIn 1s ease;
@@ -337,7 +337,7 @@ code {
 }
 
 .responses {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .response-input{
