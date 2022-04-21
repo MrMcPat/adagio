@@ -64,6 +64,16 @@ function DailyLyricPage({token}) {
         response: inputResponse
       })
       .then(resp => setUserResponses([...userResponses, resp.data]))
+      .catch(err => 
+        toast.error(err.response.data.errors[0], {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }))
       setInputResponse("")
       }
     }
@@ -91,7 +101,7 @@ function DailyLyricPage({token}) {
       <div className="daily-lyric-delay-2">
       {hasUserResponse.length === 0 ? 
               <form onSubmit={handleSubmit}>
-                <input className="text-box" placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
+                <input className="text-box" style={{width: "300px"}}placeholder="Enter your response..." onChange={e => setInputResponse(e.target.value)}></input>
                 {userEmotions.length === 0 ? <p>You don't have any colors, please add some.</p> :
                 <div className="color-container">
                 {userEmotions.map(emotion => {

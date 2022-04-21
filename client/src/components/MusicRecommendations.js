@@ -95,7 +95,7 @@ function MusicRecommendations({token}) {
       ) : (
         <div>
           <h1>You did not choose a color today.</h1>
-          <h3>Tell me how you feel today, I'll fetch some music for you.</h3>
+          <h3>Tell me how you feel today, We'll fetch some music for you.</h3>
           {hide ? (
             <div style={{ display: "none" }} className="musicplayer">
               <MusicPlayer spotifyUri={spotifyUri} token={token}/>

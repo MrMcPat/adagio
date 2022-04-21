@@ -394,13 +394,17 @@ code {
 }
 
 .playlists-container {
-  margin-top: 25px;
+  margin: 25px auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 50px;
   height: 48vh;
+  width: 80vw;
   overflow-y: scroll;
   opacity: 0;
+  background: linear-gradient(rgba(45, 44, 44, 0.4), rgba(49, 47, 47, 0.4));
+  border-radius: 5px;
   animation: fadeIn 1s ease;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
