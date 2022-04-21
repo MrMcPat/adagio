@@ -71,7 +71,7 @@ function Replies({reply, userID, onReplyEdit, onReplyDelete}) {
     <span>{reply.created_at === reply.updated_at ? 
         `-Commented on ${reply.created_at.slice(0, 16).split("T")[0]}, ${reply.created_at.slice(0, 16).split("T")[1]}` :
         `-Updated comment on ${reply.updated_at.slice(0, 16).split("T")[0]}, ${reply.updated_at.slice(0, 16).split("T")[1]}`}</span>
-      </div>
+    </div>
 
       <ToastContainer
         theme="dark"
