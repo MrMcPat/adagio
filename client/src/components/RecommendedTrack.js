@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
+import { ToastContainer, toast } from 'react-toastify'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
@@ -40,7 +41,15 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
 
   function handleFavSong () {
     if (spotifySong === "spotify:track:64FzSxCxQ0cBlktqiMQBey") {
-      alert("Cannot add to playlist :( Song not found in spotify.")
+      toast.error("Cannot add to playlist :( Song not found in spotify.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        })
     } else {
       axios.post("/fav_songs", {
         emotion_id: userTodayEmotion[0].id,
@@ -67,7 +76,18 @@ function RecommendedTrack({ track, setSpotifyUri, setHide, todaysEmotion, userID
       <button className="icon" onClick={handleFavSong} style={{background: "transparent", border: "none"}}><FontAwesomeIcon icon={faHeart} color="#DB7093"/></button>
       </div>
       </OverlayTrigger>
-
+      <ToastContainer
+        theme="dark"
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }
