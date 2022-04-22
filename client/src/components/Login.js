@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
-function Login({setUser}) {
+function Login({setUser, getToken}) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    let history = useHistory()
   
     function handleSubmit(e) {
       e.preventDefault()
@@ -17,7 +18,17 @@ function Login({setUser}) {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUser(user))
-          window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+          // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+          history.push("/callback")
+          fetch("https://accounts.spotify.com/api/token?grant_type=client_credentials&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true", {
+            method: "POST", 
+              headers: {
+                'Authorization': 'Basic ' + btoa(`${process.env.REACT_APP_SPOTIFY_CLIENT_ID }`+ ':' + `${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`).toString('base64'),
+                "Content-Type" : "application/x-www-form-urlencoded"
+              }
+          })
+          .then(resp => resp.json())
+          .then(data => getToken(data))
         } else {
           r.json().then(
             (err) => 

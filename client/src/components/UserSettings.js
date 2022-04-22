@@ -12,8 +12,9 @@ import placeholder from "../placeholder_img.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
 import { ToastContainer, toast } from 'react-toastify'
+import { useHistory } from "react-router-dom"
 
-function UserSettings() {
+function UserSettings({getToken}) {
   const [userProfile, setUserProfile] = useState([])
   const [userColorList, setUserColorList] = useState([])
   const [userColor, setUserColor] = useState("#FFC0CB")
@@ -23,6 +24,7 @@ function UserSettings() {
   const [userJournalPrivate, setUserJournalPrivate] = useState(null)
   const [userMusicPrivate, setUserMusicPrivate] = useState(null)
   const [setting, setSetting] = useState(0)
+  let history = useHistory()
 
   const [nameShow, setNameShow] = useState(false)
   const [usernameShow, setUsernameShow] = useState(false)
@@ -187,7 +189,17 @@ function UserSettings() {
   }
 
   function handleToken() {
-    window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+    // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+    history.push("/callback")
+    fetch("https://accounts.spotify.com/api/token?grant_type=client_credentials&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true", {
+      method: "POST", 
+        headers: {
+          'Authorization': 'Basic ' + btoa(`${process.env.REACT_APP_SPOTIFY_CLIENT_ID }`+ ':' + `${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`).toString('base64'),
+          "Content-Type" : "application/x-www-form-urlencoded"
+        }
+    })
+    .then(resp => resp.json())
+    .then(data => getToken(data.access_token))
   }
 
   const handleSetting0 = () => setSetting(0)
