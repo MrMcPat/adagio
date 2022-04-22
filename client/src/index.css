@@ -264,34 +264,34 @@ code {
   text-shadow: 1px 1px grey;
 }
 
-.daily-lyric {
+/* .daily-lyric {
   opacity: 0;
   animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
-}
+} */
 
-.daily-lyric-delay {
+/* .daily-lyric-delay {
   opacity: 0;
   animation: fadeIn 1s ease;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
-}
+} */
 
-.daily-lyric-delay-2 {
+/* .daily-lyric-delay-2 {
   opacity: 0;
   animation: fadeIn 1s ease;
   animation-delay: 0.8s;
   animation-fill-mode: forwards;
-}
+} */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
-}
+} */
 
 .random-background-1 {
   background-image: url(dailylyricpage1.png);
@@ -330,10 +330,10 @@ code {
   width: 400px;
   margin: 80px 100px;
   overflow-y: scroll;
-  opacity: 0;
+  /* opacity: 0;
   animation: fadeIn 1s ease;
   animation-delay: 1.2s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 .responses {
@@ -373,9 +373,9 @@ code {
 }
 
 .recommended-track {
-  opacity: 0;
+  /* opacity: 0;
   animation: fadeIn 1s ease;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
   width: 600px;
   overflow: hidden;
   font-size: 15px;
@@ -383,12 +383,12 @@ code {
   padding: 0 20px;
 }
 
-.playlists-title {
+/* .playlists-title {
   opacity: 0;
   animation: fadeIn 1s ease;
   animation-delay: 0.6s;
   animation-fill-mode: forwards;
-}
+} */
 
 .playlists-container {
   margin: 25px auto;
@@ -402,9 +402,9 @@ code {
   opacity: 0;
   background: linear-gradient(rgba(45, 44, 44, 0.4), rgba(49, 47, 47, 0.4));
   border-radius: 5px;
-  animation: fadeIn 1s ease;
+  /* animation: fadeIn 1s ease;
   animation-delay: 0.7s;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 .playlist {
