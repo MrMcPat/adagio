@@ -20,20 +20,20 @@
 
 # GIFs
 
-<img src="client/src/adagio1.gif" width="300">
+<img src="client/src/adagio1.gif" width="500">
 
 Login page and inspirational lyric of the day.
 
-<img src="client/src/adagio2.gif" width="300">
+<img src="client/src/adagio2.gif" width="500">
 
 Music recommendations based on how you feel
 during the day.
 
-<img src="client/src/adagio3.gif" width="300">
+<img src="client/src/adagio3.gif" width="500">
 
 Journal Entry features, and user profiles.
 
-<img src="client/src/adagio4.gif" width="300">
+<img src="client/src/adagio4.gif" width="500">
 
 Forum post features.
 
