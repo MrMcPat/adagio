@@ -37,4 +37,6 @@ Journal Entry features, and user profiles.
 
 Forum post features.
 
+# Credits
 
+Designed by Vivian Li and developed by Patrick Liang.
