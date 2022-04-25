@@ -1,8 +1,10 @@
-# README
+# Adagio
 
-Deployed on Heroku: https://adagio-app.herokuapp.com/
+<img src="client/src/logo.png" width="300">
 
-# DESCRIPTION
+**Demo Link**: https://adagio-app.herokuapp.com/
+
+# Description
 
 -Developed a full stack web application that incorporates music, colors, and journaling to promote a healthy state of mind.
 
@@ -15,3 +17,24 @@ Deployed on Heroku: https://adagio-app.herokuapp.com/
 -Allows users to create/edit/delete journals and forum posts, interact with other users’ journals and posts.
 
 -Users can follow other user's activity if they so choose.
+
+# GIFs
+
+<img src="client/src/adagio1.gif" width="300">
+
+Login page and inspirational lyric of the day.
+
+<img src="client/src/adagio2.gif" width="300">
+
+Music recommendations based on how you feel
+during the day.
+
+<img src="client/src/adagio3.gif" width="300">
+
+Journal Entry features, and user profiles.
+
+<img src="client/src/adagio4.gif" width="300">
+
+Forum post features.
+
+
