@@ -41,6 +41,8 @@ function App() {
     localStorage.setItem("tokenKey", accessToken)
   }}
 
+  console.log(localStorage.getItem("tokenKey"))
+
   return (
     <div className="App">
       <NavBar user={user} setUser={setUser}/>
@@ -49,13 +51,13 @@ function App() {
           <Homepage />
         </Route>
         <Route path="/signup">
-          <SignUp setUser={setUser}/>
+          <SignUp setUser={setUser} getToken={getToken}/>
           </Route>
         <Route path="/login">
-          <Login setUser={setUser}/>
+          <Login setUser={setUser} getToken={getToken}/>
         </Route>
         <Route path="/callback">
-          <Callback getToken={getToken}/>
+          <Callback/>
         </Route>
         <Route path="/dailylyric">
           <DailyLyricPage token={localStorage.getItem("tokenKey")}/>
@@ -67,7 +69,7 @@ function App() {
           <UserProfile />
         </Route>
         <Route path="/usersettings">
-          <UserSettings />
+          <UserSettings getToken={getToken}/>
         </Route>
         <Route path="/newjournalentry">
           <NewJournalEntry />

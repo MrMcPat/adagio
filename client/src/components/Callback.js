@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-function Callback({getToken}) {
+function Callback() {
   const [userProfile, setUserProfile] = useState([])
   const [hasResponse, setHasResponse] = useState(null)
 
     useEffect(() => {
-      getToken(window.location.hash.substring(14).split("&")[0])
+      // getToken(window.location.hash.substring(14).split("&")[0])
       async function handleFetch() {
         const userData = await axios.get("/me")
         setUserProfile(userData.data)

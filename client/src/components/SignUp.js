@@ -3,9 +3,10 @@ import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
 import { ToastContainer, toast } from 'react-toastify'
+import { useHistory } from "react-router-dom"
 
 
-function SignUp({setUser}) {
+function SignUp({setUser, getToken}) {
   const [userID, setUserID] = useState(null)
   const [email, setEmail] = useState("")
   const [firstName, setFirstName] = useState("")
@@ -20,6 +21,7 @@ function SignUp({setUser}) {
   const [userTriggerList, setUserTriggerList] = useState([])
   const [userTrigger, setUserTrigger] = useState("")
   const [next, setNext] = useState(0)
+  let history = useHistory()
 
   useEffect(() => {
     async function handleFetch() {
@@ -170,8 +172,18 @@ function SignUp({setUser}) {
   }
 
   function handleSkip() {
-      window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
-  }
+      // window.location = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&response_type=token&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true&redirect_uri=http://localhost:4000/callback`
+      history.push("/callback")
+      fetch("https://accounts.spotify.com/api/token?grant_type=client_credentials&scope=streaming user-read-email user-modify-playback-state user-read-private user-read-private user-read-playback-state&show_dialog=true", {
+        method: "POST", 
+          headers: {
+            'Authorization': 'Basic ' + btoa(`${process.env.REACT_APP_SPOTIFY_CLIENT_ID }`+ ':' + `${process.env.REACT_APP_SPOTIFY_CLIENT_SECRET}`).toString('base64'),
+            "Content-Type" : "application/x-www-form-urlencoded"
+          }
+      })
+      .then(resp => resp.json())
+      .then(data => getToken(data.access_token))
+    }
 
   return <div style={{textAlign: "center"}} className="signup-container">
       {next === 0 ? <form onSubmit={handleSubmit}>
